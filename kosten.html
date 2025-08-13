@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -165,31 +164,6 @@
         .hero-cta-block { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 48px; }
         .hero-cta-block p { margin: 0; font-size: 0.9rem; opacity: 0.7; }
         
-        .hero-features {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 32px;
-            background: rgba(30, 49, 70, 0.4);
-            border: 1px solid var(--border-color-dark);
-            border-radius: var(--border-radius-lg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-        .feature-item {
-            display: flex;
-            align-items: center; /* PERFECTED ALIGNMENT */
-            gap: 16px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-on-dark);
-            opacity: 0.95;
-            text-align: left;
-        }
-        .feature-item .icon { flex-shrink: 0; }
-        
         /* ===== VIDEO SECTION ===== */
         #hero-video {
             padding: 80px 0 120px 0; /* Increased top padding for more space */
@@ -239,10 +213,16 @@
         .calculator-button-group { display: flex; gap: 12px; flex-wrap: wrap; }
         .calculator-button-group .btn { padding: 14px 20px; border: 1px solid var(--border-color-light); border-radius: 10px; background-color: var(--bg-white); cursor: pointer; transition: all .2s ease; font-weight: 500; }
         .calculator-button-group .btn.active { background-color: var(--accent-color); color: var(--text-on-light); border-color: var(--accent-color); font-weight: 600; box-shadow: 0 2px 8px rgba(var(--accent-color-rgb), 0.2); }
-        #expectations .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-        #expectations .card h4 { display: flex; align-items: center; gap: 16px; font-size: 1.2rem; margin-bottom: 12px;}
-        #expectations .card p { font-size: 1rem; margin-bottom: 0; color: var(--text-secondary-on-light); }
-        #expectations .card .icon-wrapper { margin-bottom: 24px; }
+        
+        /* ===== START: REPLACEMENT & NEW SECTIONS STYLES ===== */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .features-grid .card h4 { display: flex; align-items: flex-start; gap: 16px; font-size: 1.2rem; margin-bottom: 12px;}
+        .features-grid .card p { font-size: 1rem; margin-bottom: 0; color: var(--text-secondary-on-light); }
+        .features-grid .card .icon-wrapper { margin-bottom: 24px; }
+        .challenges-text p { color: var(--text-secondary-on-light); margin-bottom: 1.5rem; max-width: 800px; text-align: left; margin-left: auto; margin-right: auto;}
+        .challenges-text p:last-child { margin-bottom: 0; }
+        /* ===== END: REPLACEMENT & NEW SECTIONS STYLES ===== */
+
         #about-mario .about-mario-box { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: center; }
         #about-mario h2.accent-underline::after { left:0; transform: translateX(0); } /* Align underline left */
         #location .location-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center; }
@@ -490,11 +470,9 @@
             #hero .hero-subheadline { font-size: 1.1rem; margin-bottom: 32px; }
             .hero-cta-block { margin-bottom: 40px; }
             #hero .cta-button { font-size: 1rem; padding: 16px 24px; }
-            .hero-features { padding: 24px 20px; gap: 16px; }
-            .feature-item { font-size: 1rem; gap: 12px; }
             
             /* --- Grids & Layout Stacking --- */
-            .grid, .about-mario-box, .location-grid, #for-whom .grid, .footer-container, .vorher-nachher-grid { 
+            .grid, .about-mario-box, .location-grid, #for-whom .grid, .footer-container, .vorher-nachher-grid, .features-grid { 
                 grid-template-columns: 1fr !important;
                 gap: 40px !important;
             }
@@ -516,8 +494,8 @@
             #roi-calculator .result-item span { font-size: 2.4rem; }
             #roi-calculator .result-item p { font-size: 0.9rem; }
             
-            #expectations .icon-wrapper { width: 48px; height: 48px; margin-bottom: 16px; }
-            #expectations .icon-wrapper svg { width: 24px; height: 24px; }
+            .features-grid .icon-wrapper { width: 48px; height: 48px; margin-bottom: 16px; }
+            .features-grid .icon-wrapper svg { width: 24px; height: 24px; }
             
             #about-mario .about-mario-box { padding: 28px 24px !important; }
             #about-mario h2 { font-size: 1.8rem; text-align: left; }
@@ -604,29 +582,16 @@
             <div class="hero-background-overlay"></div>
             <div class="container">
                 <div class="hero-content">
-                    <h1>Als Handwerksbetrieb 32% Zeit und Kosten sparen.</h1>
-                    <p class="hero-subheadline">Damit Sie wieder Zeit für Kunden und Mitarbeiter haben – statt ständig Feuerwehrmann im eigenen Betrieb zu sein.</p>
+                    <!-- NEUER TITEL -->
+                    <h1 style="font-size: 3.8rem;">Wie Sie als Handwerksbetrieb 32 % Zeit sparen – durch unsere Digitalisierung & Prozessoptimierung</h1>
+                    <!-- NEUER SUBTITEL -->
+                    <p class="hero-subheadline">Effizienz für Ihren Betrieb – ohne zusätzliches Personal einstellen zu müssen.<br>Wir reden nicht nur, wir setzen alles direkt bei Ihnen im Betrieb um – damit Abläufe schneller, klarer und einfacher laufen.</p>
                     
                     <div class="hero-cta-block">
                         <a href="#" class="cta-button js-open-modal glowing">
                             <span>Kostenloses Beratungsgespräch sichern</span>
                         </a>
                         <p>Dauer: unter 60 Sekunden. 100 % unverbindlich.</p>
-                    </div>
-
-                    <div class="hero-features">
-                        <div class="feature-item">
-                            <span class="icon">🕒</span>
-                            <span>Angebote in unter 5 Min – vollautomatisch & fehlerfrei</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="icon">📱</span>
-                            <span>Digitale Bauakte – sofort auf Handy & Tablet verfügbar</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="icon">🔄</span>
-                            <span>Automatische Wartungsplanung – Kunde bucht, System plant</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -651,9 +616,86 @@
             </div>
         </section>
 
-        <section id="automations" class="section-padding light-theme-section">
+        <!-- NEUER ABSCHNITT: KERNPROBLEME -->
+        <section id="core-problems" class="section-padding light-theme-section">
             <div class="container">
-                <h2 class="section-title accent-underline">Die 7 stärksten Automationen für Ihren Betrieb</h2>
+                <div class="features-grid">
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <h4>Sie finden keine passenden Fachkräfte?</h4>
+                        <p>Mit digitalen Prozessen kann ein Mitarbeiter heute so viel schaffen wie früher zwei – und das ganz ohne zusätzliche Leute einstellen zu müssen.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6z"></path><path d="m2 10 8 6 8-6"></path></svg></div>
+                        <h4>Zu wenig Zeit, kein klarer Plan?</h4>
+                        <p>Wir begleiten Sie vom ersten Konzept bis zur fertigen Umsetzung – damit Ihre Digitalisierungsprojekte nicht in der Schublade liegen bleiben, sondern wirklich fertig werden.</p>
+                    </div>
+                    <div class="card">
+                         <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                        <h4>Fehlende Akzeptanz im Team?</h4>
+                        <p>Wir sorgen dafür, dass neue digitale Abläufe reibungslos funktionieren, Ihr Team den Mehrwert erkennt und alle mitziehen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEUER ABSCHNITT: HERAUSFORDERUNGEN -->
+        <section id="challenges" class="section-padding light-theme-section bg-white">
+            <div class="container">
+                <h2 class="section-title accent-underline">Herausforderungen, die viele Handwerksbetriebe kennen</h2>
+                <div class="challenges-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p>Sie geben alles für Ihren Betrieb – und trotzdem fühlen sich viele Tage an, als würde man nur hinterherlaufen. Wenn es Ihnen wie vielen Handwerksmeistern geht, dann arbeiten Sie hart und erfolgreich – und trotzdem klemmt es bei Angeboten, Baustellenplanung oder Materialbestellung. Zeitmangel, Stress und fehlende Struktur bremsen Sie aus.</p>
+                    <p>Sie hetzen von Baustelle zu Baustelle, kämpfen mit Zettelwirtschaft und fehlenden Infos. Vielleicht zieht nicht jeder Mitarbeiter gleich gut mit, und Kunden reagieren träge auf Absprachen. Digitalisierung? Oft wird sie halbherzig begonnen und dann im Alltag wieder vergessen.</p>
+                    <p>Projekte starten motiviert – bleiben aber unvollendet. Statt einem klaren Plan fehlt der rote Faden: Welche Änderungen bringen wirklich etwas, und wie setzt man sie richtig um?</p>
+                    <p>Und dann dieses Gefühl: Bei Kollegen wirkt alles irgendwie moderner und besser organisiert – während man selbst immer wieder gegen dieselben Probleme ankämpft.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEUER ABSCHNITT: LÖSUNGEN -->
+        <section id="solutions" class="section-padding light-theme-section">
+            <div class="container">
+                <h2 class="section-title accent-underline">Unsere Lösungen für Ihren Handwerksbetrieb</h2>
+                <div class="features-grid">
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                        <h4>Effizienzsteigerung für Ihr Team</h4>
+                        <p>Wir optimieren Abläufe – von Angebot & Auftrag über Materialbestellung & Lager bis zur Abrechnung. Das entlastet Sie und Ihre Mitarbeiter spürbar.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                        <h4>Mehr Zeit für das Wesentliche</h4>
+                        <p>Wo früher zwei Leute nötig waren, reicht heute einer – dank smarter Prozesse. Mehr Zeit für Kunden, Projekte und private Momente.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+                        <h4>Digitale Auftrags- & Materialverwaltung</h4>
+                        <p>Keine Zettelwirtschaft mehr: Alle Aufträge, Pläne und Bestellungen jederzeit griffbereit – ob im Büro oder direkt auf der Baustelle.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+                        <h4>Ein klarer Fahrplan für Ihren Betrieb</h4>
+                        <p>Wir bringen Sie Schritt für Schritt von der Digitalisierung zur Automatisierung – und lassen Sie nicht im Stich.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg></div>
+                        <h4>Regelmäßige Umsetzungs-Checkpoints</h4>
+                        <p>Damit Projekte nicht versanden, sorgen wir mit festen Terminen für Fortschritt und messbare Ergebnisse.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"></path></svg></div>
+                        <h4>Schulung & Umsetzungskontrolle</h4>
+                        <p>Wir schulen Ihr Team, prüfen die Ergebnisse und sorgen dafür, dass neue Prozesse auch wirklich genutzt werden.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANGEPASSTER ABSCHNITT: AUTOMATISIERUNGEN -->
+        <section id="automations" class="section-padding light-theme-section bg-white">
+            <div class="container">
+                <h2 class="section-title accent-underline">Von Digitalisierung zu Automatisierung – was ist der nächste Schritt?</h2>
+                <p class="centered-text" style="margin-top: -60px; margin-bottom: 80px;">Mit automatisierten Prozessen sparen Sie Zeit, verhindern Fehler und machen Ihren Betrieb zukunftssicher – während andere noch im Papierchaos versinken.</p>
                 <div class="automation-grid">
                     
                     <div class="automation-card card">
@@ -814,29 +856,6 @@
             </div>
         </section>
 
-        <section id="expectations" class="section-padding light-theme-section">
-            <div class="container">
-                <h2 class="section-title accent-underline">In der Zusammenarbeit mit uns</h2>
-                <div class="features-grid">
-                    <div class="card">
-                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
-                        <h4>Transparente Kommunikation</h4>
-                        <p>Wir halten Sie informiert und passen an</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6z"></path><path d="m2 10 8 6 8-6"></path></svg></div>
-                        <h4>Direkte Umsetzung</h4>
-                        <p>Kein Beraterblabla, sondern handfeste Ergebnisse</p>
-                    </div>
-                    <div class="card">
-                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                        <h4>Nachhaltige Betreuung</h4>
-                        <p>Kein Einrichten & Verlassen – wir bleiben dran</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="about-mario" class="section-padding light-theme-section">
              <div class="container">
                 <div class="about-mario-box card" style="padding:64px;">
@@ -962,7 +981,8 @@
         <section id="final-cta" class="section-padding">
             <div class="container" style="text-align:center;">
                 <h2 style="font-size: 3rem; line-height: 1.3;">Ihr Betrieb läuft – auch ohne Sie.</h2>
-                <p class="centered-text" style="margin-bottom: 40px; color: var(--text-on-dark); opacity:0.8;">Jetzt unverbindlich starten – potenzielle Engpässe identifizieren.</p>
+                <!-- NEUER SUBTITEL -->
+                <p class="centered-text" style="margin-bottom: 40px; color: var(--text-on-dark); opacity:0.8;">Jetzt unverbindliches Erstgespräch sichern – und herausfinden, wie viel Zeit und Stress Sie in den nächsten Monaten sparen können.</p>
                 <a href="#" class="cta-button large-cta js-open-modal" style="padding: 20px 40px; font-size: 1.2rem; text-transform: none;">
                     Kostenloses Erstgespräch buchen
                 </a>
