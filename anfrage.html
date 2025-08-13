@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regionale Kunden für Ihr Handwerk | Das Erfolgs-System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- GSAP Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- CSS (Styles) direkt im HTML eingebettet -->
+    <style>
+        :root {
+            /* Color Palette (Unchanged) */
+            --bg-dark: #0E1A2A;               
+            --bg-light: #F7F8FA;              
+            --bg-white: #FFFFFF;              
+            
+            --primary-color: #0E1A2A;         
+            --secondary-color: #1C2B3A;       
+            
+            --accent-color: #FFD300;          
+            --accent-hover-color: #E6B800;    
+            --accent-color-rgb: 255, 211, 0;  
+            
+            --text-on-dark: #E0E6EB;          
+            --text-on-light: #1B2733;         
+            --text-secondary-on-light: #6B7280; 
+            --white-color: #FFFFFF;
+            
+            --border-color-light: #E5E7EB;          
+            --border-color-dark: #3A4C5A;     
+            
+            --success-color: #28a745; 
+            --danger-color: #E74C3C;
+
+            /* Typography & Layout (Refined) */
+            --font-family-serif: 'Merriweather', serif;
+            --font-family-sans: 'Inter', sans-serif;
+            --border-radius: 12px;
+            --border-radius-lg: 20px; /* Softer radius */
+            --transition-speed: 0.3s;
+            /* Softer, more premium shadows */
+            --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 15px 40px rgba(0, 0, 0, 0.07), 0 10px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 100%; }
+        body {
+            font-family: var(--font-family-sans);
+            font-size: 16px; 
+            line-height: 1.75; /* Increased for better readability */
+            color: var(--text-on-dark);
+            background-color: var(--bg-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        h1, h2, h3, h4 { font-family: var(--font-family-serif); font-weight: 700; line-height: 1.25; }
+        h1 { font-size: 3rem; line-height: 1.2; letter-spacing: -1.5px; color: var(--white-color); }
+        h2 { font-size: 2.5rem; letter-spacing: -1px; }
+        h3 { font-size: 1.6rem; line-height: 1.3; }
+        h4 { font-family: var(--font-family-sans); font-weight: 600; font-size: 1.2rem; color: var(--text-on-light); margin-bottom: 16px; }
+        .highlight-text { color: var(--accent-color); }
+        p { margin-bottom: 1.2rem; color: var(--text-on-dark); }
+        a { color: var(--accent-color); text-decoration: none; transition: color 200ms ease; }
+        a:hover { color: var(--accent-hover-color); }
+
+        .section-padding { padding: 120px 0; } /* Increased padding */
+        .section-title { text-align: center; margin-bottom: 80px; } /* Increased margin */
+        .accent-underline { position: relative; padding-bottom: 24px; }
+        .accent-underline::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 64px; height: 5px; background-color: var(--accent-color); border-radius: 5px; } /* Refined underline */
+        .centered-text { text-align: center; max-width: 760px; margin-left: auto; margin-right: auto; font-size: 1.2rem; line-height: 1.7; }
+
+        /* ===== GLOBAL LIGHT THEME SECTION ===== */
+        .light-theme-section {
+            background-color: var(--bg-light);
+            color: var(--text-on-light);
+        }
+        .light-theme-section.bg-white { background-color: var(--bg-white); }
+        .light-theme-section h1, .light-theme-section h2, .light-theme-section h3, .light-theme-section h4, 
+        .light-theme-section p, .light-theme-section li, .light-theme-section span, .light-theme-section strong, .light-theme-section em {
+            color: var(--text-on-light);
+        }
+        .light-theme-section .centered-text, .light-theme-section p, .light-theme-section .role, #for-whom .column p { color: var(--text-secondary-on-light); }
+        .light-theme-section h1, .light-theme-section h2, .light-theme-section h3, .light-theme-section h4, .light-theme-section strong, .light-theme-section li { color: var(--text-on-light); }
+        /* Refined Card Style */
+        .light-theme-section .card {
+            background-color: var(--bg-white);
+            border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border */
+            box-shadow: var(--shadow-md);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            transition: transform var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
+            height: 100%;
+        }
+        .light-theme-section .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+        .list-icon { flex-shrink: 0; width: 24px; height: 24px; margin-top: 4px; } /* Improved alignment */
+        .list-icon.check { color: var(--success-color); }
+        .list-icon.cross { color: var(--danger-color); }
+        .list-icon.solution { color: var(--accent-color); }
+        .icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px; /* Larger icon wrapper */
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--bg-light);
+            color: var(--accent-color);
+            margin-bottom: 24px;
+        }
+        .icon-wrapper svg { width: 28px; height: 28px; }
+
+        /* ===== HEADER & FOOTER (DARK) ===== */
+        .main-header { background-color: rgba(14, 26, 42, 0.85); padding: 24px 0; position: sticky; top: 0; z-index: 1000; transition: all var(--transition-speed) ease-in-out; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; }
+        .main-header.scrolled { box-shadow: 0 5px 25px rgba(0,0,0,0.25); border-bottom-color: var(--border-color-dark); padding: 16px 0; }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-family-sans); font-weight: 900; font-size: 1.8rem; color: var(--white-color); letter-spacing: -1px; display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 38px; width: auto; }
+        .header-cta-group { display: flex; align-items: center; gap: 24px; }
+        .header-cta { font-size: 0.9rem; padding: 12px 28px; }
+        .main-footer { background-color: var(--bg-dark); padding: 80px 0; font-size: 0.9rem; border-top: 1px solid var(--border-color-dark); }
+        .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 64px; }
+        .footer-bottom { border-top: 1px solid var(--secondary-color); text-align: center; margin-top: 80px; padding-top: 40px; opacity: 0.6; } /* More subtle */
+        .footer-column .logo { margin-bottom: 24px; }
+        .footer-column h4 { font-family: var(--font-family-sans); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 24px; color:var(--white-color); }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 16px; }
+        .main-footer .footer-links a, .footer-contact-item a { color: var(--text-on-dark); opacity: 0.8; transition: all var(--transition-speed) ease-in-out; }
+        .main-footer .footer-links a:hover, .footer-contact-item a:hover { color: var(--accent-color); opacity: 1; transform: translateX(5px); }
+        .footer-contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+        .footer-contact-item svg { flex-shrink: 0; color: var(--accent-color); margin-top: 4px;}
+        .footer-trust-badges { display: flex; gap: 16px; align-items: center; margin-top: 24px; }
+        .footer-trust-badges svg { height: 32px; width: auto; color: #9CA3AF; }
+
+        /* ===== BUTTONS (Refined) ===== */
+        .cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; background-color: var(--accent-color); color: var(--text-on-light); padding: 18px 36px; border-radius: var(--border-radius); font-family: var(--font-family-sans); font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; text-align: center; transition: all var(--transition-speed) ease-out; border: none; box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.2), 0 1px 3px rgba(0,0,0,0.05); cursor: pointer; }
+        .cta-button .icon { width: 20px; height: 20px; }
+        .cta-button:hover { background-color: var(--accent-hover-color); color: var(--text-on-light); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(var(--accent-color-rgb), 0.3), 0 4px 10px rgba(0,0,0,0.1); }
+        @keyframes pulse-glow { 0% { box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.2), 0 1px 3px rgba(0,0,0,0.05), 0 0 0 0px rgba(var(--accent-color-rgb), 0.3); } 70% { box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.2), 0 1px 3px rgba(0,0,0,0.05), 0 0 0 15px rgba(var(--accent-color-rgb), 0); } 100% { box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.2), 0 1px 3px rgba(0,0,0,0.05), 0 0 0 0px rgba(var(--accent-color-rgb), 0); } }
+        .cta-button.glowing { animation: pulse-glow 3s infinite cubic-bezier(0.66, 0, 0, 1); }
+
+        /* ===== HERO SECTION (REVERTED TO CENTERED) ===== */
+        #hero { display: flex; align-items: center; min-height: auto; padding: 128px 0 64px 0; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border-color-dark); }
+        .mesh-gradient { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background-color: #0E1A2A; background-image: radial-gradient(at 20% 20%, hsla(210,50%,30%,0.3) 0px, transparent 50%), radial-gradient(at 80% 10%, hsla(200,50%,25%,0.3) 0px, transparent 50%), radial-gradient(at 75% 80%, hsla(220,50%,20%,0.4) 0px, transparent 50%), radial-gradient(at 10% 90%, hsla(205,50%,25%,0.3) 0px, transparent 50%); }
+        .hero-background-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(255, 211, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 211, 0, 0.05) 1px, transparent 1px); background-size: 60px 60px; animation: background-pan 40s linear infinite; opacity: 0.2; }
+        @keyframes background-pan { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
+        .hero-content { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+        #hero h1 { font-size: 4.2rem; font-weight: 900; text-shadow: 0 3px 20px rgba(0, 0, 0, 0.4); margin-bottom: 24px; letter-spacing: -2px; }
+        #hero .hero-subheadline { font-size: 1.25rem; max-width: 720px; color: var(--text-on-dark); opacity: 0.85; margin: 0 auto 40px auto; line-height: 1.7; }
+        .hero-cta-block { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 48px; }
+        .hero-cta-block p { margin: 0; font-size: 0.9rem; opacity: 0.7; }
+        
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 32px;
+            background: rgba(30, 49, 70, 0.4);
+            border: 1px solid var(--border-color-dark);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .feature-item {
+            display: flex;
+            align-items: center; /* PERFECTED ALIGNMENT */
+            gap: 16px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-on-dark);
+            opacity: 0.95;
+            text-align: left;
+        }
+        .feature-item .icon { flex-shrink: 0; }
+        
+        /* ===== TESTIMONIALS (REFINED & RESPONSIVE) ===== */
+        #testimonials { background: var(--bg-white); }
+        .case-study-container { display: flex; flex-direction: column; gap: 40px; }
+        .case-study-card-new { padding: 48px; background: var(--bg-light); border-radius: var(--border-radius-lg); border: 1px solid rgba(0,0,0,0.05); }
+        .case-study-card-new h3 { margin-bottom: 32px; color: var(--text-on-light); }
+        .vorher-nachher-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 32px; }
+        .vorher-nachher-grid h4 { font-size: 1.1rem; margin-bottom: 20px; padding-left: 16px; border-left: 3px solid; } /* Cleaner border-left */
+        .vorher-nachher-grid ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+        .vorher-nachher-grid ul li { position: relative; padding-left: 28px; color: var(--text-secondary-on-light); }
+        .vorher-nachher-grid ul li::before { content: '–'; position: absolute; left: 0; top: 1px; color: var(--text-secondary-on-light); font-weight: 600; }
+        .vorher-nachher-grid .column:first-child h4 { border-color: var(--danger-color); }
+        .vorher-nachher-grid .column:last-child h4 { border-color: var(--success-color); }
+        .case-study-card-new .quote { font-style: italic; color: var(--text-on-light); border-left: 4px solid var(--accent-color); padding-left: 32px; margin-top: 32px; font-size: 1.15rem; }
+
+        /* ===== MISC SECTION STYLES FROM ORIGINAL ===== */
+        #for-whom .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        #for-whom .column h3 { font-size: 1.6rem; margin-bottom: 24px; }
+        #for-whom .column ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+        #for-whom .column li { display: flex; align-items: flex-start; gap: 16px; font-weight: 500; }
+        #for-whom .column p { margin-top: 24px; font-size: 0.9rem; }
+        #roi-calculator .calculator-box { max-width: 800px; margin: 0 auto; padding: 48px; background: linear-gradient(145deg, var(--bg-white), var(--bg-light)); }
+        #roi-calculator .form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        #roi-calculator .form-group { display: flex; flex-direction: column; gap: 12px;}
+        #roi-calculator label { font-weight: 600; display: block; color: var(--text-on-light); }
+        #roi-calculator label small { font-weight: 400; color: var(--text-secondary-on-light); display: block; margin-top: 4px; }
+        #roi-calculator input { width: 100%; padding: 16px; border: 1px solid var(--border-color-light); border-radius: 10px; font-size: 1.1rem; transition: border-color .2s ease, box-shadow .2s ease; background-color: var(--bg-white); }
+        #roi-calculator input:focus { border-color: var(--accent-color); box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.15); outline: none; }
+        #roi-calculator .result-box { margin-top: 40px; padding: 32px; background: var(--bg-light); border: 1px solid var(--border-color-light); text-align: center; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); }
+        #roi-calculator .result-box h4 { margin-bottom: 24px; }
+        #roi-calculator .result-grid { display: flex; justify-content: space-around; gap: 24px; }
+        #roi-calculator .result-item span { font-size: 2.2rem; font-weight: 700; color: var(--accent-color); display: block; }
+        #roi-calculator .result-item p { font-size: 0.9rem; color: var(--text-secondary-on-light); margin: 4px 0 0; }
+        #roi-calculator .cta-button { margin-top: 40px; width: 100%; }
+        #expectations .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        #expectations .card h4 { display: flex; align-items: center; gap: 16px; font-size: 1.2rem; margin-bottom: 12px;}
+        #expectations .card p { font-size: 1rem; margin-bottom: 0; color: var(--text-secondary-on-light); }
+        #expectations .card .icon-wrapper { margin-bottom: 24px; }
+        #about-mario .about-mario-box { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: center; }
+        #about-mario h2.accent-underline::after { left:0; transform: translateX(0); } /* Align underline left */
+        #location .location-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center; }
+        
+        /* ===== START: NEW FAQ SECTION STYLES ===== */
+        #faq .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        #faq .faq-item-new {
+            background-color: var(--bg-white);
+            padding: 32px;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color-light);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+        }
+        #faq .faq-question-new {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        #faq .faq-question-new h4 {
+            font-family: var(--font-family-serif);
+            font-size: 1.25rem;
+            line-height: 1.4;
+            color: var(--text-on-light);
+            margin: 0;
+            font-weight: 700;
+        }
+        #faq .faq-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            color: var(--accent-color);
+            margin-top: 4px;
+        }
+        #faq .faq-answer-new p {
+            color: var(--text-secondary-on-light);
+            line-height: 1.7;
+            margin: 0;
+        }
+        /* ===== END: NEW FAQ SECTION STYLES ===== */
+        
+        #collaboration-process .collaboration-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; }
+        #final-cta { background: var(--bg-dark) linear-gradient(180deg, var(--secondary-color) 0%, var(--bg-dark) 100%); } /* Subtle gradient */
+        #final-cta h2, #final-cta p {color: var(--white-color);}
+        #final-cta .price-signal { color: var(--text-on-dark); opacity: 0.6; margin-top: 24px; font-size: 0.9rem; }
+        
+        /* ===== GENERAL UTILITY AND RESPONSIVE ===== */
+        .sticky-top-cta { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--accent-color); color: var(--text-on-light); text-align: center; padding: 12px 0; font-weight: 600; z-index: 1001; transform: translateY(-100%); transition: transform 0.4s ease-in-out; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .sticky-top-cta.is-visible { transform: translateY(0); }
+        .sticky-top-cta a { color: var(--text-on-light); text-decoration: none; }
+        .sticky-top-cta.is-visible + .main-header { top: 45px; }
+        .sticky-mobile-cta { display: none; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(14, 26, 42, 0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-overlay.is-visible { opacity: 1; visibility: visible; }
+        .modal-content { background-color: var(--bg-light); padding: 40px; border-radius: var(--border-radius-lg); position: relative; width: 90%; max-width: 600px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .modal-content h2, .modal-content p { color: var(--text-on-light); }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-secondary-on-light); font-size: 2rem; line-height: 1; cursor: pointer; opacity: 0.7; transition: opacity 0.2s ease, transform 0.2s ease; }
+        .modal-close:hover { opacity: 1; transform: rotate(90deg); }
+        .custom-modal-form { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+        .custom-modal-form .form-group { display: flex; flex-direction: column; }
+        .custom-modal-form label { font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-on-light); }
+        .custom-modal-form input { width: 100%; padding: 16px; border: 1px solid var(--border-color-light); border-radius: 10px; font-size: 1rem; background-color: var(--bg-white); color: var(--text-on-light); transition: border-color .2s ease, box-shadow .2s ease; }
+        .custom-modal-form input:focus { border-color: var(--accent-color); box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.15); outline: none; }
+        
+        
+        /* --- NEU: Erweiterte Mobil-Optimierung & Breakpoints --- */
+
+        /* Tablet & Laptop (bis 992px) */
+        @media (max-width: 992px) {
+             h1 { font-size: 3.5rem; letter-spacing: -1.2px; }
+             h2 { font-size: 2.3rem; }
+             #hero h1 { font-size: 3.6rem; }
+             .section-padding { padding: 90px 0; }
+             .section-title { margin-bottom: 70px; }
+             #roi-calculator .form-grid { grid-template-columns: 1fr; }
+             #faq .faq-grid { grid-template-columns: 1fr; }
+             .about-mario-box, .location-grid { gap: 48px !important; }
+        }
+
+        /* Tablet & große Smartphones (bis 768px) */
+        @media (max-width: 768px) {
+            /* --- General Layout --- */
+            .section-padding { padding: 64px 0; }
+            #hero-video { padding: 48px 0 64px 0; }
+            body { padding-bottom: 80px; font-size: 95%; } /* Space for mobile CTA & base font reduction */
+
+            /* --- Typography Scale Adjustments --- */
+            h1 { font-size: 2.5rem; letter-spacing: -1px; }
+            h2 { font-size: 2.1rem; }
+            h3 { font-size: 1.4rem; }
+            h4 { font-size: 1.1rem; }
+
+            /* --- Header & Logo --- */
+            .header-cta-group { display: none; }
+            .logo img { height: 32px; }
+            
+            /* --- Hero Section --- */
+            #hero { padding: 80px 0 48px 0; min-height: auto; }
+            #hero h1 { font-size: 2.8rem; line-height: 1.25; }
+            #hero .hero-subheadline { font-size: 1.1rem; margin-bottom: 32px; }
+            .hero-cta-block { margin-bottom: 40px; }
+            #hero .cta-button { font-size: 1rem; padding: 16px 24px; }
+            .hero-features { padding: 24px 20px; gap: 16px; }
+            .feature-item { font-size: 1rem; gap: 12px; }
+            
+            /* --- Grids & Layout Stacking --- */
+            .grid, .about-mario-box, .location-grid, #for-whom .grid, .footer-container, .vorher-nachher-grid { 
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+            .vorher-nachher-grid { gap: 32px !important; }
+
+            /* --- Component-Specific Refinements --- */
+            .light-theme-section .card { padding: 28px 24px; }
+            .section-title { margin-bottom: 64px; }
+            
+            #testimonials .quote { font-size: 1.1rem; }
+
+            #roi-calculator .calculator-box { padding: 28px 24px; }
+            #roi-calculator .result-grid { flex-direction: column; gap: 24px; }
+            #roi-calculator .result-box { padding: 24px; }
+            #roi-calculator .result-item span { font-size: 2.4rem; }
+            #roi-calculator .result-item p { font-size: 0.9rem; }
+            
+            #expectations .icon-wrapper { width: 48px; height: 48px; margin-bottom: 16px; }
+            #expectations .icon-wrapper svg { width: 24px; height: 24px; }
+            
+            #about-mario .about-mario-box { padding: 28px 24px !important; }
+            #about-mario h2 { font-size: 1.8rem; text-align: left; }
+            
+            #location .location-grid > div > h3 { font-size: 1.5rem; }
+            #location .location-grid li { padding: 16px; }
+            
+            #faq .faq-item-new { padding: 24px; }
+            #faq .faq-question-new h4 { font-size: 1.1rem; }
+            
+            #final-cta h2 { font-size: 2.2rem; }
+            .centered-text { font-size: 1.1rem; }
+            #final-cta .large-cta { padding: 18px 28px; font-size: 1.1rem; }
+
+            /* --- Mobile CTAs --- */
+            .sticky-mobile-cta { 
+                display: flex; position: fixed; bottom: 0; left: 0; right: 0; 
+                background-color: var(--bg-white); padding: 16px; 
+                box-shadow: 0 -4px 15px rgba(0,0,0,0.1); z-index: 1000; 
+            }
+            .sticky-mobile-cta .cta-button { width: 100%; font-size: 1rem; padding: 16px; }
+        }
+
+        /* Kleine Smartphones (bis 480px) */
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .section-padding { padding: 48px 0; }
+            #hero-video { padding: 32px 0 48px 0; }
+
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.9rem; }
+            #hero h1 { font-size: 2.4rem; }
+            #hero .hero-subheadline { font-size: 1rem; line-height: 1.6; }
+            .centered-text { font-size: 1rem; }
+            
+            .cta-button { padding: 16px 24px; font-size: 0.9rem; }
+            #hero .cta-button { font-size: 0.95rem; }
+            .hero-cta-block p { font-size: 0.8rem; }
+            
+            .light-theme-section .card { padding: 24px; }
+            #about-mario .about-mario-box { padding: 24px !important; }
+            #about-mario h2 { font-size: 1.6rem; }
+            
+            #faq .faq-question-new h4 { font-size: 1.05rem; }
+            #final-cta h2 { font-size: 2rem; }
+
+            .modal-content { padding: 24px; }
+            .custom-modal-form input { padding: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sticky-top-cta">
+        <a href="#" class="js-open-modal">Jetzt Ihre kostenlose Potenzialanalyse anfordern →</a>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754386401/stefek_gyabch.png" alt="Stefek Logo" style="filter: invert(1);">
+            </a>
+            <div class="header-cta-group">
+                <a href="tel:+436608640360" style="color: var(--white-color); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+                    +43 660 8640360
+                </a>
+                <a href="#" class="cta-button header-cta js-open-modal">Kostenloses Erstgespräch</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="hero">
+            <div class="mesh-gradient"></div>
+            <div class="hero-background-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Garantierte Kundenanfragen für Ihr Handwerk in nur 32 Tagen.</h1>
+                    <p class="hero-subheadline">Gewinnen Sie planbar Neukunden aus Ihrer Region und füllen Sie Ihre Auftragsbücher – ohne Kaltakquise und Empfehlungsmarketing.</p>
+                    
+                    <div class="hero-cta-block">
+                        <a href="#" class="cta-button js-open-modal glowing">
+                            <span>Kostenlose Potenzialanalyse anfordern</span>
+                        </a>
+                        <p>Dauer: unter 60 Sekunden. 100 % unverbindlich.</p>
+                    </div>
+
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <span class="icon">🎯</span>
+                            <span>Exklusiv für Sie: Anfragen aus Ihrer direkten Umgebung</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">📈</span>
+                            <span>Messbarer Erfolg: Wir garantieren die vereinbarte Anzahl an Anfragen</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">💡</span>
+                            <span>Kein Risiko: Zahlen Sie nur für qualifizierte, echte Anfragen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section-padding light-theme-section">
+             <div class="container">
+                <h2 class="section-title accent-underline">Ergebnisse aus der Praxis: Vorher vs. Nachher</h2>
+                <div class="case-study-container">
+                    <div class="case-study-card-new card">
+                      <h3>Axhijaj Installationen GmbH</h3>
+                      <div class="vorher-nachher-grid">
+                        <div class="column">
+                          <h4>Vorher</h4>
+                          <ul>
+                            <li>Abhängig von Empfehlungen und teurer, ineffektiver Werbung</li>
+                            <li>Unregelmäßiger Auftragseingang, schwer planbar</li>
+                            <li>Zu viel Zeit mit Kaltakquise verschwendet</li>
+                          </ul>
+                        </div>
+                        <div class="column">
+                          <h4>Nachher</h4>
+                          <ul>
+                            <li>Konstanter Strom an qualifizierten Anfragen jeden Monat</li>
+                            <li>Volle Auftragsbücher für die nächsten 3-6 Monate</li>
+                            <li>Fokus auf das Kerngeschäft, nicht auf die Akquise</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <blockquote class="quote">„Seit der Zusammenarbeit erhalten wir wöchentlich 5-7 neue, konkrete Anfragen. Unser Umsatz ist im ersten Quartal um 30% gestiegen, weil wir uns auf die richtigen Kunden konzentrieren können.“</blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="for-whom" class="section-padding light-theme-section bg-white">
+            <div class="container">
+                <h2 class="section-title accent-underline">Passt unsere Strategie zu Ihrem Betrieb?</h2>
+                <div class="grid">
+                    <div class="column card">
+                        <h3>Ja, wenn Sie…</h3>
+                        <ul>
+                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>regelmäßig neue, kaufkräftige Kunden aus Ihrer Region gewinnen wollen.</li>
+                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Ihre Auslastung steigern und Auftragslöcher vermeiden möchten.</li>
+                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>sich von schwankenden Empfehlungen unabhängig machen wollen.</li>
+                        </ul>
+                    </div>
+                    <div class="column card">
+                        <h3>Nein, wenn Sie…</h3>
+                        <ul>
+                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>glauben, dass Kunden von alleine kommen und nichts dafür tun wollen.</li>
+                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>nicht bereit sind, in planbares Wachstum für Ihren Betrieb zu investieren.</li>
+                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>keine neuen Aufträge annehmen können oder wollen.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roi-calculator" class="section-padding light-theme-section bg-white">
+            <div class="container">
+                <h2 class="section-title accent-underline">Welches Umsatzpotenzial schlummert in Ihrer Region?</h2>
+                <div class="calculator-box card">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="gewuenschte-auftraege">Gewünschte Aufträge / Monat</label>
+                            <input type="number" id="gewuenschte-auftraege" value="5" min="1">
+                        </div>
+                        <div class="form-group">
+                             <label for="auftragswert">ø Auftragswert (€)</label>
+                             <input type="number" id="auftragswert" value="2500" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="abschlussquote">Ihre Abschlussquote (%)</label>
+                            <input type="number" id="abschlussquote" value="30" min="1">
+                       </div>
+                    </div>
+                    <div class="result-box">
+                        <h4>Ihr zusätzliches Potenzial:</h4>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <span id="roi-result-anfragen">17+</span>
+                                <p>Nötige Anfragen pro Monat</p>
+                            </div>
+                            <div class="result-item">
+                                <span id="roi-result-umsatz">150.000€+</span>
+                                <p>Möglicher Mehrumsatz p. a.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="cta-button js-open-modal">Potenzialanalyse starten</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="expectations" class="section-padding light-theme-section">
+            <div class="container">
+                <h2 class="section-title accent-underline">In der Zusammenarbeit mit uns</h2>
+                <div class="features-grid">
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
+                        <h4>Transparente Kommunikation</h4>
+                        <p>Wir halten Sie informiert und passen an</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6z"></path><path d="m2 10 8 6 8-6"></path></svg></div>
+                        <h4>Direkte Umsetzung</h4>
+                        <p>Kein Beraterblabla, sondern handfeste Ergebnisse</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <h4>Nachhaltige Betreuung</h4>
+                        <p>Kein Einrichten & Verlassen – wir bleiben dran</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-mario" class="section-padding light-theme-section">
+             <div class="container">
+                <div class="about-mario-box card" style="padding:64px;">
+                    <div style="position: relative;">
+                        <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754253150/mario_stefek_byeywa.avif" alt="Mario Stefek" style="width: 100%; border-radius: var(--border-radius);">
+                    </div>
+                    <div>
+                        <h2 class="accent-underline" style="text-align: left; padding-bottom: 16px; margin-bottom: 32px;">„Ich habe gesehen, wie großartige Handwerker um jeden einzelnen Auftrag kämpfen müssen.“</h2>
+                        <p>„Bei meiner Arbeit mit Dutzenden Handwerksbetrieben sah ich immer wieder dasselbe Problem: Exzellente Fachleute, deren Erfolg allein von Zufall, Empfehlungen oder teurer Printwerbung abhing. Der Chef wird zum Vertriebler, anstatt sich auf sein Handwerk und seine Mitarbeiter konzentrieren zu können.“</p>
+                        <p>„Deshalb habe ich eine Methode entwickelt, die speziell für das Handwerk funktioniert: Ein System, das planbar und zuverlässig Anfragen von kaufbereiten Kunden aus der Region generiert. Eines, das Inhabern die Sicherheit gibt, ihre Auftragsbücher für die nächsten Monate zu füllen, damit sie sich wieder auf das konzentrieren können, was sie am besten können: ihr Handwerk.“</p>
+                        <div style="margin-top: 32px; font-weight: 500; color: var(--text-secondary-on-light)">
+                             <em>Gründer & Ihr Partner für regionales Marketing</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="location" class="section-padding light-theme-section">
+             <div class="container">
+                <h2 class="section-title accent-underline">Ihr Partner vor Ort in Wien</h2>
+                <div class="location-grid">
+                    <div>
+                        <h3>Persönlich oder digital – immer für Sie da.</h3>
+                        <p>Unser Büro finden Sie im Herzen von Wien. Wir freuen uns darauf, Sie kennenzulernen, um gemeinsam an Ihrem Erfolg zu arbeiten.</p>
+                        <ul style="list-style: none; padding: 0; margin: 32px 0 0 0; display: flex; flex-direction: column; gap: 16px;">
+                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">📍 <div><span style="display:block; font-weight:600;">Adresse</span> Praterstraße 1, 1020 Wien</div></li>
+                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">🚇 <div><span style="display:block; font-weight:600;">Öffentlich</span> U1/U4 Schwedenplatz (5 Min.)</div></li>
+                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">🅿️ <div><span style="display:block; font-weight:600;">Parken</span> Parkgarage Sofitel (3 Min.)</div></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2658.825091761823!2d16.37934281565149!3d48.21528147922987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d07a5f65a1099%3A0x2980b629e462d7c!2sPraterstra%C3%9Fe%201%2C%201020%20Wien%2C%20%C3%9Österreich!5e0!3m2!1sde!2sde!4v1658487950211!5m2!1sde!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width: 100%; height: 100%; min-height: 450px; border-radius: var(--border-radius-lg); border: 1px solid var(--border-color-light);"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="faq" class="section-padding light-theme-section">
+            <div class="container">
+                <h2 class="section-title accent-underline">Die 8 häufigsten Fragen</h2>
+                <div class="faq-grid">
+                    
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Woher kommen die Anfragen genau?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Muss ich mich mit Marketing oder Technik auskennen?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Was kostet mich eine Anfrage und was ist, wenn keine kommen?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Sind die Anfragen exklusiv für mich?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Wie schnell erhalte ich die ersten Anfragen?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+                    
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Für welche Handwerksbranchen funktioniert das?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Bin ich langfristig gebunden?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Was genau ist eine "qualifizierte Anfrage"?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                </div>
+            </div>
+        </section>
+        
+        <section id="collaboration-process" class="section-padding light-theme-section">
+            <div class="container">
+                <h2 class="section-title accent-underline">Nächste Schritte – Ihr Fahrplan zum Erfolg</h2>
+                <div class="collaboration-grid">
+                    <div class="step-card card"><h4>15-minütige Potenzialanalyse buchen</h4><p>wir definieren Ihre Zielkunden</p></div>
+                    <div class="step-card card"><h4>Maßgeschneiderte Strategie erhalten</h4><p>exklusiv für Ihre Region</p></div>
+                    <div class="step-card card"><h4>Erste Kundenanfragen erhalten</h4><p>garantiert in 32 Tagen</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="final-cta" class="section-padding">
+            <div class="container" style="text-align:center;">
+                <h2 style="font-size: 3rem; line-height: 1.3;">Füllen Sie Ihre Auftragsbücher für die nächsten Monate.</h2>
+                <p class="centered-text" style="margin-bottom: 40px; color: var(--text-on-dark); opacity:0.8;">Finden Sie in einer kostenlosen Analyse heraus, wie viele Neukunden in Ihrer Region auf Sie warten.</p>
+                <a href="#" class="cta-button large-cta js-open-modal" style="padding: 20px 40px; font-size: 1.2rem; text-transform: none;">
+                    Kostenlose Potenzialanalyse anfordern
+                </a>
+                <p class="price-signal">Die Investition ist erfolgsbasiert. Sie zahlen nur für echte, qualifizierte Anfragen, die wir Ihnen liefern.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <a href="#" class="logo"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754386401/stefek_gyabch.png" alt="Logo" style="filter: invert(1);"></a>
+                    <p style="color: var(--text-secondary-on-light);">© 2018-2025 - Mario Stefek</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Start</a></li>
+                        <li><a href="#testimonials">Kundenstimmen</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.stefekdigital.com/impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a></li>
+                        <li><a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutz</a></li>
+                    </ul>
+                </div>
+                 <div class="footer-column">
+                     <h4>Kontakt</h4>
+                     <ul class="footer-links">
+                         <li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg> <div><a href="tel:+436608640360">+43 660 8640360</a></div></li>
+                         <li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="5" width="18" height="14" rx="2" /><polyline points="3 7 12 13 21 7" /></svg> <div><a href="mailto:mario.stefek@stefekdigital.com">mario.stefek@stefekdigital.com</a></div></li>
+                         <li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9" /><polyline points="12 7 12 12 15 15" /></svg> <span>Mo-Fr: 08:00 - 16:00 Uhr</span></li>
+                     </ul>
+                 </div>
+            </div>
+             <div class="footer-bottom">
+                <p>Marketing mit System – gebaut für Meister des Handwerks.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <h2>Kostenlose Potenzialanalyse anfordern</h2>
+            <p>Füllen Sie das Formular aus. Wir melden uns umgehend, um Ihre kostenlose und unverbindliche Potenzialanalyse zu terminieren.</p>
+            <form action="https://formspree.io/f/xvgqkvbl" method="POST" class="custom-modal-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Firma</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                <div class="form-group">
+                    <label for="website">Webseite</label>
+                    <input type="text" id="website" name="website" placeholder="https://beispiel.de">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 16px; text-transform: none;">Analyse anfordern</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="sticky-mobile-cta">
+        <a href="#" class="cta-button js-open-modal">Kostenlose Analyse anfordern</a>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ content
+            const faqContent = [
+                '<p>Wir nutzen ein bewährtes System gezielter Online-Werbung auf Plattformen wie Google und Facebook, wo Ihre Kunden bereits suchen – ausschließlich fokussiert auf Ihr spezifisches Einzugsgebiet. Wir finden die Personen, die Ihre Dienstleistungen jetzt aktiv benötigen.</p>',
+                '<p>Absolut nicht. Das ist unser Job. Wir kümmern uns um den gesamten Prozess, von der Einrichtung der Kampagnen bis zur Lieferung der qualifizierten Anfragen direkt an Sie. Sie können sich zu 100 % auf Ihr Geschäft konzentrieren.</p>',
+                '<p>Wir arbeiten mit einem transparenten Modell. Sie zahlen nur für die qualifizierten Anfragen, die wir liefern. Wenn wir die vereinbarte Anzahl nicht erreichen, zahlen Sie nichts. Es gibt keine versteckten Gebühren oder langfristigen Verträge.</p>',
+                '<p>Ja. Jede einzelne Anfrage, die wir für Sie generieren, ist zu 100 % exklusiv. Wir verkaufen niemals Leads an mehrere Unternehmen. Die Kunden, die sich bei Ihnen melden, haben Ihr Unternehmen gesehen und möchten gezielt mit Ihnen sprechen.</p>',
+                '<p>Nach unserer ersten Strategiesitzung und der Einrichtung können Sie erwarten, dass die ersten qualifizierten Anfragen innerhalb von 7–10 Tagen eintreffen. Unsere 32-Tage-Garantie beginnt mit dem Start der Kampagne.</p>',
+                '<p>Unser System ist für die meisten dienstleistungsorientierten Gewerke wie SHK, Elektriker, Dachdecker, Maler und Sanierungsunternehmen wirksam. Wenn Sie Privat- oder Geschäftskunden in einer bestimmten Region bedienen, ist es wahrscheinlich eine gute Lösung.</p>',
+                '<p>Nein. Wir glauben an unsere Ergebnisse. Nach unserem ersten 32-tägigen Pilotprojekt arbeiten wir auf monatlicher Basis. Sie können unsere Zusammenarbeit jederzeit pausieren oder beenden. Unser Ziel ist eine langfristige Partnerschaft, die auf Ihrem Erfolg basiert.</p>',
+                '<p>Eine qualifizierte Anfrage ist ein echter, exklusiver Kontakt von einem potenziellen Kunden in Ihrem Einzugsgebiet, der explizit Ihre Dienstleistungen angefragt hat. Wir filtern Spam, Bewerbungen und Werbeanrufe heraus. Sie erhalten nur echte potenzielle Aufträge.</p>'
+            ];
+            
+            const faqAnswerContainers = document.querySelectorAll('#faq .faq-answer-new');
+            faqAnswerContainers.forEach((container, index) => {
+                if (faqContent[index]) {
+                    container.innerHTML = faqContent[index];
+                }
+            });
+
+            // Contact Modal Logic
+            const modal = document.getElementById('contact-modal');
+            const openModalButtons = document.querySelectorAll('.js-open-modal');
+            const closeModalButton = modal.querySelector('.modal-close');
+
+            const openModal = (e) => { 
+                e.preventDefault(); 
+                modal.classList.add('is-visible'); 
+            };
+            const closeModal = () => { modal.classList.remove('is-visible'); };
+            openModalButtons.forEach(button => button.addEventListener('click', openModal));
+            if(closeModalButton) closeModalButton.addEventListener('click', closeModal);
+            if(modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === "Escape" && modal.classList.contains('is-visible')) closeModal(); });
+            
+            // Other Page Logic
+            const header = document.querySelector('.main-header');
+            const stickyTopCtaBar = document.querySelector('.sticky-top-cta');
+            const heroSection = document.getElementById('hero');
+            const handleScroll = () => {
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                if (heroSection && heroSection.getBoundingClientRect().bottom < -100) { // Show when hero is well out of view
+                    stickyTopCtaBar.classList.add('is-visible');
+                } else {
+                    stickyTopCtaBar.classList.remove('is-visible');
+                }
+            };
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+            // ROI Calculator Logic
+            const gewuenschteAuftraegeInput = document.getElementById('gewuenschte-auftraege');
+            const auftragswertInput = document.getElementById('auftragswert');
+            const abschlussquoteInput = document.getElementById('abschlussquote');
+            const anfragenResult = document.getElementById('roi-result-anfragen');
+            const umsatzResult = document.getElementById('roi-result-umsatz');
+
+            function calculateROI() {
+                if (!gewuenschteAuftraegeInput) return; // Exit if calculator not on page
+                
+                const gewuenschteAuftraege = parseFloat(gewuenschteAuftraegeInput.value) || 0;
+                const auftragswert = parseFloat(auftragswertInput.value) || 0;
+                const abschlussquote = parseFloat(abschlussquoteInput.value) || 0;
+
+                const benoetigteAnfragen = abschlussquote > 0 ? Math.ceil(gewuenschteAuftraege / (abschlussquote / 100)) : 0;
+                const mehrUmsatz = gewuenschteAuftraege * auftragswert * 12;
+
+                if (anfragenResult) anfragenResult.textContent = benoetigteAnfragen + '+';
+                if (umsatzResult) umsatzResult.textContent = mehrUmsatz.toLocaleString('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 }) + '+';
+            }
+
+            const calculatorInputs = [gewuenschteAuftraegeInput, auftragswertInput, abschlussquoteInput];
+            calculatorInputs.forEach(input => {
+                if (input) {
+                    input.addEventListener('input', calculateROI);
+                }
+            });
+            
+            // Initial calculation on page load
+            if (gewuenschteAuftraegeInput) {
+                calculateROI();
+            }
+            
+            // GSAP Animations
+            if (gsap && ScrollTrigger) {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.from(".hero-content > *", {
+                    opacity: 0,
+                    y: 30,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out"
+                });
+                
+                gsap.utils.toArray(".card, .faq-item-new").forEach(elem => {
+                    gsap.from(elem, {
+                        scrollTrigger: {
+                            trigger: elem,
+                            start: "top 90%",
+                            toggleActions: 'play none none none'
+                        },
+                        opacity: 0,
+                        y: 30,
+                        duration: 1,
+                        ease: "power3.out"
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

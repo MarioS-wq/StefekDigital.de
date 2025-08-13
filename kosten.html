@@ -1,0 +1,1217 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planbare Aufträge für Ihr Handwerk | Das Erfolgs-System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- GSAP Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- CSS (Styles) direkt im HTML eingebettet -->
+    <style>
+        :root {
+            /* Color Palette (Unchanged) */
+            --bg-dark: #0E1A2A;               
+            --bg-light: #F7F8FA;              
+            --bg-white: #FFFFFF;              
+            
+            --primary-color: #0E1A2A;         
+            --secondary-color: #1C2B3A;       
+            
+            --accent-color: #FFD300;          
+            --accent-hover-color: #E6B800;    
+            --accent-color-rgb: 255, 211, 0;  
+            
+            --text-on-dark: #E0E6EB;          
+            --text-on-light: #1B2733;         
+            --text-secondary-on-light: #6B7280; 
+            --white-color: #FFFFFF;
+            
+            --border-color-light: #E5E7EB;          
+            --border-color-dark: #3A4C5A;     
+            
+            --success-color: #28a745; 
+            --danger-color: #E74C3C;
+
+            /* Typography & Layout (Refined) */
+            --font-family-serif: 'Merriweather', serif;
+            --font-family-sans: 'Inter', sans-serif;
+            --border-radius: 12px;
+            --border-radius-lg: 20px; /* Softer radius */
+            --transition-speed: 0.3s;
+            /* Softer, more premium shadows */
+            --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 15px 40px rgba(0, 0, 0, 0.07), 0 10px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 100%; }
+        body {
+            font-family: var(--font-family-sans);
+            font-size: 16px; 
+            line-height: 1.75; /* Increased for better readability */
+            color: var(--text-on-dark);
+            background-color: var(--bg-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        h1, h2, h3, h4 { font-family: var(--font-family-serif); font-weight: 700; line-height: 1.25; }
+        h1 { font-size: 3rem; line-height: 1.2; letter-spacing: -1.5px; color: var(--white-color); }
+        h2 { font-size: 2.5rem; letter-spacing: -1px; }
+        h3 { font-size: 1.6rem; line-height: 1.3; }
+        h4 { font-family: var(--font-family-sans); font-weight: 600; font-size: 1.2rem; color: var(--text-on-light); margin-bottom: 16px; }
+        .highlight-text { color: var(--accent-color); }
+        p { margin-bottom: 1.2rem; color: var(--text-on-dark); }
+        a { color: var(--accent-color); text-decoration: none; transition: color 200ms ease; }
+        a:hover { color: var(--accent-hover-color); }
+
+        .section-padding { padding: 120px 0; } /* Increased padding */
+        .section-title { text-align: center; margin-bottom: 80px; } /* Increased margin */
+        .accent-underline { position: relative; padding-bottom: 24px; }
+        .accent-underline::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 64px; height: 5px; background-color: var(--accent-color); border-radius: 5px; } /* Refined underline */
+        .centered-text { text-align: center; max-width: 760px; margin-left: auto; margin-right: auto; font-size: 1.2rem; line-height: 1.7; }
+
+        /* ===== GLOBAL LIGHT THEME SECTION ===== */
+        .light-theme-section {
+            background-color: var(--bg-light);
+            color: var(--text-on-light);
+        }
+        .light-theme-section.bg-white { background-color: var(--bg-white); }
+        .light-theme-section h1, .light-theme-section h2, .light-theme-section h3, .light-theme-section h4, 
+        .light-theme-section p, .light-theme-section li, .light-theme-section span, .light-theme-section strong, .light-theme-section em {
+            color: var(--text-on-light);
+        }
+        .light-theme-section .centered-text, .light-theme-section p, .light-theme-section .role, #for-whom .column p { color: var(--text-secondary-on-light); }
+        .light-theme-section h1, .light-theme-section h2, .light-theme-section h3, .light-theme-section h4, .light-theme-section strong, .light-theme-section li { color: var(--text-on-light); }
+        /* Refined Card Style */
+        .light-theme-section .card {
+            background-color: var(--bg-white);
+            border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border */
+            box-shadow: var(--shadow-md);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            transition: transform var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
+            height: 100%;
+        }
+        .light-theme-section .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+        .list-icon { flex-shrink: 0; width: 24px; height: 24px; margin-top: 4px; } /* Improved alignment */
+        .list-icon.check { color: var(--success-color); }
+        .list-icon.cross { color: var(--danger-color); }
+        .list-icon.solution { color: var(--accent-color); }
+        .icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px; /* Larger icon wrapper */
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--bg-light);
+            color: var(--accent-color);
+            margin-bottom: 24px;
+        }
+        .icon-wrapper svg { width: 28px; height: 28px; }
+
+        /* ===== HEADER & FOOTER (DARK) ===== */
+        .main-header { background-color: rgba(14, 26, 42, 0.85); padding: 24px 0; position: sticky; top: 0; z-index: 1000; transition: all var(--transition-speed) ease-in-out; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; }
+        .main-header.scrolled { box-shadow: 0 5px 25px rgba(0,0,0,0.25); border-bottom-color: var(--border-color-dark); padding: 16px 0; }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-family-sans); font-weight: 900; font-size: 1.8rem; color: var(--white-color); letter-spacing: -1px; display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 38px; width: auto; }
+        .header-cta-group { display: flex; align-items: center; gap: 24px; }
+        .header-cta { font-size: 0.9rem; padding: 12px 28px; }
+        .main-footer { background-color: var(--bg-dark); padding: 80px 0; font-size: 0.9rem; border-top: 1px solid var(--border-color-dark); }
+        .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 64px; }
+        .footer-bottom { border-top: 1px solid var(--secondary-color); text-align: center; margin-top: 80px; padding-top: 40px; opacity: 0.6; } /* More subtle */
+        .footer-column .logo { margin-bottom: 24px; }
+        .footer-column h4 { font-family: var(--font-family-sans); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 24px; color:var(--white-color); }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 16px; }
+        .main-footer .footer-links a, .footer-contact-item a { color: var(--text-on-dark); opacity: 0.8; transition: all var(--transition-speed) ease-in-out; }
+        .main-footer .footer-links a:hover, .footer-contact-item a:hover { color: var(--accent-color); opacity: 1; transform: translateX(5px); }
+        .footer-contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+        .footer-contact-item svg { flex-shrink: 0; color: var(--accent-color); margin-top: 4px;}
+        .footer-trust-badges { display: flex; gap: 16px; align-items: center; margin-top: 24px; }
+        .footer-trust-badges svg { height: 32px; width: auto; color: #9CA3AF; }
+
+        /* ===== BUTTONS (Refined) ===== */
+        .cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; background-color: var(--accent-color); color: var(--text-on-light); padding: 18px 36px; border-radius: var(--border-radius); font-family: var(--font-family-sans); font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; text-align: center; transition: all var(--transition-speed) ease-out; border: none; box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.2), 0 1px 3px rgba(0,0,0,0.05); cursor: pointer; }
+        .cta-button .icon { width: 20px; height: 20px; }
+        .cta-button:hover { background-color: var(--accent-hover-color); color: var(--text-on-light); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(var(--accent-color-rgb), 0.3), 0 4px 10px rgba(0,0,0,0.1); }
+        @keyframes pulse-glow { 0% { box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.2), 0 1px 3px rgba(0,0,0,0.05), 0 0 0 0px rgba(var(--accent-color-rgb), 0.3); } 70% { box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.2), 0 1px 3px rgba(0,0,0,0.05), 0 0 0 15px rgba(var(--accent-color-rgb), 0); } 100% { box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.2), 0 1px 3px rgba(0,0,0,0.05), 0 0 0 0px rgba(var(--accent-color-rgb), 0); } }
+        .cta-button.glowing { animation: pulse-glow 3s infinite cubic-bezier(0.66, 0, 0, 1); }
+
+        /* ===== HERO SECTION (REVERTED TO CENTERED) ===== */
+        #hero { display: flex; align-items: center; min-height: auto; padding: 128px 0 64px 0; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border-color-dark); }
+        .mesh-gradient { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background-color: #0E1A2A; background-image: radial-gradient(at 20% 20%, hsla(210,50%,30%,0.3) 0px, transparent 50%), radial-gradient(at 80% 10%, hsla(200,50%,25%,0.3) 0px, transparent 50%), radial-gradient(at 75% 80%, hsla(220,50%,20%,0.4) 0px, transparent 50%), radial-gradient(at 10% 90%, hsla(205,50%,25%,0.3) 0px, transparent 50%); }
+        .hero-background-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(255, 211, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 211, 0, 0.05) 1px, transparent 1px); background-size: 60px 60px; animation: background-pan 40s linear infinite; opacity: 0.2; }
+        @keyframes background-pan { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
+        .hero-content { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+        #hero h1 { font-size: 4.2rem; font-weight: 900; text-shadow: 0 3px 20px rgba(0, 0, 0, 0.4); margin-bottom: 24px; letter-spacing: -2px; }
+        #hero .hero-subheadline { font-size: 1.25rem; max-width: 720px; color: var(--text-on-dark); opacity: 0.85; margin: 0 auto 40px auto; line-height: 1.7; }
+        .hero-cta-block { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 48px; }
+        .hero-cta-block p { margin: 0; font-size: 0.9rem; opacity: 0.7; }
+        
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 32px;
+            background: rgba(30, 49, 70, 0.4);
+            border: 1px solid var(--border-color-dark);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .feature-item {
+            display: flex;
+            align-items: center; /* PERFECTED ALIGNMENT */
+            gap: 16px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-on-dark);
+            opacity: 0.95;
+            text-align: left;
+        }
+        .feature-item .icon { flex-shrink: 0; }
+        
+        /* ===== VIDEO SECTION ===== */
+        #hero-video {
+            padding: 80px 0 120px 0; /* Increased top padding for more space */
+            background-color: var(--bg-dark);
+        }
+        .video-embed-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden; /* Important for border-radius on iframe */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== TESTIMONIALS (REFINED & RESPONSIVE) ===== */
+        #testimonials { background: var(--bg-white); }
+        .case-study-container { display: flex; flex-direction: column; gap: 40px; }
+        .case-study-card-new { padding: 48px; background: var(--bg-light); border-radius: var(--border-radius-lg); border: 1px solid rgba(0,0,0,0.05); }
+        .case-study-card-new h3 { margin-bottom: 32px; color: var(--text-on-light); }
+        .vorher-nachher-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 32px; }
+        .vorher-nachher-grid h4 { font-size: 1.1rem; margin-bottom: 20px; padding-left: 16px; border-left: 3px solid; } /* Cleaner border-left */
+        .vorher-nachher-grid ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+        .vorher-nachher-grid ul li { position: relative; padding-left: 28px; color: var(--text-secondary-on-light); }
+        .vorher-nachher-grid ul li::before { content: '–'; position: absolute; left: 0; top: 1px; color: var(--text-secondary-on-light); font-weight: 600; }
+        .vorher-nachher-grid .column:first-child h4 { border-color: var(--danger-color); }
+        .vorher-nachher-grid .column:last-child h4 { border-color: var(--success-color); }
+        .case-study-card-new .quote { font-style: italic; color: var(--text-on-light); border-left: 4px solid var(--accent-color); padding-left: 32px; margin-top: 32px; font-size: 1.15rem; }
+
+        /* ===== MISC SECTION STYLES FROM ORIGINAL ===== */
+        #for-whom .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        #for-whom .column h3 { font-size: 1.6rem; margin-bottom: 24px; }
+        #for-whom .column ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+        #for-whom .column li { display: flex; align-items: flex-start; gap: 16px; font-weight: 500; }
+        #for-whom .column p { margin-top: 24px; font-size: 0.9rem; }
+        #roi-calculator .calculator-box { max-width: 800px; margin: 0 auto; padding: 48px; background: linear-gradient(145deg, var(--bg-white), var(--bg-light)); }
+        #roi-calculator .form-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+        #roi-calculator .form-group { display: flex; flex-direction: column; gap: 12px;}
+        #roi-calculator label { font-weight: 600; display: block; color: var(--text-on-light); }
+        #roi-calculator label small { font-weight: 400; color: var(--text-secondary-on-light); display: block; margin-top: 4px; }
+        #roi-calculator input { width: 100%; padding: 16px; border: 1px solid var(--border-color-light); border-radius: 10px; font-size: 1.1rem; transition: border-color .2s ease, box-shadow .2s ease; background-color: var(--bg-white); }
+        #roi-calculator input:focus { border-color: var(--accent-color); box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.15); outline: none; }
+        #roi-calculator .result-box { margin-top: 40px; padding: 32px; background: var(--bg-light); border: 1px solid var(--border-color-light); text-align: center; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); }
+        #roi-calculator .result-box h4 { margin-bottom: 24px; }
+        #roi-calculator .result-grid { display: flex; justify-content: space-around; gap: 24px; }
+        #roi-calculator .result-item span { font-size: 2.2rem; font-weight: 700; color: var(--accent-color); display: block; }
+        #roi-calculator .result-item p { font-size: 0.9rem; color: var(--text-secondary-on-light); margin: 4px 0 0; }
+        #roi-calculator .cta-button { margin-top: 40px; width: 100%; }
+        .calculator-button-group { display: flex; gap: 12px; flex-wrap: wrap; }
+        .calculator-button-group .btn { padding: 14px 20px; border: 1px solid var(--border-color-light); border-radius: 10px; background-color: var(--bg-white); cursor: pointer; transition: all .2s ease; font-weight: 500; }
+        .calculator-button-group .btn.active { background-color: var(--accent-color); color: var(--text-on-light); border-color: var(--accent-color); font-weight: 600; box-shadow: 0 2px 8px rgba(var(--accent-color-rgb), 0.2); }
+        #expectations .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        #expectations .card h4 { display: flex; align-items: center; gap: 16px; font-size: 1.2rem; margin-bottom: 12px;}
+        #expectations .card p { font-size: 1rem; margin-bottom: 0; color: var(--text-secondary-on-light); }
+        #expectations .card .icon-wrapper { margin-bottom: 24px; }
+        #about-mario .about-mario-box { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: center; }
+        #about-mario h2.accent-underline::after { left:0; transform: translateX(0); } /* Align underline left */
+        #location .location-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center; }
+        
+        /* ===== START: NEW FAQ SECTION STYLES ===== */
+        #faq .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        #faq .faq-item-new {
+            background-color: var(--bg-white);
+            padding: 32px;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color-light);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+        }
+        #faq .faq-question-new {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        #faq .faq-question-new h4 {
+            font-family: var(--font-family-serif);
+            font-size: 1.25rem;
+            line-height: 1.4;
+            color: var(--text-on-light);
+            margin: 0;
+            font-weight: 700;
+        }
+        #faq .faq-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            color: var(--accent-color);
+            margin-top: 4px;
+        }
+        #faq .faq-answer-new p {
+            color: var(--text-secondary-on-light);
+            line-height: 1.7;
+            margin: 0;
+        }
+        /* ===== END: NEW FAQ SECTION STYLES ===== */
+        
+        #collaboration-process .collaboration-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; }
+        #final-cta { background: var(--bg-dark) linear-gradient(180deg, var(--secondary-color) 0%, var(--bg-dark) 100%); } /* Subtle gradient */
+        #final-cta h2, #final-cta p {color: var(--white-color);}
+        #final-cta .price-signal { color: var(--text-on-dark); opacity: 0.6; margin-top: 24px; font-size: 0.9rem; }
+        
+        /* ===== NEW: TOP 7 AUTOMATIONS SECTION ===== */
+        #automations .automation-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        #automations .automation-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        #automations .card-number {
+            background-color: var(--accent-color);
+            color: var(--text-on-light);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-right: 12px;
+        }
+        #automations h3 {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        #automations .process {
+            font-style: italic;
+            color: var(--text-secondary-on-light);
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--border-color-light);
+            padding-left: 1rem;
+        }
+        #automations .wow-effect {
+            background: rgba(var(--accent-color-rgb), 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.25rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        #automations .wow-effect::before {
+            content: '💡';
+            font-size: 1.5rem;
+        }
+        #automations .wow-effect p {
+            margin: 0;
+            font-size: 1.05rem;
+            font-style: italic;
+            font-weight: 600;
+            color: var(--text-on-light);
+        }
+        #automations .benefits {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        #automations .benefits li {
+            padding-left: 2rem;
+            position: relative;
+            font-weight: 500;
+            color: var(--text-secondary-on-light);
+        }
+        #automations .benefits li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--success-color);
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .animation-container {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color-light);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+        .anim-element { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; font-size: 0.8rem; font-weight: bold; color: var(--text-on-light); width: 90px; opacity: 0; transform: scale(0.8) translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .anim-arrow { font-size: 2.5rem; color: var(--text-on-light); opacity: 0; transform: scale(0); transition: opacity 0.4s ease, transform 0.4s ease; }
+        .is-anim-visible .anim-element, .is-anim-visible .anim-arrow { opacity: 1; transform: scale(1) translateY(0); }
+        .icon { width: 50px; height: 50px; padding: 12px; background: var(--bg-light); border-radius: 50%; box-shadow: var(--shadow-md); stroke-width: 1.5; color: var(--primary-color); }
+        .icon.icon-success { color: var(--success-color); }
+        .icon.icon-error { color: var(--danger-color); }
+        .icon.icon-neutral { color: var(--text-secondary-on-light); }
+        .icon.icon-whatsapp { color: #25D366; }
+        .is-anim-visible .anim-step-1 { transition-delay: 0.2s; }
+        .is-anim-visible .anim-step-2 { transition-delay: 0.6s; }
+        .is-anim-visible .anim-step-3 { transition-delay: 1.0s; }
+        .is-anim-visible .anim-step-4 { transition-delay: 1.4s; }
+        .is-anim-visible .anim-step-5 { transition-delay: 1.8s; }
+        @keyframes pulse-accent { 50% { transform: scale(1.1); box-shadow: 0 0 15px 5px rgba(var(--accent-color-rgb), 0.5); } }
+        @keyframes pulse-error { 50% { transform: scale(1.1); box-shadow: 0 0 15px 5px rgba(220, 53, 69, 0.5); } }
+        @keyframes pulse-success { 50% { transform: scale(1.1); box-shadow: 0 0 15px 5px rgba(25, 135, 84, 0.5); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes scan-line { 0% { transform: translateY(-15px); opacity: 0; } 20% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(30px); opacity: 1; } 100% { transform: translateY(45px); opacity: 0; } }
+        #anim1 .icon-process { animation: spin 1.5s linear infinite; }
+        #anim2 { flex-direction: column; gap: 0.5rem; }
+        .stock-bar-container { width: 80%; max-width: 300px; height: 30px; background-color: var(--border-color-light); border-radius: 5px; overflow: hidden; }
+        .stock-bar { height: 100%; width: 90%; background: var(--success-color); border-radius: 5px; transition: width 1s ease-out 0.5s, background-color 1s ease-out 0.5s; }
+        .is-anim-visible #anim2 .stock-bar { width: 15%; background-color: var(--danger-color); }
+        #anim2 .anim-arrow { transform: rotate(90deg); }
+        #anim3 .anim-element:last-child .icon { animation: pulse-accent 2s infinite 1.5s; }
+        #anim4, #anim5 { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; width: 100%; gap: 1rem; align-items: center; }
+        .grid-center { grid-column: 2 / 3; grid-row: 1 / 3; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .grid-start { grid-column: 1 / 2; grid-row: 1 / 3; }
+        .grid-end-1 { grid-column: 3 / 4; grid-row: 1 / 2; }
+        .grid-end-2 { grid-column: 3 / 4; grid-row: 2 / 3; }
+        #anim4 .grid-end-container { grid-column: 3 / 4; grid-row: 1 / 3; display: flex; flex-direction: column; justify-content: space-around; height: 100%; }
+        #anim5 .icon-scan { position: relative; overflow: hidden; }
+        #anim5 .scanner-line { position: absolute; left: 0; width: 100%; height: 3px; background: var(--accent-color); border-radius: 2px; animation: scan-line 1.5s ease-in-out infinite 1.5s; }
+        #anim6 .anim-element:last-child .icon { animation: pulse-error 1.5s infinite 1.5s; }
+        #anim7 .icon-process { animation: spin 2s linear 1s forwards; animation-iteration-count: 1;}
+        #anim7 .anim-element:last-child .icon { animation: pulse-success 2s infinite 1.8s; }
+        
+        /* ===== GENERAL UTILITY AND RESPONSIVE ===== */
+        .sticky-top-cta { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--accent-color); color: var(--text-on-light); text-align: center; padding: 12px 0; font-weight: 600; z-index: 1001; transform: translateY(-100%); transition: transform 0.4s ease-in-out; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .sticky-top-cta.is-visible { transform: translateY(0); }
+        .sticky-top-cta a { color: var(--text-on-light); text-decoration: none; }
+        .sticky-top-cta.is-visible + .main-header { top: 45px; }
+        .sticky-mobile-cta { display: none; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(14, 26, 42, 0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-overlay.is-visible { opacity: 1; visibility: visible; }
+        .modal-content { background-color: var(--bg-light); padding: 40px; border-radius: var(--border-radius-lg); position: relative; width: 90%; max-width: 600px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .modal-content h2, .modal-content p { color: var(--text-on-light); }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-secondary-on-light); font-size: 2rem; line-height: 1; cursor: pointer; opacity: 0.7; transition: opacity 0.2s ease, transform 0.2s ease; }
+        .modal-close:hover { opacity: 1; transform: rotate(90deg); }
+        .custom-modal-form { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+        .custom-modal-form .form-group { display: flex; flex-direction: column; }
+        .custom-modal-form label { font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-on-light); }
+        .custom-modal-form input { width: 100%; padding: 16px; border: 1px solid var(--border-color-light); border-radius: 10px; font-size: 1rem; background-color: var(--bg-white); color: var(--text-on-light); transition: border-color .2s ease, box-shadow .2s ease; }
+        .custom-modal-form input:focus { border-color: var(--accent-color); box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.15); outline: none; }
+        
+        
+        /* --- NEU: Erweiterte Mobil-Optimierung & Breakpoints --- */
+
+        /* Tablet & Laptop (bis 992px) */
+        @media (max-width: 992px) {
+             h1 { font-size: 3.5rem; letter-spacing: -1.2px; }
+             h2 { font-size: 2.3rem; }
+             #hero h1 { font-size: 3.6rem; }
+             .section-padding { padding: 90px 0; }
+             .section-title { margin-bottom: 70px; }
+             #roi-calculator .form-grid { grid-template-columns: 1fr; }
+             #automations .automation-card { grid-template-columns: 1fr !important; }
+             #faq .faq-grid { grid-template-columns: 1fr; }
+             .about-mario-box, .location-grid { gap: 48px !important; }
+        }
+
+        /* Tablet & große Smartphones (bis 768px) */
+        @media (max-width: 768px) {
+            /* --- General Layout --- */
+            .section-padding { padding: 64px 0; }
+            #hero-video { padding: 48px 0 64px 0; }
+            body { padding-bottom: 80px; font-size: 95%; } /* Space for mobile CTA & base font reduction */
+
+            /* --- Typography Scale Adjustments --- */
+            h1 { font-size: 2.5rem; letter-spacing: -1px; }
+            h2 { font-size: 2.1rem; }
+            h3 { font-size: 1.4rem; }
+            h4 { font-size: 1.1rem; }
+
+            /* --- Header & Logo --- */
+            .header-cta-group { display: none; }
+            .logo img { height: 32px; }
+            
+            /* --- Hero Section --- */
+            #hero { padding: 80px 0 48px 0; min-height: auto; }
+            #hero h1 { font-size: 2.8rem; line-height: 1.25; }
+            #hero .hero-subheadline { font-size: 1.1rem; margin-bottom: 32px; }
+            .hero-cta-block { margin-bottom: 40px; }
+            #hero .cta-button { font-size: 1rem; padding: 16px 24px; }
+            .hero-features { padding: 24px 20px; gap: 16px; }
+            .feature-item { font-size: 1rem; gap: 12px; }
+            
+            /* --- Grids & Layout Stacking --- */
+            .grid, .about-mario-box, .location-grid, #for-whom .grid, .footer-container, .vorher-nachher-grid { 
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+            .vorher-nachher-grid { gap: 32px !important; }
+
+            /* --- Component-Specific Refinements --- */
+            .light-theme-section .card { padding: 28px 24px; }
+            .section-title { margin-bottom: 64px; }
+            
+            #automations .wow-effect { padding: 1rem; }
+            #automations .wow-effect p { font-size: 1rem; }
+            .anim-element { font-size: 0.85rem; }
+
+            #testimonials .quote { font-size: 1.1rem; }
+
+            #roi-calculator .calculator-box { padding: 28px 24px; }
+            #roi-calculator .result-grid { flex-direction: column; gap: 24px; }
+            #roi-calculator .result-box { padding: 24px; }
+            #roi-calculator .result-item span { font-size: 2.4rem; }
+            #roi-calculator .result-item p { font-size: 0.9rem; }
+            
+            #expectations .icon-wrapper { width: 48px; height: 48px; margin-bottom: 16px; }
+            #expectations .icon-wrapper svg { width: 24px; height: 24px; }
+            
+            #about-mario .about-mario-box { padding: 28px 24px !important; }
+            #about-mario h2 { font-size: 1.8rem; text-align: left; }
+            
+            #location .location-grid > div > h3 { font-size: 1.5rem; }
+            #location .location-grid li { padding: 16px; }
+            
+            #faq .faq-item-new { padding: 24px; }
+            #faq .faq-question-new h4 { font-size: 1.1rem; }
+            
+            #final-cta h2 { font-size: 2.2rem; }
+            .centered-text { font-size: 1.1rem; }
+            #final-cta .large-cta { padding: 18px 28px; font-size: 1.1rem; }
+
+            /* --- Animation Stacking --- */
+            .animation-container { flex-direction: column; }
+            .anim-arrow { transform: rotate(90deg); }
+            .is-anim-visible .anim-arrow { transform: scale(1) rotate(90deg); }
+            #anim4, #anim5 { display: flex; flex-direction: column; }
+            #anim4 .grid-end-container { flex-direction: column; gap: 1rem; }
+
+            /* --- Mobile CTAs --- */
+            .sticky-mobile-cta { 
+                display: flex; position: fixed; bottom: 0; left: 0; right: 0; 
+                background-color: var(--bg-white); padding: 16px; 
+                box-shadow: 0 -4px 15px rgba(0,0,0,0.1); z-index: 1000; 
+            }
+            .sticky-mobile-cta .cta-button { width: 100%; font-size: 1rem; padding: 16px; }
+        }
+
+        /* Kleine Smartphones (bis 480px) */
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .section-padding { padding: 48px 0; }
+            #hero-video { padding: 32px 0 48px 0; }
+
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.9rem; }
+            #hero h1 { font-size: 2.4rem; }
+            #hero .hero-subheadline { font-size: 1rem; line-height: 1.6; }
+            .centered-text { font-size: 1rem; }
+            
+            .cta-button { padding: 16px 24px; font-size: 0.9rem; }
+            #hero .cta-button { font-size: 0.95rem; }
+            .hero-cta-block p { font-size: 0.8rem; }
+            
+            .light-theme-section .card { padding: 24px; }
+            #about-mario .about-mario-box { padding: 24px !important; }
+            #about-mario h2 { font-size: 1.6rem; }
+            
+            #faq .faq-question-new h4 { font-size: 1.05rem; }
+            #final-cta h2 { font-size: 2rem; }
+
+            .modal-content { padding: 24px; }
+            .custom-modal-form input { padding: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sticky-top-cta">
+        <a href="#" class="js-open-modal">Jetzt Ihre nächste Anfrage sichern →</a>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754386401/stefek_gyabch.png" alt="Stefek Logo" style="filter: invert(1);">
+            </a>
+            <div class="header-cta-group">
+                <a href="tel:+436608640360" style="color: var(--white-color); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+                    +43 660 8640360
+                </a>
+                <a href="#" class="cta-button header-cta js-open-modal">Kostenloses Erstgespräch</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="hero">
+            <div class="mesh-gradient"></div>
+            <div class="hero-background-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Als Handwerksbetrieb 32% Zeit und Kosten sparen.</h1>
+                    <p class="hero-subheadline">Damit Sie wieder Zeit für Kunden und Mitarbeiter haben – statt ständig Feuerwehrmann im eigenen Betrieb zu sein.</p>
+                    
+                    <div class="hero-cta-block">
+                        <a href="#" class="cta-button js-open-modal glowing">
+                            <span>Kostenloses Beratungsgespräch sichern</span>
+                        </a>
+                        <p>Dauer: unter 60 Sekunden. 100 % unverbindlich.</p>
+                    </div>
+
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <span class="icon">🕒</span>
+                            <span>Angebote in unter 5 Min – vollautomatisch & fehlerfrei</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">📱</span>
+                            <span>Digitale Bauakte – sofort auf Handy & Tablet verfügbar</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">🔄</span>
+                            <span>Automatische Wartungsplanung – Kunde bucht, System plant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hero-video">
+            <div class="container">
+                <div class="video-embed-wrapper">
+                    <div id="vidalytics_embed_QFdfhVr56jX2eaEQ" style="width: 100%; position:relative; padding-top: 58.16%;"></div>
+                    <script type="text/javascript">
+                    (function (v, i, d, a, l, y, t, c, s) {
+                        y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+                        if (!vsl){vsl=function(u,cb){
+                            if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+                            if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+                            i.getElementsByTagName("head")[0].appendChild(s);
+                        };}
+                        vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+                    })(window, document, 'Vidalytics', 'vidalytics_embed_QFdfhVr56jX2eaEQ', 'https://fast.vidalytics.com/embeds/AX6o2ejq/QFdfhVr56jX2eaEQ/');
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <section id="automations" class="section-padding light-theme-section">
+            <div class="container">
+                <h2 class="section-title accent-underline">Die 7 stärksten Automationen für Ihren Betrieb</h2>
+                <div class="automation-grid">
+                    
+                    <div class="automation-card card">
+                        <div class="automation-content">
+                            <h3><span class="card-number">1</span>Automatische Angebotserstellung</h3>
+                            <p class="process">Kunde füllt Anfrage auf der Website aus → System generiert automatisch PDF-Angebot mit Logo, Leistung, Preis und schickt’s raus.</p>
+                            <div class="wow-effect"><p>„Kein Word mehr?! Kein Copy-Paste? Einfach fertig und raus?!“</p></div>
+                            <ul class="benefits">
+                                <li>Spart: 30–60 Minuten pro Angebot</li>
+                                <li>Zusatzeffekt: Weniger Rückfragen, professionellerer Auftritt</li>
+                            </ul>
+                        </div>
+                        <div class="animation-container" id="anim1">
+                            <div class="anim-element anim-step-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>Anfrageformular</span></div><div class="anim-arrow anim-step-2">→</div><div class="anim-element anim-step-3"><svg class="icon icon-process" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="m16.2 7.8 2.8-2.8"></path><path d="M18 12h4"></path><path d="m16.2 16.2 2.8 2.8"></path><path d="M12 18v4"></path><path d="m7.8 16.2-2.8 2.8"></path><path d="M6 12H2"></path><path d="m7.8 7.8-2.8-2.8"></path><circle cx="12" cy="12" r="4"></circle></svg><span>System generiert</span></div><div class="anim-arrow anim-step-4">→</div><div class="anim-element anim-step-5"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.59a2 2 0 0 1-2.83-2.83l8.49-8.48"></path><path d="m22 2-2.5 2.5"></path><path d="m19 5 2.5 2.5"></path></svg><span>PDF & E-Mail</span></div>
+                        </div>
+                    </div>
+
+                    <div class="automation-card card">
+                        <div class="automation-content">
+                            <h3><span class="card-number">2</span>Material-Nachbestellung</h3>
+                            <p class="process">Sobald z. B. „Kugelhahn 3/4“ unter Sollmenge fällt → automatisch im Großhandel nachbestellt.</p>
+                            <div class="wow-effect"><p>„Ich muss das Material nicht mehr im Kopf haben – es bestellt sich selbst?!“</p></div>
+                            <ul class="benefits"><li>Spart: Fahrten, Anrufe, Fehler, Leerlauf auf der Baustelle</li></ul>
+                        </div>
+                        <div class="animation-container" id="anim2">
+                            <div class="anim-element anim-step-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg><span>Lagerbestand sinkt</span></div><div class="stock-bar-container anim-step-1"><div class="stock-bar"></div></div><div class="anim-arrow anim-step-2">→</div><div class="anim-element anim-step-3"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.5A4.5 4.5 0 0 0 17.5 5c-.58 0-1.13.13-1.64.36L12 9.75 8.14 5.36A4.5 4.5 0 0 0 2 9.5c0 4.5 3 12.5 6 12.5 1.25 0 2.5-1.06 4-1.06Z"></path><path d="M12 6.82V20.5"></path></svg><span>Autom. Bestellung</span></div><div class="anim-arrow anim-step-4">→</div><div class="anim-element anim-step-5"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 22h4"></path><path d="M2 18V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10Z"></path><path d="M14 18h-4"></path><path d="M18 14V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v8"></path></svg><span>Lieferant</span></div>
+                        </div>
+                    </div>
+
+                    <div class="automation-card card">
+                        <div class="automation-content">
+                            <h3><span class="card-number">3</span>Einsatzplanung mit Auto-Routing</h3>
+                            <p class="process">Anfrage kommt rein → Techniker wird automatisch zugewiesen → Routenoptimierung + Termin direkt aufs Handy.</p>
+                            <div class="wow-effect"><p>„Mein Monteur bekommt das auf sein Handy und fährt einfach hin – ohne WhatsApp-Chaos?!“</p></div>
+                            <ul class="benefits"><li>Spart: 5–10 Anrufe pro Tag, Rückfragen, Fehlplanungen</li></ul>
+                        </div>
+                        <div class="animation-container" id="anim3">
+                            <div class="anim-element anim-step-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span>Neue Anfrage</span></div><div class="anim-arrow anim-step-2">→</div><div class="anim-element anim-step-3"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 0 2l-.15.08a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1 0 2l.15-.08a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg><span>Plant & optimiert</span></div><div class="anim-arrow anim-step-4">→</div><div class="anim-element anim-step-5"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg><span>Auftrag am Handy</span></div>
+                        </div>
+                    </div>
+
+                    <div class="automation-card card">
+                        <div class="automation-content">
+                            <h3><span class="card-number">4</span>WhatsApp-Integration</h3>
+                            <p class="process">Kunde schreibt via WhatsApp → System erkennt Stichworte → leitet es automatisch an die richtige Person oder Abteilung weiter.</p>
+                            <div class="wow-effect"><p>„Sogar WhatsApp ist jetzt sortiert? Ich hab den Kunden nicht mehr zwischen Tür und Angel?!“</p></div>
+                            <ul class="benefits"><li>Spart: Chaos, vergessene Nachrichten, Zeit beim Antworten</li></ul>
+                        </div>
+                        <div class="animation-container" id="anim4">
+                            <div class="anim-element anim-step-1 grid-start"><svg class="icon icon-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span>Kunden-Nachricht</span></div><div class="anim-element anim-step-2 grid-center"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M7 12h10"></path><path d="M10 18h4"></path></svg><span>System sortiert</span></div><div class="grid-end-container"><div class="anim-element anim-step-3"><svg class="icon icon-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg><span>Störung</span></div><div class="anim-element anim-step-4"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" x2="12" y1="18" y2="12"></line><polyline points="9 15 12 12 15 15"></polyline></svg><span>Angebot</span></div><div class="anim-element anim-step-5"><svg class="icon icon-neutral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M12 12h.01"></path><path d="M12 17h.01"></path></svg><span>Rechnung</span></div></div>
+                        </div>
+                    </div>
+
+                    <div class="automation-card card">
+                        <div class="automation-content">
+                            <h3><span class="card-number">5</span>OCR für Lieferscheine & Rechnungen</h3>
+                            <p class="process">Foto oder Scan → System liest automatisch alle Daten aus → gleicht sie mit dem Lager ab und archiviert den Beleg.</p>
+                            <div class="wow-effect"><p>„Ich fotografier den Zettel – und hab die Buchhaltung fertig?!“</p></div>
+                            <ul class="benefits"><li>Spart: 5+ Stunden/Monat in Belegpflege</li><li>Keine Fehler durch Handschrift oder verlorene Zettel</li></ul>
+                        </div>
+                        <div class="animation-container" id="anim5">
+                            <div class="anim-element anim-step-1 grid-start"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 14.5v-9a2 2 0 0 0-2-2h-13a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2h5"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M5 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path><path d="M5 10v4"></path><path d="m21.1 21.1-2.2-2.2"></path><path d="M19 13a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-1z"></path></svg><span>Lieferschein</span></div><div class="anim-element anim-step-2 grid-center"><svg class="icon icon-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><line x1="7" x2="17" y1="12" y2="12"></line></svg><div class="scanner-line"></div><span>OCR Scan</span></div><div class="anim-element anim-step-3 grid-end-1"><svg class="icon icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Lager abgeglichen</span></div><div class="anim-element anim-step-4 grid-end-2"><svg class="icon icon-neutral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="M2 10h20"></path></svg><span>Archiviert</span></div>
+                        </div>
+                    </div>
+
+                    <div class="automation-card card">
+                        <div class="automation-content">
+                            <h3><span class="card-number">6</span>Automatische Rechnungskontrolle</h3>
+                            <p class="process">System erkennt Differenzen zwischen Bestellung und Rechnung → gibt Alarm, wenn z. B. 5 Stück bestellt, aber 7 verrechnet wurden.</p>
+                            <div class="wow-effect"><p>„Ich seh auf Knopfdruck, ob ich zu viel bezahlt hab?!“</p></div>
+                            <ul class="benefits"><li>Spart: bares Geld + Nerven mit Buchhaltung</li><li>Ideal für wachstumsstarke Betriebe</li></ul>
+                        </div>
+                        <div class="animation-container" id="anim6">
+                            <div class="anim-element anim-step-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.16"></path></svg><span>Bestellung: 5 Stk.</span></div><div class="anim-arrow anim-step-2">+</div><div class="anim-element anim-step-3"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect></svg><span>Rechnung: 7 Stk.</span></div><div class="anim-arrow anim-step-4">→</div><div class="anim-element anim-step-5"><svg class="icon icon-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>FEHLER!</span></div>
+                        </div>
+                    </div>
+
+                    <div class="automation-card card">
+                        <div class="automation-content">
+                            <h3><span class="card-number">7</span>Wiederkehrende Wartungsaufträge</h3>
+                            <p class="process">System erkennt: Kunde hatte Wartung vor 11 Monaten → Auftrag wird automatisch geplant + Mail/Anruf-Vorlage erzeugt.</p>
+                            <div class="wow-effect"><p>„Der Auftrag kommt von selbst zurück – ich muss nicht mal dran denken?!“</p></div>
+                            <ul class="benefits"><li>Keine entgangenen Folgeaufträge</li><li>Macht Wartung profitabel & planbar</li></ul>
+                        </div>
+                        <div class="animation-container" id="anim7">
+                            <div class="anim-element anim-step-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Zeit vergeht...</span></div><div class="anim-arrow anim-step-2">→</div><div class="anim-element anim-step-3"><svg class="icon icon-process" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="m16.2 7.8 2.8-2.8"></path><path d="M18 12h4"></path><path d="m16.2 16.2 2.8 2.8"></path><path d="M12 18v4"></path><path d="m7.8 16.2-2.8 2.8"></path><path d="M6 12H2"></path><path d="m7.8 7.8-2.8-2.8"></path></svg><span>System prüft</span></div><div class="anim-arrow anim-step-4">→</div><div class="anim-element anim-step-5"><svg class="icon icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="m9 16 2 2 4-4"></path></svg><span>Neuer Auftrag!</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section-padding light-theme-section">
+             <div class="container">
+                <h2 class="section-title accent-underline">Ergebnisse aus der Praxis: Vorher vs. Nachher</h2>
+                <div class="case-study-container">
+                    <div class="case-study-card-new card">
+                      <h3>Axhijaj Installationen GmbH</h3>
+                      <div class="vorher-nachher-grid">
+                        <div class="column">
+                          <h4>Vorher</h4>
+                          <ul>
+                            <li>Zettelwirtschaft und unvollständige Notizen</li>
+                            <li>Angebote dauerten Stunden und waren fehleranfällig</li>
+                            <li>Ständige Rückfragen von Monteuren zur Materialliste</li>
+                          </ul>
+                        </div>
+                        <div class="column">
+                          <h4>Nachher</h4>
+                          <ul>
+                            <li>Digitale Bauakte auf dem Tablet</li>
+                            <li>Angebote in unter 5 Minuten – automatisiert</li>
+                            <li>Klare Aufgaben & Checklisten für jeden Mitarbeiter</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <blockquote class="quote">„Wir haben unsere Angebotszeit um 90% reduziert und machen 20% mehr Umsatz, weil wir schneller sind als die Konkurrenz.“</blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="for-whom" class="section-padding light-theme-section bg-white">
+            <div class="container">
+                <h2 class="section-title accent-underline">Ist dieses System genau richtig für Sie?</h2>
+                <div class="grid">
+                    <div class="column card">
+                        <h3>Ja, wenn Sie…</h3>
+                        <ul>
+                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Angebote per Knopfdruck direkt zum Kunden schicken wollen</li>
+                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>eine digitale Bauakte für alle Mitarbeiter nutzen möchten</li>
+                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Wartungen automatisch organisieren und durchführen lassen möchten</li>
+                        </ul>
+                    </div>
+                    <div class="column card">
+                        <h3>Nein, wenn Sie…</h3>
+                        <ul>
+                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>am liebsten alles beim Alten lassen (‚Das haben wir schon immer so gemacht‘)</li>
+                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>zwar Reden über Digitalisierung halten, aber nichts ändern wollen</li>
+                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>Sie keine Bereitschaft haben, bewährte digitale Prozesse zu übernehmen.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roi-calculator" class="section-padding light-theme-section bg-white">
+            <div class="container">
+                <h2 class="section-title accent-underline">Lohnt sich das für Sie? Rechnen Sie Ihr Einsparpotenzial aus.</h2>
+                <div class="calculator-box card">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="admin-aufwand">Wöchentlicher Admin-Aufwand: 8 Std.
+                                <small>(Angebote, Rechnungen, Planung, Rückfragen etc.)</small>
+                            </label>
+                            <input type="number" id="admin-aufwand" value="8" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Wie viele Monteure sind im Einsatz?</label>
+                            <div class="calculator-button-group">
+                                <button class="btn">1-2</button>
+                                <button class="btn active">3-5</button>
+                                <button class="btn">6-10</button>
+                                <button class="btn">10+</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             <label for="verrechnungssatz">Ihr ø Verrechnungssatz (€ pro Stunde)</label>
+                             <input type="number" id="verrechnungssatz" value="65" min="1">
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <h4>Ihr geschätztes Potenzial:</h4>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <span id="roi-result-stunden">25+</span>
+                                <p>gesparte Stunden pro Woche</p>
+                            </div>
+                            <div class="result-item">
+                                <span id="roi-result-umsatz">80.000€+</span>
+                                <p>mehr Umsatzpotenzial pro Jahr</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="cta-button js-open-modal">Dieses Potenzial freisetzen</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="expectations" class="section-padding light-theme-section">
+            <div class="container">
+                <h2 class="section-title accent-underline">In der Zusammenarbeit mit uns</h2>
+                <div class="features-grid">
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
+                        <h4>Transparente Kommunikation</h4>
+                        <p>Wir halten Sie informiert und passen an</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6z"></path><path d="m2 10 8 6 8-6"></path></svg></div>
+                        <h4>Direkte Umsetzung</h4>
+                        <p>Kein Beraterblabla, sondern handfeste Ergebnisse</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <h4>Nachhaltige Betreuung</h4>
+                        <p>Kein Einrichten & Verlassen – wir bleiben dran</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-mario" class="section-padding light-theme-section">
+             <div class="container">
+                <div class="about-mario-box card" style="padding:64px;">
+                    <div style="position: relative;">
+                        <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754253150/mario_stefek_byeywa.avif" alt="Mario Stefek" style="width: 100%; border-radius: var(--border-radius);">
+                    </div>
+                    <div>
+                        <h2 class="accent-underline" style="text-align: left; padding-bottom: 16px; margin-bottom: 32px;">„Ich habe gesehen, wie das Tagesgeschäft die besten Handwerker ausbremst.“</h2>
+                        <p>„In meiner Arbeit mit Dutzenden von Handwerksbetrieben habe ich immer wieder dasselbe Muster erkannt: Leidenschaftliche Fachleute, die im Zettelchaos, unklaren Absprachen und dem ständigen Löschen von Bränden untergehen. Der Chef wird zum Engpass, weil alle Fäden bei ihm zusammenlaufen.“</p>
+                        <p>„Diese Erkenntnis war der Antrieb, einen besseren Weg zu schaffen. Ein System, das speziell für das Handwerk gemacht ist: einfach, praktisch und ohne teuren Software-Schnickschnack. Eines, das Inhabern die Kontrolle zurückgibt, damit sie sich wieder auf das konzentrieren können, was sie am besten können: ihr Handwerk.“</p>
+                        <div style="margin-top: 32px; font-weight: 500; color: var(--text-secondary-on-light)">
+                             <em>Gründer & Ihr Partner für digitale Prozesse</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="location" class="section-padding light-theme-section">
+             <div class="container">
+                <h2 class="section-title accent-underline">Ihr Partner vor Ort in Wien</h2>
+                <div class="location-grid">
+                    <div>
+                        <h3>Persönlich oder digital – immer für Sie da.</h3>
+                        <p>Unser Büro finden Sie im Herzen von Wien. Wir freuen uns darauf, Sie kennenzulernen, um gemeinsam an Ihrem Erfolg zu arbeiten.</p>
+                        <ul style="list-style: none; padding: 0; margin: 32px 0 0 0; display: flex; flex-direction: column; gap: 16px;">
+                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">📍 <div><span style="display:block; font-weight:600;">Adresse</span> Praterstraße 1, 1020 Wien</div></li>
+                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">🚇 <div><span style="display:block; font-weight:600;">Öffentlich</span> U1/U4 Schwedenplatz (5 Min.)</div></li>
+                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">🅿️ <div><span style="display:block; font-weight:600;">Parken</span> Parkgarage Sofitel (3 Min.)</div></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2658.825091761823!2d16.37934281565149!3d48.21528147922987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d07a5f65a1099%3A0x2980b629e462d7c!2sPraterstra%C3%9Fe%201%2C%201020%20Wien%2C%20%C3%9Österreich!5e0!3m2!1sde!2sde!4v1658487950211!5m2!1sde!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width: 100%; height: 100%; min-height: 450px; border-radius: var(--border-radius-lg); border: 1px solid var(--border-color-light);"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="faq" class="section-padding light-theme-section">
+            <div class="container">
+                <h2 class="section-title accent-underline">Die 8 häufigsten Fragen</h2>
+                <div class="faq-grid">
+                    
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Muss ich eine komplett neue Software erlernen?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Wie viel Zeit brauche ich wirklich für Einrichtung & Schulung?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Welche laufenden Kosten kommen auf mich zu – und gibt es versteckte Gebühren?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Funktioniert das System auch auf der Baustelle bei schlechter Internet Verbindung?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Wie sicher sind meine Firmen und Kundendaten in der digitalen Bauakte?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+                    
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Kann ich vorhandene Tools (z. B. Excel, WhatsApp) weiter nutzen?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Ist das System auch für kleine Aufträge und Teams mit 3–5 Mitarbeitern geeignet?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                    <div class="faq-item-new">
+                        <div class="faq-question-new">
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            <h4>Wie integriere ich meine Mitarbeiter und stelle deren Akzeptanz sicher?</h4>
+                        </div>
+                        <div class="faq-answer-new"></div>
+                    </div>
+        
+                </div>
+            </div>
+        </section>
+        
+        <section id="collaboration-process" class="section-padding light-theme-section">
+            <div class="container">
+                <h2 class="section-title accent-underline">Nächste Schritte – Ihr Fahrplan zum Erfolg</h2>
+                <div class="collaboration-grid">
+                    <div class="step-card card"><h4>15 Minuten kostenloses Erstgespräch buchen</h4><p>wir analysieren Ihr Potenzial</p></div>
+                    <div class="step-card card"><h4>Sofort umsetzbare Empfehlungen erhalten</h4><p>klar & verständlich</p></div>
+                    <div class="step-card card"><h4>Start ins automatische System</h4><p>für mehr Kontrolle & Entlastung</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="final-cta" class="section-padding">
+            <div class="container" style="text-align:center;">
+                <h2 style="font-size: 3rem; line-height: 1.3;">Ihr Betrieb läuft – auch ohne Sie.</h2>
+                <p class="centered-text" style="margin-bottom: 40px; color: var(--text-on-dark); opacity:0.8;">Jetzt unverbindlich starten – potenzielle Engpässe identifizieren.</p>
+                <a href="#" class="cta-button large-cta js-open-modal" style="padding: 20px 40px; font-size: 1.2rem; text-transform: none;">
+                    Kostenloses Erstgespräch buchen
+                </a>
+                <p class="price-signal">Die Investition in ein System, das Ihnen wöchentlich Stunden spart, beginnt bei einer überschaubaren monatlichen Pauschale.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <a href="#" class="logo"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754386401/stefek_gyabch.png" alt="Logo" style="filter: invert(1);"></a>
+                    <p style="color: var(--text-secondary-on-light);">© 2018-2025 - Mario Stefek</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Start</a></li>
+                        <li><a href="#automations">Automationen</a></li>
+                        <li><a href="#testimonials">Kundenstimmen</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.stefekdigital.com/impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a></li>
+                        <li><a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutz</a></li>
+                    </ul>
+                </div>
+                 <div class="footer-column">
+                     <h4>Kontakt</h4>
+                     <ul class="footer-links">
+                         <li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg> <div><a href="tel:+436608640360">+43 660 8640360</a></div></li>
+                         <li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="5" width="18" height="14" rx="2" /><polyline points="3 7 12 13 21 7" /></svg> <div><a href="mailto:mario.stefek@baustelle-digitalisiert.de">mario.stefek@baustelle-digitalisiert.de</a></div></li>
+                         <li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9" /><polyline points="12 7 12 12 15 15" /></svg> <span>Mo-Fr: 08:00 - 16:00 Uhr</span></li>
+                     </ul>
+                 </div>
+            </div>
+             <div class="footer-bottom">
+                <p>Eine Webseite mit System – gebaut für Meister des Handwerks.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <h2>Termin für kostenlose Analyse</h2>
+            <p>Füllen Sie das Formular aus und wir melden uns umgehend bei Ihnen, um einen Termin zu vereinbaren.</p>
+            <form action="https://formspree.io/f/xvgqkvbl" method="POST" class="custom-modal-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Firma</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                <div class="form-group">
+                    <label for="website">Webseite</label>
+                    <input type="text" id="website" name="website" placeholder="https://beispiel.de">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 16px; text-transform: none;">Anfrage Senden</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="sticky-mobile-cta">
+        <a href="#" class="cta-button js-open-modal">Kostenlose Analyse buchen</a>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ content
+            const faqContent = [
+                '<p>Nein. Wir nutzen Ihre bestehenden Tools (z. B. Excel, WhatsApp, E Mail) und ergänzen sie lediglich um smarte Automatisierungen. In unserem 90 Tage Onboarding zeigen wir Ihnen Schritt für Schritt, wie Sie Ihre gewohnten Abläufe digital abbilden – ganz ohne große Lernkurve.</p>',
+                '<p>Sie investieren in den ersten drei Wochen ca. 3 × 1 Std. Onboarding Calls und jeweils 30 Minütchen E Mail Support. Danach läuft alles autonom. So sind Sie bereits nach 2–3 Tagen Praxiseinsatz sicher und sparen ab Woche 4 jede Woche mehrere Stunden.</p>',
+                '<p>Es gibt eine einzige monatliche Pauschale – alle Automatisierungen, Updates und Support inklusive. Keine Transaktions oder Nutzer Aufpreise und keine versteckten Zusatzkosten. Sie behalten volle Budget Transparenz über Ihr Dashboard.</p>',
+                '<p>Ja. Unsere digitale Bauakte ist für Offline Nutzung optimiert: Sobald Sie wieder Online sind, synchronisieren sich neue Notizen, Fotos und Abnahmen automatisch. So verlieren Sie nie Daten, selbst in Funklöchern.</p>',
+                '<p>Wir hosten alle Daten DSGVO konform in deutschen Rechenzentren (ISO 27001 zertifiziert) und verschlüsseln Übertragung & Speicherung mit AES 256. Zugriffsrechte lassen sich granular pro Nutzer und Projekt einstellen.</p>',
+                '<p>Absolut. Unser System greift auf Ihre Excel Vorlagen zu, sendet WhatsApp Erinnerungen und verschickt E Mails aus Ihrem Postfach. Sie gewinnen Automatisierung, müssen aber nichts neu lernen oder ersetzen.</p>',
+                '<p>Ja. Unsere Lösungen skalieren von Solo Betrieben bis zu 50 Mitarbeitenden. Gerade kleine Teams profitieren besonders: Sie sparen direkt 10+ Stunden pro Woche, weil Rückfragen, Zettelwirtschaft und manuelle Prozesse wegfallen.</p>',
+                '<p>Wir begleiten Sie mit Praxisschulungen direkt auf Baustelle und im Büro – in 30 Min Sessions. Außerdem erhalten Ihre Mitarbeiter eine Checklisten App, die kinderleicht zu bedienen ist. Mit Aktionsempfehlungen sorgen wir für schnelle Erfolge, damit Ihr Team die Zeitgewinne sofort spürt.</p>'
+            ];
+            
+            const faqAnswerContainers = document.querySelectorAll('#faq .faq-answer-new');
+            faqAnswerContainers.forEach((container, index) => {
+                if (faqContent[index]) {
+                    container.innerHTML = faqContent[index];
+                }
+            });
+
+            // Contact Modal Logic
+            const modal = document.getElementById('contact-modal');
+            const openModalButtons = document.querySelectorAll('.js-open-modal');
+            const closeModalButton = modal.querySelector('.modal-close');
+
+            const openModal = (e) => { 
+                e.preventDefault(); 
+                modal.classList.add('is-visible'); 
+            };
+            const closeModal = () => { modal.classList.remove('is-visible'); };
+            openModalButtons.forEach(button => button.addEventListener('click', openModal));
+            if(closeModalButton) closeModalButton.addEventListener('click', closeModal);
+            if(modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === "Escape" && modal.classList.contains('is-visible')) closeModal(); });
+            
+            // Other Page Logic
+            const header = document.querySelector('.main-header');
+            const stickyTopCtaBar = document.querySelector('.sticky-top-cta');
+            const heroSection = document.getElementById('hero');
+            const handleScroll = () => {
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                if (heroSection && heroSection.getBoundingClientRect().bottom < -100) { // Show when hero is well out of view
+                    stickyTopCtaBar.classList.add('is-visible');
+                } else {
+                    stickyTopCtaBar.classList.remove('is-visible');
+                }
+            };
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+            // ROI Calculator Logic
+            const adminAufwandInput = document.getElementById('admin-aufwand');
+            const verrechnungssatzInput = document.getElementById('verrechnungssatz');
+            const calculatorButtons = document.querySelectorAll('.calculator-button-group .btn');
+            const stundenResult = document.getElementById('roi-result-stunden');
+            const umsatzResult = document.getElementById('roi-result-umsatz');
+
+            function calculateROI() {
+                if (!adminAufwandInput) return; // Exit if calculator not on page
+                const adminAufwand = parseFloat(adminAufwandInput.value) || 0;
+                const verrechnungssatz = parseFloat(verrechnungssatzInput.value) || 0;
+                
+                let monteure = 0;
+                const activeButton = document.querySelector('.calculator-button-group .btn.active');
+                if (activeButton) {
+                    const text = activeButton.textContent.trim();
+                    switch(text) {
+                        case '1-2': monteure = 2; break;
+                        case '3-5': monteure = 4; break;
+                        case '6-10': monteure = 8; break;
+                        case '10+': monteure = 12; break;
+                    }
+                }
+
+                const gesparteStunden = (adminAufwand * 0.4) + (monteure * 1.5);
+                const mehrUmsatz = gesparteStunden * verrechnungssatz * 50;
+
+                stundenResult.textContent = Math.round(gesparteStunden) + '+';
+                umsatzResult.textContent = mehrUmsatz.toLocaleString('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 }) + '+';
+            }
+
+            if(adminAufwandInput) adminAufwandInput.addEventListener('input', calculateROI);
+            if(verrechnungssatzInput) verrechnungssatzInput.addEventListener('input', calculateROI);
+            if(calculatorButtons.length > 0) {
+                calculatorButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        calculatorButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        calculateROI();
+                    });
+                });
+                calculateROI();
+            }
+            
+            // GSAP Animations
+            if (gsap && ScrollTrigger) {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.from(".hero-content > *", {
+                    opacity: 0,
+                    y: 30,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out"
+                });
+
+                gsap.from(".video-embed-wrapper", {
+                     scrollTrigger: {
+                        trigger: ".video-embed-wrapper",
+                        start: "top 90%",
+                        toggleActions: 'play none none none'
+                    },
+                    opacity: 0,
+                    y: 40,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+                
+                gsap.utils.toArray(".card, .faq-item-new").forEach(elem => {
+                    gsap.from(elem, {
+                        scrollTrigger: {
+                            trigger: elem,
+                            start: "top 90%",
+                            toggleActions: 'play none none none'
+                        },
+                        opacity: 0,
+                        y: 30,
+                        duration: 1,
+                        ease: "power3.out"
+                    });
+                });
+
+                gsap.utils.toArray(".automation-card").forEach(elem => {
+                    ScrollTrigger.create({
+                        trigger: elem,
+                        start: "top 80%",
+                        toggleClass: 'is-anim-visible',
+                        once: true
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

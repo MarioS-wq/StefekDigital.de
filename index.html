@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ihr Ziel als Handwerksbetrieb | Stefek Digital</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0E1A2A;
+            --bg-light: #F7F8FA;
+            --primary-color: #0E1A2A;
+            --secondary-color: #1C2B3A;
+            --accent-color: #FFD300;
+            --accent-hover-color: #E6B800;
+            --accent-color-rgb: 255, 211, 0;
+            --text-on-dark: #E0E6EB;
+            --text-on-light: #1B2733;
+            --text-secondary-on-light: #6B7280;
+            --white-color: #FFFFFF;
+            --border-color-dark: #3A4C5A;
+            --border-color-light: #E5E7EB;
+            --font-family-serif: 'Merriweather', serif;
+            --font-family-sans: 'Inter', sans-serif;
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+            --transition-speed: 0.3s;
+            --shadow-xl: 0 15px 40px rgba(0, 0, 0, 0.07), 0 10px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 100%; scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-family-sans);
+            color: var(--text-on-dark);
+            background-color: var(--bg-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== HEADER ===== */
+        .main-header { 
+            background-color: rgba(14, 26, 42, 0.85); 
+            padding: 24px 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px); 
+            border-bottom: 1px solid var(--border-color-dark);
+        }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-family-sans); font-weight: 900; font-size: 1.8rem; color: var(--white-color); text-decoration: none; display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 38px; width: auto; filter: invert(1); }
+        .header-cta-group { display: flex; align-items: center; gap: 24px; }
+        .header-cta { font-size: 0.9rem; padding: 12px 28px; }
+        .cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; background-color: var(--accent-color); color: var(--text-on-light); padding: 18px 36px; border-radius: var(--border-radius); font-family: var(--font-family-sans); font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; text-align: center; transition: all var(--transition-speed) ease-out; border: none; cursor: pointer; text-decoration: none; }
+        .cta-button:hover { background-color: var(--accent-hover-color); transform: translateY(-3px); }
+
+        /* ===== SELECTION SECTION ===== */
+        .selection-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .main-title {
+            font-family: var(--font-family-serif);
+            font-size: 2.5rem;
+            color: var(--white-color);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 40px;
+        }
+        .option-card {
+            background-color: var(--secondary-color);
+            border: 1px solid var(--border-color-dark);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 2.5rem;
+            text-decoration: none;
+            color: var(--text-on-dark);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-color: var(--accent-color);
+        }
+        .option-card h2 {
+            font-family: var(--font-family-serif);
+            font-size: 1.8rem;
+            color: var(--white-color);
+            margin-bottom: 1rem;
+        }
+        .option-card p {
+            color: var(--text-on-dark);
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .cta-button-choice {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-on-light);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color var(--transition-speed) ease;
+        }
+        .option-card:hover .cta-button-choice {
+            background-color: var(--accent-hover-color);
+        }
+
+        /* ===== LOCATION SECTION ===== */
+        #location-info {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+            border-top: 1px solid var(--border-color-dark);
+        }
+        .location-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .location-content h2 {
+            font-family: var(--font-family-serif);
+            font-size: 2rem;
+            color: var(--white-color);
+            margin-bottom: 1rem;
+        }
+        .location-content p {
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+        }
+        .location-details {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+        .location-details li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background-color: var(--bg-dark);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            min-width: 280px;
+        }
+        .location-details .icon {
+            font-size: 1.5rem;
+            margin-top: -2px;
+        }
+        .location-details strong {
+            display: block;
+            color: var(--white-color);
+            margin-bottom: 0.25rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .main-footer { 
+            background-color: var(--bg-dark); 
+            padding: 20px 0; 
+            font-size: 0.9rem; 
+            text-align: center;
+            opacity: 0.6;
+            border-top: 1px solid var(--border-color-dark);
+        }
+        .main-footer a { color: inherit; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-cta-group { display: none; }
+            .options-grid { grid-template-columns: 1fr; }
+            .main-title { font-size: 2rem; }
+            .option-card h2 { font-size: 1.5rem; }
+            .location-details { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754386401/stefek_gyabch.png" alt="Stefek Logo">
+            </a>
+            <div class="header-cta-group">
+                <a href="tel:+436608640360" style="color: var(--white-color); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+                    +43 660 8640360
+                </a>
+                <a href="/kosten" class="cta-button header-cta">Kostenloses Erstgespräch</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="selection-section">
+            <div class="container">
+                <h1 class="main-title">Was ist Ihr vorrangiges Ziel als Handwerksbetrieb?</h1>
+                <div class="options-grid">
+                    <a href="/kosten" class="option-card">
+                        <div>
+                            <h2>Zeit und Kosten sparen</h2>
+                            <p>Optimieren Sie Ihre internen Prozesse, reduzieren Sie den Verwaltungsaufwand und steigern Sie die Effizienz, um wertvolle Zeit und bares Geld zu sparen.</p>
+                        </div>
+                        <span class="cta-button-choice">Zur Lösung</span>
+                    </a>
+                    <a href="/auftrag" class="option-card">
+                        <div>
+                            <h2>Mehr Aufträge an Land ziehen</h2>
+                            <p>Verbessern Sie Ihre Sichtbarkeit, erhalten Sie qualifizierte Anfragen und gewinnen Sie mehr profitable Aufträge, um nachhaltig zu wachsen.</p>
+                        </div>
+                        <span class="cta-button-choice">Zur Lösung</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="location-info">
+             <div class="container">
+                <div class="location-content">
+                    <h2>Ihr Partner vor Ort in Wien</h2>
+                    <p>Persönlich oder digital – immer für Sie da. Unser Büro finden Sie im Herzen von Wien. Wir freuen uns darauf, Sie kennenzulernen, um gemeinsam an Ihrem Erfolg zu arbeiten.</p>
+                    <ul class="location-details">
+                        <li>
+                            <span class="icon">📍</span>
+                            <div>
+                                <strong>Adresse</strong>
+                                Praterstraße 1, 1020 Wien
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">🚇</span>
+                            <div>
+                                <strong>Öffentlich</strong>
+                                U1/U4 Schwedenplatz (5 Min.)
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">🅿️</span>
+                            <div>
+                                <strong>Parken</strong>
+                                Parkgarage Sofitel (3 Min.)
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <p>© 2018-2025 - Mario Stefek | <a href="https://www.stefekdigital.com/impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a></p>
+    </footer>
+
+</body>
+</html>
