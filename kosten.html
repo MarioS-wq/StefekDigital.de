@@ -164,19 +164,6 @@
         .hero-cta-block { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 48px; }
         .hero-cta-block p { margin: 0; font-size: 0.9rem; opacity: 0.7; }
         
-        /* ===== VIDEO SECTION ===== */
-        #hero-video {
-            padding: 80px 0 120px 0; /* Increased top padding for more space */
-            background-color: var(--bg-dark);
-        }
-        .video-embed-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            border-radius: var(--border-radius-lg);
-            overflow: hidden; /* Important for border-radius on iframe */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        }
-
         /* ===== TESTIMONIALS (REFINED & RESPONSIVE) ===== */
         #testimonials { background: var(--bg-white); }
         .case-study-container { display: flex; flex-direction: column; gap: 40px; }
@@ -451,7 +438,6 @@
         @media (max-width: 768px) {
             /* --- General Layout --- */
             .section-padding { padding: 64px 0; }
-            #hero-video { padding: 48px 0 64px 0; }
             body { padding-bottom: 80px; font-size: 95%; } /* Space for mobile CTA & base font reduction */
 
             /* --- Typography Scale Adjustments --- */
@@ -530,7 +516,6 @@
         @media (max-width: 480px) {
             .container { padding: 0 16px; }
             .section-padding { padding: 48px 0; }
-            #hero-video { padding: 32px 0 48px 0; }
 
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.9rem; }
@@ -557,7 +542,7 @@
 <body>
 
     <div class="sticky-top-cta">
-        <a href="#" class="js-open-modal">Jetzt Ihre nächste Anfrage sichern →</a>
+        <a href="#" class="js-open-modal">Jetzt Ihre kostenlose Analyse anfordern →</a>
     </div>
 
     <header class="main-header">
@@ -570,7 +555,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
                     +43 660 8640360
                 </a>
-                <a href="#" class="cta-button header-cta js-open-modal">Kostenloses Erstgespräch</a>
+                <a href="#" class="cta-button header-cta js-open-modal">Kostenloses Werkstatt-Gespräch</a>
             </div>
         </div>
     </header>
@@ -582,130 +567,105 @@
             <div class="hero-background-overlay"></div>
             <div class="container">
                 <div class="hero-content">
-                    <!-- NEUER TITEL -->
-                    <h1 style="font-size: 3.8rem;">Wie Sie als Handwerksbetrieb 32 % Zeit sparen – durch unsere Digitalisierung & Prozessoptimierung</h1>
-                    <!-- NEUER SUBTITEL -->
-                    <p class="hero-subheadline">Effizienz für Ihren Betrieb – ohne zusätzliches Personal einstellen zu müssen.<br>Wir reden nicht nur, wir setzen alles direkt bei Ihnen im Betrieb um – damit Abläufe schneller, klarer und einfacher laufen.</p>
+                    <h1 style="font-size: 3.8rem;">Wie Sie als Chef im Handwerk einen Tag pro Woche gewinnen – durch saubere digitale Abläufe statt Zettelchaos.</h1>
+                    <p class="hero-subheadline">Machen Sie mehr aus Ihrer Mannschaft, ohne mühsam neue Fachkräfte zu suchen.<br>Wir quatschen nicht nur, wir packen mit an und setzen alles direkt bei Ihnen um. Für Abläufe, die sitzen.</p>
                     
                     <div class="hero-cta-block">
                         <a href="#" class="cta-button js-open-modal glowing">
-                            <span>Kostenloses Beratungsgespräch sichern</span>
+                            <span>Kostenloses Werkstatt-Gespräch buchen</span>
                         </a>
-                        <p>Dauer: unter 60 Sekunden. 100 % unverbindlich.</p>
+                        <p>Dauert keine Minute. Garantiert unverbindlich.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="hero-video">
-            <div class="container">
-                <div class="video-embed-wrapper">
-                    <div id="vidalytics_embed_QFdfhVr56jX2eaEQ" style="width: 100%; position:relative; padding-top: 58.16%;"></div>
-                    <script type="text/javascript">
-                    (function (v, i, d, a, l, y, t, c, s) {
-                        y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
-                        if (!vsl){vsl=function(u,cb){
-                            if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
-                            if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
-                            i.getElementsByTagName("head")[0].appendChild(s);
-                        };}
-                        vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
-                    })(window, document, 'Vidalytics', 'vidalytics_embed_QFdfhVr56jX2eaEQ', 'https://fast.vidalytics.com/embeds/AX6o2ejq/QFdfhVr56jX2eaEQ/');
-                    </script>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEUER ABSCHNITT: KERNPROBLEME -->
         <section id="core-problems" class="section-padding light-theme-section">
             <div class="container">
                 <div class="features-grid">
                     <div class="card">
                         <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                        <h4>Sie finden keine passenden Fachkräfte?</h4>
-                        <p>Mit digitalen Prozessen kann ein Mitarbeiter heute so viel schaffen wie früher zwei – und das ganz ohne zusätzliche Leute einstellen zu müssen.</p>
+                        <h4>Der Fachkräftemangel bremst Sie aus?</h4>
+                        <p>Mit sauberen Prozessen schafft ein guter Mann die Arbeit von zweien. So wachsen Sie, auch wenn der Arbeitsmarkt leergefegt ist.</p>
                     </div>
                     <div class="card">
                         <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6z"></path><path d="m2 10 8 6 8-6"></path></svg></div>
-                        <h4>Zu wenig Zeit, kein klarer Plan?</h4>
-                        <p>Wir begleiten Sie vom ersten Konzept bis zur fertigen Umsetzung – damit Ihre Digitalisierungsprojekte nicht in der Schublade liegen bleiben, sondern wirklich fertig werden.</p>
+                        <h4>Chaos im Büro, Feuerwehreinsätze auf der Baustelle?</h4>
+                        <p>Wir erstellen nicht nur Pläne, wir setzen sie mit Ihnen um. Vom ersten Gespräch bis alles rund läuft. Damit die guten Vorsätze nicht im Tagesgeschäft versanden.</p>
                     </div>
                     <div class="card">
                          <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
-                        <h4>Fehlende Akzeptanz im Team?</h4>
-                        <p>Wir sorgen dafür, dass neue digitale Abläufe reibungslos funktionieren, Ihr Team den Mehrwert erkennt und alle mitziehen.</p>
+                        <h4>Die Mannschaft zieht nicht mit?</h4>
+                        <p>Wir nehmen Ihre Mitarbeiter an die Hand und zeigen ihnen, wie die neuen Werkzeuge den Arbeitsalltag leichter machen. Wenn die Leute den Vorteil spüren, sind sie auch dabei.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- NEUER ABSCHNITT: HERAUSFORDERUNGEN -->
         <section id="challenges" class="section-padding light-theme-section bg-white">
             <div class="container">
-                <h2 class="section-title accent-underline">Herausforderungen, die viele Handwerksbetriebe kennen</h2>
+                <h2 class="section-title accent-underline">Kommt Ihnen das bekannt vor, Meister?</h2>
                 <div class="challenges-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <p>Sie geben alles für Ihren Betrieb – und trotzdem fühlen sich viele Tage an, als würde man nur hinterherlaufen. Wenn es Ihnen wie vielen Handwerksmeistern geht, dann arbeiten Sie hart und erfolgreich – und trotzdem klemmt es bei Angeboten, Baustellenplanung oder Materialbestellung. Zeitmangel, Stress und fehlende Struktur bremsen Sie aus.</p>
-                    <p>Sie hetzen von Baustelle zu Baustelle, kämpfen mit Zettelwirtschaft und fehlenden Infos. Vielleicht zieht nicht jeder Mitarbeiter gleich gut mit, und Kunden reagieren träge auf Absprachen. Digitalisierung? Oft wird sie halbherzig begonnen und dann im Alltag wieder vergessen.</p>
-                    <p>Projekte starten motiviert – bleiben aber unvollendet. Statt einem klaren Plan fehlt der rote Faden: Welche Änderungen bringen wirklich etwas, und wie setzt man sie richtig um?</p>
-                    <p>Und dann dieses Gefühl: Bei Kollegen wirkt alles irgendwie moderner und besser organisiert – während man selbst immer wieder gegen dieselben Probleme ankämpft.</p>
+                    <p>Sie reißen sich den Hintern auf für Ihren Laden – und fühlen sich am Ende des Tages trotzdem wie im Hamsterrad. Wenn es Ihnen wie vielen Kollegen geht, dann arbeiten Sie hart und erfolgreich – aber es hakt bei Angeboten, der Einsatzplanung oder der Materialbeschaffung. Zeitdruck, Stress und Zettelwirtschaft bremsen Sie und Ihr Team aus.</p>
+                    <p>Sie hetzen von einer Baustelle zur nächsten, kämpfen mit handgeschriebenen Notizen und fehlenden Informationen. Vielleicht zieht nicht jeder im Team so mit, wie Sie es sich wünschen, und die Abstimmung mit Kunden ist zäh. Digitalisierung? Oft gut gemeint angefangen, aber im Alltag schnell wieder vergessen.</p>
+                    <p>Projekte starten voller Elan, bleiben aber auf halber Strecke liegen. Statt einem klaren, roten Faden fehlt der Plan: Welche Veränderung bringt uns wirklich weiter und wie ziehen wir das jetzt konsequent durch?</p>
+                    <p>Und dann dieses Gefühl, wenn man zum Wettbewerb schaut: Bei denen wirkt alles moderner und glatter – während man selbst gefühlt immer wieder gegen die gleichen Wände läuft.</p>
                 </div>
             </div>
         </section>
 
-        <!-- NEUER ABSCHNITT: LÖSUNGEN -->
         <section id="solutions" class="section-padding light-theme-section">
             <div class="container">
-                <h2 class="section-title accent-underline">Unsere Lösungen für Ihren Handwerksbetrieb</h2>
+                <h2 class="section-title accent-underline">Unser Werkzeugkasten für Ihren Erfolg</h2>
                 <div class="features-grid">
                     <div class="card">
                         <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
-                        <h4>Effizienzsteigerung für Ihr Team</h4>
-                        <p>Wir optimieren Abläufe – von Angebot & Auftrag über Materialbestellung & Lager bis zur Abrechnung. Das entlastet Sie und Ihre Mitarbeiter spürbar.</p>
+                        <h4>Klare Abläufe für eine starke Truppe</h4>
+                        <p>Wir bringen Ordnung in Ihre Prozesse – vom Angebot über die Materialbestellung bis zur Rechnung. Das entlastet Sie und Ihre Mitarbeiter sofort.</p>
                     </div>
                     <div class="card">
                         <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-                        <h4>Mehr Zeit für das Wesentliche</h4>
-                        <p>Wo früher zwei Leute nötig waren, reicht heute einer – dank smarter Prozesse. Mehr Zeit für Kunden, Projekte und private Momente.</p>
+                        <h4>Mehr Zeit für Kunden und das, was zählt</h4>
+                        <p>Wo früher zwei Mann nötig waren, reicht heute einer – dank schlauer Prozesse. Das Ergebnis: Mehr Zeit für gute Arbeit, Ihre Kunden und den Feierabend.</p>
                     </div>
                     <div class="card">
                         <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
-                        <h4>Digitale Auftrags- & Materialverwaltung</h4>
-                        <p>Keine Zettelwirtschaft mehr: Alle Aufträge, Pläne und Bestellungen jederzeit griffbereit – ob im Büro oder direkt auf der Baustelle.</p>
+                        <h4>Digitale Bauakte statt Zettelchaos</h4>
+                        <p>Schluss mit der Zettelwirtschaft: Alle Aufträge, Pläne und Lieferscheine sind digital griffbereit – im Büro und auf jeder Baustelle.</p>
                     </div>
                     <div class="card">
                         <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        <h4>Ein klarer Fahrplan für Ihren Betrieb</h4>
-                        <p>Wir bringen Sie Schritt für Schritt von der Digitalisierung zur Automatisierung – und lassen Sie nicht im Stich.</p>
+                        <h4>Ein solider Plan vom Fundament bis zum Dach</h4>
+                        <p>Wir geben Ihnen einen klaren Fahrplan an die Hand und begleiten Sie Schritt für Schritt – damit Sie nicht im digitalen Dschungel verloren gehen.</p>
                     </div>
                     <div class="card">
                         <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg></div>
-                        <h4>Regelmäßige Umsetzungs-Checkpoints</h4>
-                        <p>Damit Projekte nicht versanden, sorgen wir mit festen Terminen für Fortschritt und messbare Ergebnisse.</p>
+                        <h4>Wir bleiben dran, bis es sitzt</h4>
+                        <p>Damit Projekte nicht versanden, sorgen wir mit regelmäßigen Terminen dafür, dass es vorangeht und sich die Erfolge auch messen lassen.</p>
                     </div>
                     <div class="card">
                         <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"></path></svg></div>
-                        <h4>Schulung & Umsetzungskontrolle</h4>
-                        <p>Wir schulen Ihr Team, prüfen die Ergebnisse und sorgen dafür, dass neue Prozesse auch wirklich genutzt werden.</p>
+                        <h4>Einweisung für die Mannschaft</h4>
+                        <p>Wir schulen Ihr Team praxisnah, prüfen die Umsetzung und stellen sicher, dass die neuen Abläufe im Alltag auch wirklich gelebt werden.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ANGEPASSTER ABSCHNITT: AUTOMATISIERUNGEN -->
         <section id="automations" class="section-padding light-theme-section bg-white">
             <div class="container">
-                <h2 class="section-title accent-underline">Von Digitalisierung zu Automatisierung – was ist der nächste Schritt?</h2>
-                <p class="centered-text" style="margin-top: -60px; margin-bottom: 80px;">Mit automatisierten Prozessen sparen Sie Zeit, verhindern Fehler und machen Ihren Betrieb zukunftssicher – während andere noch im Papierchaos versinken.</p>
+                <h2 class="section-title accent-underline">Der nächste Level: Wenn der Betrieb für Sie arbeitet</h2>
+                <p class="centered-text" style="margin-top: -60px; margin-bottom: 80px;">Mit diesen Automatisierungen sparen Sie massiv Zeit, vermeiden Fehler und hängen die Konkurrenz ab, die immer noch mit Zetteln hantiert.</p>
                 <div class="automation-grid">
                     
                     <div class="automation-card card">
                         <div class="automation-content">
                             <h3><span class="card-number">1</span>Automatische Angebotserstellung</h3>
-                            <p class="process">Kunde füllt Anfrage auf der Website aus → System generiert automatisch PDF-Angebot mit Logo, Leistung, Preis und schickt’s raus.</p>
-                            <div class="wow-effect"><p>„Kein Word mehr?! Kein Copy-Paste? Einfach fertig und raus?!“</p></div>
+                            <p class="process">Kunde füllt Anfrageformular aus → System erstellt automatisch ein sauberes PDF-Angebot und schickt es per E-Mail raus.</p>
+                            <div class="wow-effect"><p>„Moment mal, ich muss kein Word aufmachen und nichts kopieren? Das Angebot ist einfach fertig und beim Kunden?!“</p></div>
                             <ul class="benefits">
-                                <li>Spart: 30–60 Minuten pro Angebot</li>
-                                <li>Zusatzeffekt: Weniger Rückfragen, professionellerer Auftritt</li>
+                                <li>Ersparnis: Bis zu einer Stunde pro Angebot</li>
+                                <li>Zusatzeffekt: Sie wirken professioneller und sind schneller als die Konkurrenz</li>
                             </ul>
                         </div>
                         <div class="animation-container" id="anim1">
@@ -716,9 +676,9 @@
                     <div class="automation-card card">
                         <div class="automation-content">
                             <h3><span class="card-number">2</span>Material-Nachbestellung</h3>
-                            <p class="process">Sobald z. B. „Kugelhahn 3/4“ unter Sollmenge fällt → automatisch im Großhandel nachbestellt.</p>
-                            <div class="wow-effect"><p>„Ich muss das Material nicht mehr im Kopf haben – es bestellt sich selbst?!“</p></div>
-                            <ul class="benefits"><li>Spart: Fahrten, Anrufe, Fehler, Leerlauf auf der Baustelle</li></ul>
+                            <p class="process">Sobald ein Artikel im Lager zur Neige geht → wird er automatisch beim Großhändler nachbestellt.</p>
+                            <div class="wow-effect"><p>„Das Lager bestellt sich von selbst? Ich muss nicht mehr an alles denken?!“</p></div>
+                            <ul class="benefits"><li>Spart: Extra-Fahrten zum Großhändler, unnötige Telefonate und Stillstand auf der Baustelle.</li></ul>
                         </div>
                         <div class="animation-container" id="anim2">
                             <div class="anim-element anim-step-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg><span>Lagerbestand sinkt</span></div><div class="stock-bar-container anim-step-1"><div class="stock-bar"></div></div><div class="anim-arrow anim-step-2">→</div><div class="anim-element anim-step-3"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.5A4.5 4.5 0 0 0 17.5 5c-.58 0-1.13.13-1.64.36L12 9.75 8.14 5.36A4.5 4.5 0 0 0 2 9.5c0 4.5 3 12.5 6 12.5 1.25 0 2.5-1.06 4-1.06Z"></path><path d="M12 6.82V20.5"></path></svg><span>Autom. Bestellung</span></div><div class="anim-arrow anim-step-4">→</div><div class="anim-element anim-step-5"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 22h4"></path><path d="M2 18V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10Z"></path><path d="M14 18h-4"></path><path d="M18 14V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v8"></path></svg><span>Lieferant</span></div>
@@ -727,10 +687,10 @@
 
                     <div class="automation-card card">
                         <div class="automation-content">
-                            <h3><span class="card-number">3</span>Einsatzplanung mit Auto-Routing</h3>
-                            <p class="process">Anfrage kommt rein → Techniker wird automatisch zugewiesen → Routenoptimierung + Termin direkt aufs Handy.</p>
-                            <div class="wow-effect"><p>„Mein Monteur bekommt das auf sein Handy und fährt einfach hin – ohne WhatsApp-Chaos?!“</p></div>
-                            <ul class="benefits"><li>Spart: 5–10 Anrufe pro Tag, Rückfragen, Fehlplanungen</li></ul>
+                            <h3><span class="card-number">3</span>Smarte Einsatzplanung für die Monteure</h3>
+                            <p class="process">Ein neuer Auftrag kommt rein → wird dem passenden Techniker zugewiesen → die Route wird optimiert und der Termin landet direkt auf seinem Handy.</p>
+                            <div class="wow-effect"><p>„Der Monteur kriegt den Auftrag direkt aufs Handy und weiß, wo er hinmuss? Ohne das übliche Telefon- und WhatsApp-Chaos?!“</p></div>
+                            <ul class="benefits"><li>Spart: Unzählige Anrufe pro Tag, Rückfragen und Fehlplanungen</li></ul>
                         </div>
                         <div class="animation-container" id="anim3">
                             <div class="anim-element anim-step-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span>Neue Anfrage</span></div><div class="anim-arrow anim-step-2">→</div><div class="anim-element anim-step-3"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 0 2l-.15.08a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1 0 2l.15-.08a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg><span>Plant & optimiert</span></div><div class="anim-arrow anim-step-4">→</div><div class="anim-element anim-step-5"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg><span>Auftrag am Handy</span></div>
@@ -739,10 +699,10 @@
 
                     <div class="automation-card card">
                         <div class="automation-content">
-                            <h3><span class="card-number">4</span>WhatsApp-Integration</h3>
-                            <p class="process">Kunde schreibt via WhatsApp → System erkennt Stichworte → leitet es automatisch an die richtige Person oder Abteilung weiter.</p>
-                            <div class="wow-effect"><p>„Sogar WhatsApp ist jetzt sortiert? Ich hab den Kunden nicht mehr zwischen Tür und Angel?!“</p></div>
-                            <ul class="benefits"><li>Spart: Chaos, vergessene Nachrichten, Zeit beim Antworten</li></ul>
+                            <h3><span class="card-number">4</span>WhatsApp endlich im Griff</h3>
+                            <p class="process">Kunde schreibt per WhatsApp → das System sortiert die Anfrage und leitet sie direkt an die richtige Person oder ins Büro weiter.</p>
+                            <div class="wow-effect"><p>„Selbst die WhatsApp-Anfragen landen da, wo sie hingehören? Kein Chaos mehr auf dem Privat-Handy?!“</p></div>
+                            <ul class="benefits"><li>Spart: Chaos auf dem Handy, vergessene Nachrichten und Zeit bei der Antwort</li></ul>
                         </div>
                         <div class="animation-container" id="anim4">
                             <div class="anim-element anim-step-1 grid-start"><svg class="icon icon-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span>Kunden-Nachricht</span></div><div class="anim-element anim-step-2 grid-center"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M7 12h10"></path><path d="M10 18h4"></path></svg><span>System sortiert</span></div><div class="grid-end-container"><div class="anim-element anim-step-3"><svg class="icon icon-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg><span>Störung</span></div><div class="anim-element anim-step-4"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" x2="12" y1="18" y2="12"></line><polyline points="9 15 12 12 15 15"></polyline></svg><span>Angebot</span></div><div class="anim-element anim-step-5"><svg class="icon icon-neutral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M12 12h.01"></path><path d="M12 17h.01"></path></svg><span>Rechnung</span></div></div>
@@ -751,10 +711,10 @@
 
                     <div class="automation-card card">
                         <div class="automation-content">
-                            <h3><span class="card-number">5</span>OCR für Lieferscheine & Rechnungen</h3>
-                            <p class="process">Foto oder Scan → System liest automatisch alle Daten aus → gleicht sie mit dem Lager ab und archiviert den Beleg.</p>
-                            <div class="wow-effect"><p>„Ich fotografier den Zettel – und hab die Buchhaltung fertig?!“</p></div>
-                            <ul class="benefits"><li>Spart: 5+ Stunden/Monat in Belegpflege</li><li>Keine Fehler durch Handschrift oder verlorene Zettel</li></ul>
+                            <h3><span class="card-number">5</span>Lieferscheine & Rechnungen digitalisieren</h3>
+                            <p class="process">Ein Foto oder Scan vom Beleg genügt → das System liest alle Daten aus, gleicht sie mit der Bestellung ab und legt sie sauber ab.</p>
+                            <div class="wow-effect"><p>„Ich mache ein Foto vom Lieferschein und der Bürokram ist erledigt?!“</p></div>
+                            <ul class="benefits"><li>Spart: Stundenlanges Abtippen und Sortieren pro Monat</li><li>Keine Fehler mehr durch unleserliche Handschrift oder verlorene Zettel</li></ul>
                         </div>
                         <div class="animation-container" id="anim5">
                             <div class="anim-element anim-step-1 grid-start"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 14.5v-9a2 2 0 0 0-2-2h-13a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2h5"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M5 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path><path d="M5 10v4"></path><path d="m21.1 21.1-2.2-2.2"></path><path d="M19 13a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-1z"></path></svg><span>Lieferschein</span></div><div class="anim-element anim-step-2 grid-center"><svg class="icon icon-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><line x1="7" x2="17" y1="12" y2="12"></line></svg><div class="scanner-line"></div><span>OCR Scan</span></div><div class="anim-element anim-step-3 grid-end-1"><svg class="icon icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Lager abgeglichen</span></div><div class="anim-element anim-step-4 grid-end-2"><svg class="icon icon-neutral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="M2 10h20"></path></svg><span>Archiviert</span></div>
@@ -764,9 +724,9 @@
                     <div class="automation-card card">
                         <div class="automation-content">
                             <h3><span class="card-number">6</span>Automatische Rechnungskontrolle</h3>
-                            <p class="process">System erkennt Differenzen zwischen Bestellung und Rechnung → gibt Alarm, wenn z. B. 5 Stück bestellt, aber 7 verrechnet wurden.</p>
-                            <div class="wow-effect"><p>„Ich seh auf Knopfdruck, ob ich zu viel bezahlt hab?!“</p></div>
-                            <ul class="benefits"><li>Spart: bares Geld + Nerven mit Buchhaltung</li><li>Ideal für wachstumsstarke Betriebe</li></ul>
+                            <p class="process">Das System vergleicht Bestellung und Rechnung. Wenn 5 Stück bestellt, aber 7 verrechnet wurden, schlägt es sofort Alarm.</p>
+                            <div class="wow-effect"><p>„Das System merkt, wenn eine Rechnung falsch ist und warnt mich?!“</p></div>
+                            <ul class="benefits"><li>Spart: Bares Geld und Nerven bei der Buchhaltung</li><li>Ein Muss für jeden Betrieb, der wachsen will</li></ul>
                         </div>
                         <div class="animation-container" id="anim6">
                             <div class="anim-element anim-step-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.16"></path></svg><span>Bestellung: 5 Stk.</span></div><div class="anim-arrow anim-step-2">+</div><div class="anim-element anim-step-3"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect></svg><span>Rechnung: 7 Stk.</span></div><div class="anim-arrow anim-step-4">→</div><div class="anim-element anim-step-5"><svg class="icon icon-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>FEHLER!</span></div>
@@ -775,10 +735,10 @@
 
                     <div class="automation-card card">
                         <div class="automation-content">
-                            <h3><span class="card-number">7</span>Wiederkehrende Wartungsaufträge</h3>
-                            <p class="process">System erkennt: Kunde hatte Wartung vor 11 Monaten → Auftrag wird automatisch geplant + Mail/Anruf-Vorlage erzeugt.</p>
-                            <div class="wow-effect"><p>„Der Auftrag kommt von selbst zurück – ich muss nicht mal dran denken?!“</p></div>
-                            <ul class="benefits"><li>Keine entgangenen Folgeaufträge</li><li>Macht Wartung profitabel & planbar</li></ul>
+                            <h3><span class="card-number">7</span>Automatische Wartungs-Erinnerung</h3>
+                            <p class="process">System erkennt: Die letzte Wartung beim Kunden ist fast ein Jahr her → es erstellt automatisch einen neuen Auftrag und eine Anruf-Vorlage.</p>
+                            <div class="wow-effect"><p>„Das System erinnert mich an die nächste Wartung beim Kunden, damit kein Auftrag durchrutscht? Genial!“</p></div>
+                            <ul class="benefits"><li>Keine Folgeaufträge mehr vergessen</li><li>Macht das Wartungsgeschäft profitabel und vor allem planbar</li></ul>
                         </div>
                         <div class="animation-container" id="anim7">
                             <div class="anim-element anim-step-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Zeit vergeht...</span></div><div class="anim-arrow anim-step-2">→</div><div class="anim-element anim-step-3"><svg class="icon icon-process" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="m16.2 7.8 2.8-2.8"></path><path d="M18 12h4"></path><path d="m16.2 16.2 2.8 2.8"></path><path d="M12 18v4"></path><path d="m7.8 16.2-2.8 2.8"></path><path d="M6 12H2"></path><path d="m7.8 7.8-2.8-2.8"></path></svg><span>System prüft</span></div><div class="anim-arrow anim-step-4">→</div><div class="anim-element anim-step-5"><svg class="icon icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="m9 16 2 2 4-4"></path></svg><span>Neuer Auftrag!</span></div>
@@ -791,22 +751,22 @@
         
         <section id="for-whom" class="section-padding light-theme-section bg-white">
             <div class="container">
-                <h2 class="section-title accent-underline">Ist dieses System genau richtig für Sie?</h2>
+                <h2 class="section-title accent-underline">Passt das für meinen Betrieb?</h2>
                 <div class="grid">
                     <div class="column card">
                         <h3>Ja, wenn Sie…</h3>
                         <ul>
-                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Angebote per Knopfdruck direkt zum Kunden schicken wollen</li>
-                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>eine digitale Bauakte für alle Mitarbeiter nutzen möchten</li>
-                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Wartungen automatisch organisieren und durchführen lassen möchten</li>
+                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>auf Knopfdruck saubere Angebote verschicken wollen.</li>
+                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>wollen, dass jeder im Team auf der Baustelle alle Infos digital dabei hat.</li>
+                            <li><svg class="list-icon check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>keinen Wartungstermin mehr vergessen und Aufträge automatisch planen wollen.</li>
                         </ul>
                     </div>
                     <div class="column card">
                         <h3>Nein, wenn Sie…</h3>
                         <ul>
-                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>am liebsten alles beim Alten lassen (‚Das haben wir schon immer so gemacht‘)</li>
-                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>zwar Reden über Digitalisierung halten, aber nichts ändern wollen</li>
-                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>Sie keine Bereitschaft haben, bewährte digitale Prozesse zu übernehmen.</li>
+                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>am liebsten nach dem Motto ‚Das haben wir immer schon so gemacht‘ weiterarbeiten.</li>
+                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>zwar über Digitalisierung reden, aber keine Lust haben, wirklich etwas anzupacken.</li>
+                            <li><svg class="list-icon cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>glauben, dass Ihr Zettelchaos einzigartig ist und bewährte Lösungen für Sie nicht funktionieren.</li>
                         </ul>
                     </div>
                 </div>
@@ -815,17 +775,17 @@
 
         <section id="roi-calculator" class="section-padding light-theme-section bg-white">
             <div class="container">
-                <h2 class="section-title accent-underline">Lohnt sich das für Sie? Rechnen Sie Ihr Einsparpotenzial aus.</h2>
+                <h2 class="section-title accent-underline">Was springt für Sie dabei raus? Rechnen Sie's kurz durch.</h2>
                 <div class="calculator-box card">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="admin-aufwand">Wöchentlicher Admin-Aufwand: 8 Std.
-                                <small>(Angebote, Rechnungen, Planung, Rückfragen etc.)</small>
+                            <label for="admin-aufwand">Ihr wöchentlicher Büro-Aufwand (in Std.)
+                                <small>(Angebote, Rechnungen, Planung, Telefonate etc.)</small>
                             </label>
                             <input type="number" id="admin-aufwand" value="8" min="1">
                         </div>
                         <div class="form-group">
-                            <label>Wie viele Monteure sind im Einsatz?</label>
+                            <label>Wie viele Leute haben Sie draußen auf Montage?</label>
                             <div class="calculator-button-group">
                                 <button class="btn">1-2</button>
                                 <button class="btn active">3-5</button>
@@ -834,7 +794,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                             <label for="verrechnungssatz">Ihr ø Verrechnungssatz (€ pro Stunde)</label>
+                             <label for="verrechnungssatz">Ihr Stunden-Verrechnungssatz (€)</label>
                              <input type="number" id="verrechnungssatz" value="65" min="1">
                         </div>
                     </div>
@@ -843,15 +803,15 @@
                         <div class="result-grid">
                             <div class="result-item">
                                 <span id="roi-result-stunden">25+</span>
-                                <p>gesparte Stunden pro Woche</p>
+                                <p>Stunden pro Woche gewonnen</p>
                             </div>
                             <div class="result-item">
                                 <span id="roi-result-umsatz">80.000€+</span>
-                                <p>mehr Umsatzpotenzial pro Jahr</p>
+                                <p>Zusätzliches Umsatzpotenzial pro Jahr</p>
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="cta-button js-open-modal">Dieses Potenzial freisetzen</a>
+                    <a href="#" class="cta-button js-open-modal">Jetzt Potenzial nutzen</a>
                 </div>
             </div>
         </section>
@@ -863,11 +823,11 @@
                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754253150/mario_stefek_byeywa.avif" alt="Mario Stefek" style="width: 100%; border-radius: var(--border-radius);">
                     </div>
                     <div>
-                        <h2 class="accent-underline" style="text-align: left; padding-bottom: 16px; margin-bottom: 32px;">„Ich habe gesehen, wie das Tagesgeschäft die besten Handwerker ausbremst.“</h2>
-                        <p>„In meiner Arbeit mit Dutzenden von Handwerksbetrieben habe ich immer wieder dasselbe Muster erkannt: Leidenschaftliche Fachleute, die im Zettelchaos, unklaren Absprachen und dem ständigen Löschen von Bränden untergehen. Der Chef wird zum Engpass, weil alle Fäden bei ihm zusammenlaufen.“</p>
-                        <p>„Diese Erkenntnis war der Antrieb, einen besseren Weg zu schaffen. Ein System, das speziell für das Handwerk gemacht ist: einfach, praktisch und ohne teuren Software-Schnickschnack. Eines, das Inhabern die Kontrolle zurückgibt, damit sie sich wieder auf das konzentrieren können, was sie am besten können: ihr Handwerk.“</p>
+                        <h2 class="accent-underline" style="text-align: left; padding-bottom: 16px; margin-bottom: 32px;">„Ich hab mit eigenen Augen gesehen, wie gute Handwerker im Alltags-Chaos untergehen.“</h2>
+                        <p>„In meiner Arbeit mit Dutzenden Handwerksbetrieben habe ich immer wieder das Gleiche erlebt: Top-Fachleute, die aber in Zettelbergen, unklaren Absprachen und ständigen Feuerwehreinsätzen ertrinken. Der Chef selbst wird zum Flaschenhals, weil alles über seinen Tisch muss.“</p>
+                        <p>„Diese Erkenntnis war mein Antrieb, einen besseren Weg zu finden. Ein System, das fürs Handwerk gemacht ist: praktisch, ohne Schnickschnack und auf den Punkt. Eines, das dem Chef die Kontrolle zurückgibt, damit er sich wieder auf das konzentrieren kann, was er am besten kann: sein Handwerk.“</p>
                         <div style="margin-top: 32px; font-weight: 500; color: var(--text-secondary-on-light)">
-                             <em>Gründer & Ihr Partner für digitale Prozesse</em>
+                             <em>Gründer & Ihr Partner für saubere Prozesse im Handwerk</em>
                         </div>
                     </div>
                 </div>
@@ -876,15 +836,15 @@
 
         <section id="location" class="section-padding light-theme-section">
              <div class="container">
-                <h2 class="section-title accent-underline">Ihr Partner vor Ort in Wien</h2>
+                <h2 class="section-title accent-underline">Ihr Ansprechpartner in Wien – packen wir's an!</h2>
                 <div class="location-grid">
                     <div>
-                        <h3>Persönlich oder digital – immer für Sie da.</h3>
-                        <p>Unser Büro finden Sie im Herzen von Wien. Wir freuen uns darauf, Sie kennenzulernen, um gemeinsam an Ihrem Erfolg zu arbeiten.</p>
+                        <h3>Ob bei Ihnen vor Ort oder digital – wir sind für Sie da.</h3>
+                        <p>Lassen Sie uns bei einem Kaffee besprechen, wie wir Ihren Betrieb gemeinsam nach vorne bringen. Unser Büro ist zentral in Wien gelegen und einfach zu erreichen.</p>
                         <ul style="list-style: none; padding: 0; margin: 32px 0 0 0; display: flex; flex-direction: column; gap: 16px;">
                             <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">📍 <div><span style="display:block; font-weight:600;">Adresse</span> Praterstraße 1, 1020 Wien</div></li>
-                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">🚇 <div><span style="display:block; font-weight:600;">Öffentlich</span> U1/U4 Schwedenplatz (5 Min.)</div></li>
-                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">🅿️ <div><span style="display:block; font-weight:600;">Parken</span> Parkgarage Sofitel (3 Min.)</div></li>
+                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">🚇 <div><span style="display:block; font-weight:600;">Öffentlich</span> U1/U4 Schwedenplatz (5 Min. Fußweg)</div></li>
+                            <li style="display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: var(--border-radius);">🅿️ <div><span style="display:block; font-weight:600;">Parken</span> Parkgarage Sofitel (3 Min. Fußweg)</div></li>
                         </ul>
                     </div>
                     <div>
@@ -896,13 +856,13 @@
         
         <section id="faq" class="section-padding light-theme-section">
             <div class="container">
-                <h2 class="section-title accent-underline">Die 8 häufigsten Fragen</h2>
+                <h2 class="section-title accent-underline">Die 8 häufigsten Fragen aus der Werkstatt</h2>
                 <div class="faq-grid">
                     
                     <div class="faq-item-new">
                         <div class="faq-question-new">
                             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                            <h4>Muss ich eine komplett neue Software erlernen?</h4>
+                            <h4>Muss ich eine komplett neue Software lernen?</h4>
                         </div>
                         <div class="faq-answer-new"></div>
                     </div>
@@ -910,7 +870,7 @@
                     <div class="faq-item-new">
                         <div class="faq-question-new">
                             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                            <h4>Wie viel Zeit brauche ich wirklich für Einrichtung & Schulung?</h4>
+                            <h4>Wie viel Zeit kostet mich die Einrichtung wirklich?</h4>
                         </div>
                         <div class="faq-answer-new"></div>
                     </div>
@@ -918,7 +878,7 @@
                     <div class="faq-item-new">
                         <div class="faq-question-new">
                             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                            <h4>Welche laufenden Kosten kommen auf mich zu – und gibt es versteckte Gebühren?</h4>
+                            <h4>Was kostet der Spaß? Gibt es versteckte Gebühren?</h4>
                         </div>
                         <div class="faq-answer-new"></div>
                     </div>
@@ -926,7 +886,7 @@
                     <div class="faq-item-new">
                         <div class="faq-question-new">
                             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                            <h4>Funktioniert das System auch auf der Baustelle bei schlechter Internet Verbindung?</h4>
+                            <h4>Funktioniert das auch im Funkloch auf der Baustelle?</h4>
                         </div>
                         <div class="faq-answer-new"></div>
                     </div>
@@ -934,7 +894,7 @@
                     <div class="faq-item-new">
                         <div class="faq-question-new">
                             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                            <h4>Wie sicher sind meine Firmen und Kundendaten in der digitalen Bauakte?</h4>
+                            <h4>Wo landen meine Daten und wie sicher sind sie?</h4>
                         </div>
                         <div class="faq-answer-new"></div>
                     </div>
@@ -942,7 +902,7 @@
                     <div class="faq-item-new">
                         <div class="faq-question-new">
                             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                            <h4>Kann ich vorhandene Tools (z. B. Excel, WhatsApp) weiter nutzen?</h4>
+                            <h4>Kann ich meine alten Programme (Excel, WhatsApp) behalten?</h4>
                         </div>
                         <div class="faq-answer-new"></div>
                     </div>
@@ -950,7 +910,7 @@
                     <div class="faq-item-new">
                         <div class="faq-question-new">
                             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                            <h4>Ist das System auch für kleine Aufträge und Teams mit 3–5 Mitarbeitern geeignet?</h4>
+                            <h4>Lohnt sich das auch für meinen kleinen Betrieb (3–5 Mann)?</h4>
                         </div>
                         <div class="faq-answer-new"></div>
                     </div>
@@ -958,7 +918,7 @@
                     <div class="faq-item-new">
                         <div class="faq-question-new">
                             <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                            <h4>Wie integriere ich meine Mitarbeiter und stelle deren Akzeptanz sicher?</h4>
+                            <h4>Wie kriege ich meine Mitarbeiter dazu, mitzumachen?</h4>
                         </div>
                         <div class="faq-answer-new"></div>
                     </div>
@@ -969,24 +929,23 @@
         
         <section id="collaboration-process" class="section-padding light-theme-section">
             <div class="container">
-                <h2 class="section-title accent-underline">Nächste Schritte – Ihr Fahrplan zum Erfolg</h2>
+                <h2 class="section-title accent-underline">Die nächsten Schritte: So packen wir's an</h2>
                 <div class="collaboration-grid">
-                    <div class="step-card card"><h4>15 Minuten kostenloses Erstgespräch buchen</h4><p>wir analysieren Ihr Potenzial</p></div>
-                    <div class="step-card card"><h4>Sofort umsetzbare Empfehlungen erhalten</h4><p>klar & verständlich</p></div>
-                    <div class="step-card card"><h4>Start ins automatische System</h4><p>für mehr Kontrolle & Entlastung</p></div>
+                    <div class="step-card card"><h4>1. Kostenloses 15-Minuten-Gespräch</h4><p>Wir klären, wo bei Ihnen der Schuh drückt und was möglich ist.</p></div>
+                    <div class="step-card card"><h4>2. Konkreten Fahrplan erhalten</h4><p>Sie bekommen von uns einen klaren Plan, der auf Ihren Betrieb zugeschnitten ist.</p></div>
+                    <div class="step-card card"><h4>3. Ordnung schaffen & Zeit gewinnen</h4><p>Wir setzen den Plan gemeinsam um und sorgen für Entlastung im Alltag.</p></div>
                 </div>
             </div>
         </section>
         
         <section id="final-cta" class="section-padding">
             <div class="container" style="text-align:center;">
-                <h2 style="font-size: 3rem; line-height: 1.3;">Ihr Betrieb läuft – auch ohne Sie.</h2>
-                <!-- NEUER SUBTITEL -->
-                <p class="centered-text" style="margin-bottom: 40px; color: var(--text-on-dark); opacity:0.8;">Jetzt unverbindliches Erstgespräch sichern – und herausfinden, wie viel Zeit und Stress Sie in den nächsten Monaten sparen können.</p>
+                <h2 style="font-size: 3rem; line-height: 1.3;">Ihr Laden läuft. Auch wenn Sie mal nicht da sind.</h2>
+                <p class="centered-text" style="margin-bottom: 40px; color: var(--text-on-dark); opacity:0.8;">Fordern Sie jetzt Ihr unverbindliches Werkstatt-Gespräch an. Finden Sie heraus, wie viel Zeit, Geld und Nerven Sie schon in den nächsten Monaten sparen können.</p>
                 <a href="#" class="cta-button large-cta js-open-modal" style="padding: 20px 40px; font-size: 1.2rem; text-transform: none;">
-                    Kostenloses Erstgespräch buchen
+                    Kostenloses Werkstatt-Gespräch buchen
                 </a>
-                <p class="price-signal">Die Investition in ein System, das Ihnen wöchentlich Stunden spart, beginnt bei einer überschaubaren monatlichen Pauschale.</p>
+                <p class="price-signal">Die Investition ist geringer als Sie denken und rechnet sich oft schon im ersten Monat. Wir arbeiten mit fairen, planbaren Monatspauschalen.</p>
             </div>
         </section>
 
@@ -1003,8 +962,8 @@
                     <h4>Navigation</h4>
                     <ul class="footer-links">
                         <li><a href="#hero">Start</a></li>
-                        <li><a href="#automations">Automationen</a></li>
-                        <li><a href="#testimonials">Kundenstimmen</a></li>
+                        <li><a href="#automations">Lösungen</a></li>
+                        <li><a href="#faq">Fragen & Antworten</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1032,11 +991,11 @@
     <div class="modal-overlay" id="contact-modal">
         <div class="modal-content">
             <button class="modal-close">×</button>
-            <h2>Termin für kostenlose Analyse</h2>
-            <p>Füllen Sie das Formular aus und wir melden uns umgehend bei Ihnen, um einen Termin zu vereinbaren.</p>
+            <h2>Termin für Ihre kostenlose Analyse</h2>
+            <p>Kurz ausfüllen und wir melden uns bei Ihnen, um einen passenden Termin für Ihr Werkstatt-Gespräch zu finden.</p>
             <form action="https://formspree.io/f/xvgqkvbl" method="POST" class="custom-modal-form">
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Ihr Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
@@ -1044,14 +1003,14 @@
                     <input type="text" id="company" name="company" required>
                 </div>
                 <div class="form-group">
-                    <label for="website">Webseite</label>
+                    <label for="website">Webseite (falls vorhanden)</label>
                     <input type="text" id="website" name="website" placeholder="https://beispiel.de">
                 </div>
                 <div class="form-group">
-                    <label for="phone">Telefon</label>
+                    <label for="phone">Telefonnummer</label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
-                <button type="submit" class="cta-button" style="width: 100%; margin-top: 16px; text-transform: none;">Anfrage Senden</button>
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 16px; text-transform: none;">Analyse anfordern</button>
             </form>
         </div>
     </div>
@@ -1064,14 +1023,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             // FAQ content
             const faqContent = [
-                '<p>Nein. Wir nutzen Ihre bestehenden Tools (z. B. Excel, WhatsApp, E Mail) und ergänzen sie lediglich um smarte Automatisierungen. In unserem 90 Tage Onboarding zeigen wir Ihnen Schritt für Schritt, wie Sie Ihre gewohnten Abläufe digital abbilden – ganz ohne große Lernkurve.</p>',
-                '<p>Sie investieren in den ersten drei Wochen ca. 3 × 1 Std. Onboarding Calls und jeweils 30 Minütchen E Mail Support. Danach läuft alles autonom. So sind Sie bereits nach 2–3 Tagen Praxiseinsatz sicher und sparen ab Woche 4 jede Woche mehrere Stunden.</p>',
-                '<p>Es gibt eine einzige monatliche Pauschale – alle Automatisierungen, Updates und Support inklusive. Keine Transaktions oder Nutzer Aufpreise und keine versteckten Zusatzkosten. Sie behalten volle Budget Transparenz über Ihr Dashboard.</p>',
-                '<p>Ja. Unsere digitale Bauakte ist für Offline Nutzung optimiert: Sobald Sie wieder Online sind, synchronisieren sich neue Notizen, Fotos und Abnahmen automatisch. So verlieren Sie nie Daten, selbst in Funklöchern.</p>',
-                '<p>Wir hosten alle Daten DSGVO konform in deutschen Rechenzentren (ISO 27001 zertifiziert) und verschlüsseln Übertragung & Speicherung mit AES 256. Zugriffsrechte lassen sich granular pro Nutzer und Projekt einstellen.</p>',
-                '<p>Absolut. Unser System greift auf Ihre Excel Vorlagen zu, sendet WhatsApp Erinnerungen und verschickt E Mails aus Ihrem Postfach. Sie gewinnen Automatisierung, müssen aber nichts neu lernen oder ersetzen.</p>',
-                '<p>Ja. Unsere Lösungen skalieren von Solo Betrieben bis zu 50 Mitarbeitenden. Gerade kleine Teams profitieren besonders: Sie sparen direkt 10+ Stunden pro Woche, weil Rückfragen, Zettelwirtschaft und manuelle Prozesse wegfallen.</p>',
-                '<p>Wir begleiten Sie mit Praxisschulungen direkt auf Baustelle und im Büro – in 30 Min Sessions. Außerdem erhalten Ihre Mitarbeiter eine Checklisten App, die kinderleicht zu bedienen ist. Mit Aktionsempfehlungen sorgen wir für schnelle Erfolge, damit Ihr Team die Zeitgewinne sofort spürt.</p>'
+                '<p>Nein, ganz im Gegenteil. Wir bauen auf dem auf, was Sie schon nutzen – egal ob Excel, WhatsApp oder E-Mail. Wir verknüpfen das clever miteinander, statt Ihnen ein kompliziertes neues Programm aufzuzwingen. In der Einarbeitung gehen wir das Schritt für Schritt durch, damit alles sitzt.</p>',
+                '<p>Weniger als Sie denken. Planen Sie in den ersten Wochen ein paar kurze Termine mit uns ein. Den Rest machen wir. Das Ziel: Nach wenigen Tagen sollen Sie und Ihre Mannschaft die Vorteile spüren und ab dem ersten Monat jede Woche spürbar Zeit sparen.</p>',
+                '<p>Bei uns gibt es keine bösen Überraschungen. Sie zahlen eine feste monatliche Pauschale. Darin ist alles enthalten: Einrichtung, Anpassungen, Schulung und laufender Support. Keine versteckten Kosten, keine Abrechnung pro Klick. Ein Preis, alles drin. Fair und planbar.</p>',
+                '<p>Ja, absolut. Die digitale Bauakte funktioniert auch im Funkloch. Ihre Leute können alles eintragen, Fotos machen und Notizen hinzufügen. Sobald das Handy wieder Netz hat, wird alles automatisch synchronisiert. Da geht nichts verloren.</p>',
+                '<p>Ihre Daten sind Ihr Kapital. Deshalb sind sie bei uns sicher wie in Fort Knox. Alles wird nach höchsten Standards (DSGVO-konform) auf Servern in Deutschland gespeichert und mehrfach verschlüsselt. Sie allein bestimmen, wer was sehen darf.</p>',
+                '<p>Ja, unbedingt! Das ist ja der Trick. Wir sorgen dafür, dass Ihre gewohnten Werkzeuge wie Excel, Outlook oder WhatsApp einfach besser zusammenspielen. Sie müssen sich nicht umstellen, sondern bekommen einfach mehr Power für die Tools, die Sie eh schon kennen.</p>',
+                '<p>Gerade dann! Das System lohnt sich schon für Betriebe ab 2-3 Mann. Der Chef wird sofort entlastet, die Zettelwirtschaft verschwindet und die ständigen Rückfragen per Telefon werden weniger. Der Gewinn an Zeit und Nerven ist bei kleinen, schlagkräftigen Teams oft am größten.</p>',
+                '<p>Das ist unsere Aufgabe. Wir schulen Ihre Leute direkt im Betrieb – kurz, knackig und auf den Punkt. Wir zeigen jedem den klaren Vorteil für seine tägliche Arbeit. Wenn ein Monteur merkt, dass er weniger suchen und telefonieren muss, ist er sofort an Bord. Wir sorgen für diese Erfolgserlebnisse.</p>'
             ];
             
             const faqAnswerContainers = document.querySelectorAll('#faq .faq-answer-new');
@@ -1163,18 +1122,6 @@
                     y: 30,
                     duration: 1,
                     stagger: 0.2,
-                    ease: "power3.out"
-                });
-
-                gsap.from(".video-embed-wrapper", {
-                     scrollTrigger: {
-                        trigger: ".video-embed-wrapper",
-                        start: "top 90%",
-                        toggleActions: 'play none none none'
-                    },
-                    opacity: 0,
-                    y: 40,
-                    duration: 1,
                     ease: "power3.out"
                 });
                 
