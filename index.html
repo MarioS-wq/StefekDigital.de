@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitarbeitergewinnung für Kanzleien - Kanzlei Brands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS RESET & GLOBAL STYLES --- */
+        :root {
+            /* Colors */
+            --color-gold: #b89b5e;
+            --color-dark-blue: #1d2332;
+            --color-medium-blue: #373d4a;
+            --color-light-gray: #f8f8f8;
+            --color-white: #ffffff;
+            --color-text-dark: #3a3a3a;
+            --color-text-light-gray: #545454;
+            --color-text-light: #c1c1c1;
+            --color-border: #e6e8ea;
+
+            /* Spacing Scale */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 48px;
+            --space-xl: 64px;
+            --space-xxl: 96px;
+
+            /* Other Variables */
+            --container-width: 1280px;
+            --border-radius: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-white);
+        }
+
+        .container {
+            max-width: var(--container-width);
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-dark-blue);
+        }
+
+        h1 { font-size: 44px; margin-bottom: var(--space-sm); }
+        h2 { font-size: 42px; margin-bottom: var(--space-sm); }
+        h3 { font-size: 26px; margin-bottom: var(--space-xs); }
+        h4 { font-size: 20px; margin-bottom: var(--space-xs); }
+        p { margin-bottom: var(--space-sm); }
+        a { color: var(--color-gold); text-decoration: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--color-gold);
+            color: var(--color-white);
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--color-dark-blue);
+            border-color: var(--color-dark-blue);
+        }
+        
+        .btn::after {
+            content: '→';
+            margin-left: 0.5em;
+            transition: margin-left 0.3s ease;
+        }
+
+        .btn:hover::after {
+            margin-left: 1em;
+        }
+        
+        .text-heading {
+            color: var(--color-gold);
+            text-transform: uppercase;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .text-heading h2 {
+            margin-top: var(--space-xs);
+        }
+
+        .custom-ul ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .custom-ul ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+            font-weight: bold;
+        }
+
+        /* --- EDITABLE CONTENT STYLES --- */
+        [contenteditable="true"]:hover {
+            outline: 2px dashed var(--color-gold);
+            background-color: rgba(184, 155, 94, 0.1);
+        }
+        
+        #save-button {
+            margin-top: var(--space-md);
+            margin-right: var(--space-sm);
+        }
+        
+        #status-message {
+            display: inline-block;
+            color: var(--color-white);
+            font-style: italic;
+        }
+
+        /* --- HEADER --- */
+        .main-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: var(--space-sm) 0;
+        }
+        
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .main-header .logo img { max-height: 70px; }
+        .main-nav ul { display: flex; align-items: center; gap: 32px; }
+        .main-nav ul li a { color: var(--color-white); font-size: 16px; padding-bottom: var(--space-xs); position: relative; }
+        .main-nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--color-gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+        .main-nav ul li a:hover::after, .main-nav ul li.current-menu-item a::after { transform: scaleX(1); }
+        .main-nav .btn { padding: 10px 20px; }
+        .hamburger-menu { display: none; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: url('https://placehold.co/1920x1080/1d2332/1d2332?text=BG') no-repeat center center;
+            background-size: cover;
+            padding: 180px 0 var(--space-xxl) 0;
+            color: var(--color-white);
+        }
+        
+        .hero .container { display: flex; align-items: center; gap: var(--space-lg); }
+        .hero-content { flex: 1; }
+        .hero-content h1 { color: var(--color-white); }
+        .hero-content p { font-size: 18px; margin-bottom: var(--space-lg); }
+        .hero-image { flex: 1; max-width: 47%; }
+
+        /* --- FEATURES SECTION --- */
+        .features-section { background: linear-gradient(180deg, rgba(255,255,255,0) 29%, var(--color-dark-blue) 30%); padding: 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); margin-top: calc(-1 * var(--space-xxl)); position: relative; }
+        .feature-card { background: var(--color-white); padding: var(--space-md); box-shadow: 0px 3px 32px 12px rgba(0,0,0,0.05); }
+        .feature-card img { width: 65px; margin-bottom: var(--space-md); }
+        .feature-card h3 { font-size: 20px; font-weight: 600; margin-bottom: var(--space-sm); }
+
+        /* --- PARTNERS SECTION --- */
+        .partners-section { background-color: var(--color-dark-blue); color: var(--color-white); padding: var(--space-xxl) 0; }
+        .partners-section h2 { text-align: center; color: var(--color-white); margin-bottom: var(--space-lg); }
+        .partners-content { display: flex; align-items: center; gap: var(--space-lg); }
+        .partners-map { flex: 1; }
+        .partners-logos { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-sm); }
+        .partners-logos img { width: 100%; height: auto; object-fit: contain; }
+        
+        /* --- PROBLEM (STICKY) SECTION --- */
+        .problem-section { padding: var(--space-xxl) 0; }
+        .problem-container { display: flex; gap: var(--space-lg); }
+        .problem-sticky-col { flex: 1; position: sticky; top: 120px; height: fit-content; }
+        .problem-scroll-col { flex: 1; }
+        .problem-card { display: flex; align-items: center; gap: var(--space-lg); padding: var(--space-lg); border: 2px solid var(--color-border); margin-bottom: var(--space-md); border-radius: var(--border-radius); }
+        .problem-card img { width: 100px; flex-shrink: 0; }
+        .problem-card h3 { margin-bottom: 0.5em; }
+
+        /* --- CONCEPT SECTION --- */
+        .concept-section { background-color: var(--color-dark-blue); padding: var(--space-xxl) 0; }
+        .concept-intro { text-align: center; max-width: 850px; margin: 0 auto var(--space-lg) auto; }
+        .concept-intro h2, .concept-intro p { color: var(--color-white); }
+        .concept-step { display: flex; gap: var(--space-lg); margin-bottom: var(--space-lg); background-size: cover; background-position: center; min-height: 450px; align-items: center; padding: var(--space-lg); border-radius: var(--border-radius); }
+        .concept-step:nth-child(even) { flex-direction: row-reverse; }
+        .concept-image-col { flex: 1; }
+        .concept-text-col { flex: 1; color: var(--color-white); }
+        .concept-text-col p { color: var(--color-white); }
+        .concept-text-col h3 { color: var(--color-white); margin-bottom: 1em; }
+        #step-1 { background-image: linear-gradient(90deg, rgba(29,35,50,0.92) 37%, rgba(29,35,50,0) 93%), url('https://placehold.co/800x450/eeeeee/cccccc?text=BG'); }
+        #step-2 { background-image: linear-gradient(90deg, rgba(255,255,255,0) 7%, rgba(29,35,50,0.9) 63%), url('https://placehold.co/800x450/eeeeee/cccccc?text=BG'); }
+        #step-2 .concept-text-col { text-align: right; }
+        #step-3 { background-image: linear-gradient(90deg, rgba(29,35,50,0.89) 37%, rgba(29,35,50,0.89) 91%), url('https://placehold.co/800x450/eeeeee/cccccc?text=BG'); }
+        #step-4 { background-image: linear-gradient(90deg, rgba(255,255,255,0) 9%, rgba(29,35,50,0.89) 60%), url('https://placehold.co/800x450/eeeeee/cccccc?text=BG'); }
+        #step-4 .concept-text-col { text-align: right; }
+        
+        /* --- WHY US SECTION --- */
+        .why-us-section { padding: var(--space-xxl) 0; background-color: var(--color-light-gray); }
+        .why-us-container { display: flex; align-items: center; gap: var(--space-xl); }
+        .why-us-content, .why-us-image { flex: 1; }
+        .why-us-content .custom-ul ul { margin-top: 1.5em; }
+
+        /* --- CTA OVERLAP SECTION --- */
+        .cta-overlap-section { position: relative; padding-bottom: 160px; }
+        .cta-box { background: var(--color-white) url('https://placehold.co/600x400/eeeeee/cccccc?text=BG') no-repeat center right; background-size: contain; padding: var(--space-lg); box-shadow: 0px -3px 50px 0px rgba(0,0,0,0.08); margin-bottom: -160px; position: relative; z-index: 10; border-radius: var(--border-radius); }
+        .cta-box h2 { font-size: 38px; }
+        .cta-box .custom-ul { margin: var(--space-md) 0; }
+        
+        /* --- CASE STUDIES --- */
+        .case-studies-section { background-color: var(--color-white); padding-top: var(--space-xxl); }
+        .case-studies-intro { text-align: center; max-width: 680px; margin: 0 auto var(--space-xxl); }
+        .case-study { display: flex; align-items: center; gap: var(--space-lg); background-color: var(--color-light-gray); padding: var(--space-lg); margin-bottom: var(--space-lg); border-radius: var(--border-radius); }
+        .case-study:nth-child(odd) { flex-direction: row-reverse; }
+        .case-study-media, .case-study-text { flex: 1; }
+        .case-study-media h3 { font-size: 25px; margin-bottom: var(--space-xs); }
+        .case-study-media p { font-size: 14px; margin-bottom: var(--space-md); }
+        .case-study-text h3 { font-size: 28px; }
+        .case-study-text h4 { font-size: 22px; margin-top: var(--space-md); }
+        .case-study hr { border: 0; height: 3px; background-color: var(--color-gold); width: 178px; margin: var(--space-md) 0; }
+        
+        /* --- TESTIMONIALS --- */
+        .testimonials-section { padding: 200px 0 var(--space-xxl) 0; background: var(--color-dark-blue) url('https://placehold.co/1920x600/1d2332/1d2332?text=BG-Shape') no-repeat center top; background-size: contain; }
+        .testimonials-intro { text-align: center; max-width: 600px; margin: 0 auto var(--space-lg); }
+        .testimonials-intro h2, .testimonials-intro p { color: var(--color-white); }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+        .testimonial-card img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: var(--space-sm); }
+        .testimonial-card .rating { color: var(--color-gold); font-size: 22px; margin-bottom: var(--space-sm); }
+        .testimonial-card p { color: var(--color-white); }
+        .testimonial-name { font-weight: 600; font-style: italic; font-size: 20px; color: var(--color-white); margin-top: var(--space-sm); }
+        .testimonial-company { text-transform: uppercase; font-size: 12px; color: var(--color-gold); letter-spacing: 2px; }
+
+        /* --- STATS SECTION --- */
+        .stats-section { padding: var(--space-xxl) 0; background-color: var(--color-light-gray); }
+        .stats-intro { text-align: center; max-width: 830px; margin: 0 auto var(--space-lg); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .stat-card { text-align: left; }
+        .stat-card img { width: 71px; margin-bottom: var(--space-sm); }
+        .stat-card h3 { font-size: 18px; font-weight: 600; margin-bottom: var(--space-xs); }
+        .stat-card p { color: var(--color-text-light-gray); font-size: 14px; }
+        
+        /* --- STRATEGY CALL SECTION --- */
+        .strategy-section { background-color: var(--color-dark-blue); color: var(--color-white); padding: var(--space-xxl) 0; }
+        .strategy-intro { display: flex; align-items: center; gap: var(--space-lg); margin-bottom: var(--space-lg); }
+        .strategy-intro > div { flex: 1; }
+        .strategy-intro h2, .strategy-intro p { color: var(--color-white); }
+        .strategy-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .strategy-step-card { background-color: var(--color-medium-blue); border-radius: var(--border-radius); overflow: hidden; }
+        .strategy-step-card .card-content { padding: var(--space-md); }
+        .strategy-step-card h3 { color: var(--color-white); font-size: 24px; margin-bottom: 0.5em; }
+        .strategy-step-card p { color: var(--color-white); }
+
+        /* --- ABOUT US SECTION --- */
+        .about-section { padding: var(--space-xxl) 0; }
+        .about-content { display: flex; align-items: center; gap: var(--space-xl); }
+        .about-image, .about-text { flex: 1; }
+        .about-text h2 { margin-bottom: 1em; }
+        .about-text .btn { margin-top: 1em; }
+        
+        /* --- MEDIA SECTION --- */
+        .media-section { padding: var(--space-xxl) 0; background-color: var(--color-dark-blue); }
+        .media-intro { text-align: center; max-width: 760px; margin: 0 auto var(--space-lg); }
+        .media-intro h2, .media-intro p { color: var(--color-white); }
+        .press-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .press-card { background: var(--color-medium-blue); border-radius: var(--border-radius); overflow: hidden; }
+        .press-card-content { padding: var(--space-md); }
+        .press-card-content h3 { font-size: 22px; color: var(--color-white); margin-bottom: 0.5em; }
+        .press-card-content p { font-size: 14px; color: var(--color-white); margin-bottom: 1em; }
+        .press-card-content .btn { background: transparent; color: var(--color-gold); padding: 0; }
+        .press-card-content .btn:hover { background: transparent; color: var(--color-white); }
+        
+        /* --- LOCATION SECTION --- */
+        .location-section { padding: var(--space-xxl) 0; }
+        .location-content { display: flex; align-items: center; gap: var(--space-xl); }
+        .location-text, .location-gallery { flex: 1; }
+        .location-text h2 { margin-bottom: 1em; }
+        .location-contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: var(--space-sm); }
+        .location-contact-item img { width: 20px; }
+        .location-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .gallery-item img { border-radius: var(--border-radius); }
+        .gallery-item:nth-child(1) { grid-column: 1 / 2; grid-row: 1 / 3; }
+        .gallery-item:nth-child(2) { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .gallery-item:nth-child(3) { grid-column: 3 / 4; grid-row: 1 / 2; }
+        .gallery-item:nth-child(4) { grid-column: 3 / 4; grid-row: 2 / 3; }
+        .gallery-item:nth-child(5) { grid-column: 2 / 3; grid-row: 2 / 3; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- REPORT SECTION --- */
+        .report-section { padding: var(--space-lg) 0; background-color: var(--color-dark-blue); }
+        .report-content { display: flex; align-items: center; gap: var(--space-xl); }
+        .report-image, .report-text { flex: 1; }
+        .report-text h2, .report-text h5, .report-text ul li { color: var(--color-white); }
+        .report-text h5 { margin: var(--space-md) 0 var(--space-sm) 0; font-size: 18px; }
+        .report-text .btn { margin-top: var(--space-md); }
+
+        /* --- FAQ SECTION --- */
+        .faq-section { padding: var(--space-xxl) 0; }
+        .faq-intro { text-align: center; max-width: 550px; margin: 0 auto var(--space-lg); }
+        .faq-accordion { max-width: 780px; margin: 0 auto; }
+        .faq-accordion details { border-bottom: 1px solid var(--color-gold); padding: var(--space-sm) 0; }
+        .faq-accordion summary { font-weight: 700; font-size: 19px; color: var(--color-dark-blue); cursor: pointer; list-style: none; position: relative; padding-right: 30px; }
+        .faq-accordion summary::-webkit-details-marker { display: none; }
+        .faq-accordion summary::after { content: '+'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); color: var(--color-gold); font-size: 24px; }
+        .faq-accordion details[open] summary::after { content: '−'; }
+        .faq-accordion .faq-content { padding-top: var(--space-sm); }
+
+        /* --- FOOTER --- */
+        .main-footer { background: var(--color-dark-blue); color: var(--color-white); padding-top: var(--space-xl); }
+        .footer-widgets { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); padding-bottom: var(--space-lg); }
+        .footer-widget h4 { font-size: 16px; font-weight: 700; margin-bottom: 1em; }
+        .footer-widget ul li { margin-bottom: 0.5em; }
+        .footer-widget a { color: var(--color-text-light); }
+        .footer-widget a:hover { color: var(--color-gold); }
+        .footer-contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: var(--space-sm); }
+        .footer-contact-item img { width: 20px; }
+        .social-links { display: flex; flex-direction: column; gap: 10px; }
+        .social-links a { display: flex; align-items: center; gap: 10px; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) 0; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-bottom .logo img { max-width: 172px; }
+        .footer-bottom p { font-size: 14px; color: var(--color-text-light); margin: 0; }
+
+        /* --- RESPONSIVE STYLES --- */
+        @media (max-width: 980px) {
+            h1 { font-size: 36px; } h2 { font-size: 32px; } .container { width: 95%; }
+            .main-nav { display: none; } .hamburger-menu { display: block; font-size: 30px; color: var(--color-gold); cursor: pointer; }
+            .hero .container { flex-direction: column; } .hero { padding: 120px 0 60px 0; text-align: center; } .hero-content, .hero-image { max-width: 100%; }
+            .hero-image { margin-top: 30px; } .video-thumbnail { margin-left: auto; margin-right: auto; } .hero-cert { margin: 20px auto 0 auto; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); margin-top: -80px; }
+            .partners-content { flex-direction: column; } .partners-logos { grid-template-columns: repeat(2, 1fr); max-width: 500px; margin-top: 30px; }
+            .problem-container { flex-direction: column; } .problem-sticky-col { position: static; }
+            .concept-step, .concept-step:nth-child(even) { flex-direction: column; text-align: left !important; } .concept-image-col { display: none; }
+            .why-us-container { flex-direction: column; } .why-us-image { margin-top: 30px; }
+            .cta-box { margin-bottom: -150px; text-align: center; }
+            .case-study, .case-study:nth-child(odd) { flex-direction: column-reverse; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .strategy-intro { flex-direction: column; text-align: center; } .strategy-steps { grid-template-columns: 1fr; }
+            .about-content { flex-direction: column; } .about-image { order: 2; } .about-text { order: 1; }
+            .press-grid { grid-template-columns: 1fr; }
+            .location-content { flex-direction: column; } .location-gallery { margin-top: 30px; }
+            .report-content { flex-direction: column; }
+            .footer-widgets { grid-template-columns: repeat(2, 1fr); }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        }
+
+        @media (max-width: 767px) {
+            h1 { font-size: 28px; } h2 { font-size: 26px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .partners-logos { grid-template-columns: 1fr; }
+            .cta-box { background-image: linear-gradient(90deg, rgba(255,255,255,0.83) 0%, rgba(255,255,255,0.53) 99%), url('https://placehold.co/600x400/eeeeee/cccccc?text=BG'); background-position: center; margin-bottom: -200px; }
+            .cta-box h2 { font-size: 24px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .footer-widgets { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="https://placehold.co/200x90/1d2332/ffffff?text=Kanzlei+Brands" alt="Kanzlei Brands Logo">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li class="current-menu-item"><a href="#">Home</a></li>
+                    <li><a href="#">Über uns</a></li>
+                    <li><a href="#">Referenzen</a></li>
+                    <li><a href="#">Report</a></li>
+                    <li><a href="#">Presse</a></li>
+                    <li><a href="#">Karriere</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#" class="btn">Erstgespräch vereinbaren</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu">☰</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 id="main-headline">Als Kanzlei qualifiziertes Fachpersonal gewinnen und zukunftsfähig bleiben</h1>
+                    <p id="intro-text">Deutschlandweites Vertrauen bei Steuerberatern, Notaren, Wirtschaftsprüfern und Rechtsanwälten. 600+ Partner-Kanzleien. Und mehr als 20.000 generierte Bewerbungen haben gezeigt: Wir sind der Kanzlei-Partner.</p>
+                    
+                    <a href="#" class="btn">Erstgespräch vereinbaren</a>
+                    <button id="save-button" class="btn" style="background-color: var(--color-medium-blue); border-color: var(--color-medium-blue);">Änderungen speichern</button>
+                    <p id="status-message"></p>
+
+                </div>
+                <div class="hero-image">
+                    <img src="https://placehold.co/550x580/e0e0e0/999999?text=Hero+Image" alt="Platzhalterbild für den Hero-Bereich">
+                </div>
+            </div>
+        </section>
+
+        <!-- The rest of the page remains the same -->
+        <section class="features-section">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <img src="https://placehold.co/65x65/e0e0e0/999999?text=Icon" alt="Icon Arbeitgeber erhöhen">
+                        <h3>Attraktivität als Arbeitgeber erhöhen</h3>
+                        <p>Eine wirkungsvolle Arbeitgebermarke erhöht die Sichtbarkeit Ihrer Kanzlei bei den passenden Fachkräften.</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="https://placehold.co/65x65/e0e0e0/999999?text=Icon" alt="Icon Bewerbungen erhalten">
+                        <h3>Mehr Bewerbungen erhalten</h3>
+                        <p>Sie erhalten auf wöchentlicher Basis qualifizierte Bewerbungen von Fachleuten aus Ihrer Region.</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="https://placehold.co/65x65/e0e0e0/999999?text=Icon" alt="Icon Mandanten annehmen">
+                        <h3>Lukrative Mandanten annehmen</h3>
+                        <p>Keine Engpässe mehr bei der Besetzung Ihrer Stellen. Freie Fahrt für Ihr Unternehmenswachstum.</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="https://placehold.co/65x65/e0e0e0/999999?text=Icon" alt="Icon Beratungsqualität">
+                        <h3>Erstklassige Beratungsqualität sicherstellen</h3>
+                        <p>Sie können sich wieder um Ihre Mandanten kümmern und eine gute Beratungsqualität garantieren.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="partners-section">
+            <div class="container">
+                <h2>Deutschlandweit vertrauen uns über 600 Partner-Kanzleien</h2>
+                <div class="partners-content">
+                    <div class="partners-map">
+                        <img src="https://placehold.co/600x800/e0e0e0/999999?text=Deutschlandkarte" alt="Karte von Deutschland mit Partner-Logos">
+                    </div>
+                    <div class="partners-logos">
+                        <img src="https://placehold.co/150x90/e0e0e0/999999?text=Logo" alt="Partner Logo">
+                        <img src="https://placehold.co/150x90/e0e0e0/999999?text=Logo" alt="Partner Logo">
+                        <img src="https://placehold.co/150x90/e0e0e0/999999?text=Logo" alt="Partner Logo">
+                        <img src="https://placehold.co/150x90/e0e0e0/999999?text=Logo" alt="Partner Logo">
+                        <img src="https://placehold.co/150x90/e0e0e0/999999?text=Logo" alt="Partner Logo">
+                        <img src="https://placehold.co/150x90/e0e0e0/999999?text=Logo" alt="Partner Logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="problem-section">
+            <div class="container problem-container">
+                <div class="problem-sticky-col">
+                    <div class="text-heading">
+                        <p>EINE UMFRAGE VON DATEV ZEIGT:</p>
+                        <h2>„88 % der Kanzleien sind deutlich überlastet“</h2>
+                    </div>
+                    <p>Als Kanzlei-Inhaber kennen Sie das sicherlich auch: Durch den Gesetzgeber kommen zusätzlich zum Tagesgeschäft jedes Jahr neue Aufgaben wie die Corona-Überbrückung oder die Grundstückssteuerreform hinzu.</p>
+                    <p>Und vermutlich machen auch Ihre Mitarbeiter ständig Überstunden, während gleichzeitig der Bewerbermarkt einfach wie „leer gefegt“ ist.</p>
+                </div>
+                <div class="problem-scroll-col">
+                    <div class="problem-card">
+                        <img src="https://placehold.co/100x100/e0e0e0/999999?text=Icon" alt="Icon Fachkräftemangel">
+                        <div>
+                            <h3>Der Fachkräftemangel hat sich verschärft</h3>
+                            <p>Der Fachkräftemangel hat sich aufgrund der Demografie und der sich schnell wandelnden Welt verschärft und wird sich auch in den nächsten Jahren weiter zuspitzen.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <img src="https://placehold.co/100x100/e0e0e0/999999?text=Icon" alt="Icon Bewerbungen">
+                        <div>
+                            <h3>Sie erhalten kaum noch Bewerbungen</h3>
+                            <p>Je nach Standort gibt es entweder wenige Bewerber auf dem Markt oder viele andere Arbeitgeber. Ist Ihre Kanzlei dann nicht attraktiv positioniert, bleiben Bewerbungen aus.</p>
+                        </div>
+                    </div>
+                     <div class="problem-card">
+                        <img src="https://placehold.co/100x100/e0e0e0/999999?text=Icon" alt="Icon Recruiting Methoden">
+                        <div>
+                            <h3>Neue Recruiting Methoden greifen ebenfalls nicht</h3>
+                            <p>Um den Fachkräftemangel zu lösen, versuchen es Kanzleien mit modernen Methoden wie „Social Media Recruiting“. Trotz der Versprechungen von Agenturen bleiben aber auch hier die Ergebnisse aus.</p>
+                        </div>
+                    </div>
+                     <div class="problem-card">
+                        <img src="https://placehold.co/100x100/e0e0e0/999999?text=Icon" alt="Icon Überstunden">
+                        <div>
+                            <h3>Überstunden und Fluktuation</h3>
+                            <p>Durch die chronische Unterbesetzung ist das Betriebsklima angespannt und es ist nur noch eine Frage der Zeit, bis die ersten Krankmeldungen oder Kündigungen eingehen.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <img src="https://placehold.co/100x100/e0e0e0/999999?text=Icon" alt="Icon Zukunftsfähigkeit">
+                        <div>
+                            <h3>Gefährdung der Zukunftsfähigkeit</h3>
+                            <p>Durch die Fluktuation einzelner Mitarbeiter steigt der Druck auf Ihr Stammpersonal, was schnell zu einer gefährlichen Abwärtsspirale führen kann.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="strategy-section">
+            <div class="container">
+                <div class="strategy-intro">
+                    <div>
+                        <p class="text-heading">Strategiegespräch</p>
+                        <h2>Was passiert in dem kostenlosen Strategiegespräch?</h2>
+                    </div>
+                    <div>
+                        <p>Wir zeigen Ihnen Wege auf, wie Sie sich als Arbeitgeber für die nächsten Jahre richtig aufstellen, um der attraktivste Arbeitgeber Ihrer Region und Branche zu werden – nicht mehr und nicht weniger.</p>
+                    </div>
+                </div>
+                <div class="strategy-steps">
+                    <div class="strategy-step-card">
+                        <img src="https://placehold.co/550x342/e0e0e0/999999?text=Meeting" alt="Team meeting">
+                        <div class="card-content">
+                            <h3>Einblicke in unsere Methode</h3>
+                            <p>Sie erhalten einen kompletten Einblick in unsere Methode und erfahren, welche psychologischen Wechselmotive bei Bewerbern entscheidend sind, damit sich diese bei Ihnen melden. Allein diese Informationen bringen Sie schon deutlich weiter.</p>
+                        </div>
+                    </div>
+                    <div class="strategy-step-card">
+                        <img src="https://placehold.co/550x341/e0e0e0/999999?text=Planung" alt="Hands on a document">
+                        <div class="card-content">
+                            <h3>Individuelle Strategie</h3>
+                            <p>Anhand Ihrer Situation erarbeiten wir gemeinsam einen Plan, der genau auf die Bedürfnisse Ihrer Kanzlei zugeschnitten ist.</p>
+                        </div>
+                    </div>
+                    <div class="strategy-step-card">
+                        <img src="https://placehold.co/550x342/e0e0e0/999999?text=Klarheit" alt="Two people talking">
+                        <div class="card-content">
+                            <h3>Sie haben Klarheit</h3>
+                            <p>Nach unserem Gespräch haben Sie totale Klarheit über Ihre Situation und die nächsten Schritte, um qualifizierte Fachkräfte zu gewinnen.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: var(--space-lg);">
+                    <a href="#" class="btn">Erstgespräch vereinbaren</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://placehold.co/600x500/e0e0e0/999999?text=Teamfoto" alt="Das Team von Kanzlei Brands">
+                    </div>
+                    <div class="about-text">
+                        <p class="text-heading">Über uns</p>
+                        <h2>Über Kanzlei Brands</h2>
+                        <p>Kanzlei Brands ist eine der führenden Agenturen zum Aufbau einer attraktiven Arbeitgebermarke und zur Rekrutierung qualifizierter Mitarbeiter.</p>
+                        <p>600+ Kanzleien von Steuerberatern, Wirtschaftsprüfern, Notaren und Rechtsanwälten vertrauen auf unsere Methode.</p>
+                        <p>Unsere Markenzeichen sind eine hohe Professionalität, langjährige Erfahrung, eine ergebnisorientierte Digitalisierung und vor allem unsere umfassende Transparenz.</p>
+                        <a href="#" class="btn" style="background-color: transparent; border-color: var(--color-gold); color: var(--color-gold);">Mehr über uns erfahren</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="media-section">
+            <div class="container">
+                <div class="media-intro">
+                    <p class="text-heading">KANZLEI BRANDS IN DEN MEDIEN</p>
+                    <h2>Renommierte Fachzeitschriften berichten über unsere Methode.</h2>
+                </div>
+                <div class="press-grid">
+                    <div class="press-card">
+                        <img src="https://placehold.co/600x450/e0e0e0/999999?text=Pressebild" alt="Unternehmer Journal">
+                        <div class="press-card-content">
+                            <h3>Lukas Lierk: So gewinnen Kanzleien passende Fachkräfte</h3>
+                            <p>Unternehmerjournal – 2022</p>
+                            <a href="#" class="btn">zum Artikel</a>
+                        </div>
+                    </div>
+                    <div class="press-card">
+                        <img src="https://placehold.co/600x450/e0e0e0/999999?text=Pressebild" alt="Online Marketing Magazin">
+                        <div class="press-card-content">
+                            <h3>Wie Kanzleien dank Kanzlei Brands die passenden Fachkräfte finden</h3>
+                            <p>Online Marketing Magazin – 2022</p>
+                            <a href="#" class="btn">zum Artikel</a>
+                        </div>
+                    </div>
+                    <div class="press-card">
+                        <img src="https://placehold.co/600x450/e0e0e0/999999?text=Pressebild" alt="Süddeutsche Zeitung">
+                        <div class="press-card-content">
+                            <h3>Weshalb sich Kanzleien bei der Gewinnung von Fachkräften auf Kanzlei Brands verlassen</h3>
+                            <p>Süddeutsche Zeitung – 2022</p>
+                            <a href="#" class="btn">zum Artikel</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: var(--space-lg);">
+                    <a href="#" class="btn" style="background: transparent; border-color: white; color: white;">Zur Presseseite</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="location-section">
+            <div class="container">
+                <div class="location-content">
+                    <div class="location-text">
+                        <p class="text-heading">Standort</p>
+                        <h2>Unser exklusiver Standort</h2>
+                        <p>Unser modernes Büro befindet sich in Hamburg direkt in der Mönckebergstraße. Aus dieser begehrten und wunderschönen Lage betreuen wir unsere Kunden aus ganz Deutschland.</p>
+                        <p>Auch wenn unsere Arbeitsweise ein Vor-Ort-Treffen nicht zwingend voraussetzt, so sind Sie selbstverständlich jederzeit herzlich bei uns willkommen. Hamburg ist schließlich immer eine Reise wert.</p>
+                        <div class="location-contact-item">
+                            <img src="https://placehold.co/20x20/e0e0e0/999999?text=" alt="Location Icon">
+                            <span>Mönckebergstraße 17, 20095 Hamburg</span>
+                        </div>
+                        <div class="location-contact-item">
+                            <img src="https://placehold.co/20x20/e0e0e0/999999?text=" alt="Phone Icon">
+                            <span>040 238 359 780</span>
+                        </div>
+                         <div class="location-contact-item">
+                            <img src="https://placehold.co/20x20/e0e0e0/999999?text=" alt="Email Icon">
+                            <span>info@kanzlei-brands.de</span>
+                        </div>
+                        <a href="#" class="btn">Erstgespräch vereinbaren</a>
+                    </div>
+                    <div class="location-gallery">
+                         <div class="gallery-item"><img src="https://placehold.co/300x400/e0e0e0/999999?text=Büro" alt="Bürofoto 1"></div>
+                         <div class="gallery-item"><img src="https://placehold.co/300x200/e0e0e0/999999?text=Büro" alt="Bürofoto 2"></div>
+                         <div class="gallery-item"><img src="https://placehold.co/300x200/e0e0e0/999999?text=Büro" alt="Bürofoto 3"></div>
+                         <div class="gallery-item"><img src="https://placehold.co/300x200/e0e0e0/999999?text=Büro" alt="Bürofoto 4"></div>
+                         <div class="gallery-item"><img src="https://placehold.co/300x200/e0e0e0/999999?text=Büro" alt="Bürofoto 5"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <div class="container">
+                <div class="report-content">
+                    <div class="report-image">
+                        <img src="https://placehold.co/500x600/e0e0e0/999999?text=Magazin" alt="Magazin Mockup">
+                    </div>
+                    <div class="report-text">
+                        <p class="text-heading">Report Anfordern</p>
+                        <h2>Kostenloser Fachreport für Kanzleien</h2>
+                        <h5>Erfahren Sie in diesem Fach-Magazin …</h5>
+                        <div class="custom-ul">
+                            <ul>
+                                <li>den wahren Grund, warum Sie bereits seit Monaten keine passenden Bewerbungen mehr erhalten</li>
+                                <li>wie Mitarbeitergewinnung in der Steuerbranche und bei anderen Kanzleien wirklich funktioniert und welche Fehler Sie dabei unbedingt vermeiden sollten</li>
+                                <li>wie Sie qualifizierte Mitarbeiter emotional an sich binden und nicht alle paar Monate von vorne beginnen müssen</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="btn">Mehr erfahren</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="faq-section">
+            <div class="container">
+                <div class="faq-intro">
+                     <p class="text-heading">FAQ</p>
+                     <h2>Häufig gestellte Fragen</h2>
+                     <p>Sofern Sie keine Antwort auf Ihre Fragen finden, zögern Sie nicht uns zu kontaktieren.</p>
+                </div>
+                <div class="faq-accordion">
+                    <details>
+                        <summary>Wann kann ich mit den ersten Bewerbungen rechnen?</summary>
+                        <div class="faq-content">
+                            <p>Unsere Erfahrung aus den von uns betreuten Kanzleien zeigt, dass die ersten Bewerbungen in der Regel nach 2–3 Tagen bei Ihnen eintreffen werden. Gerne erstellen wir Ihnen in einer individuellen Beratung eine Kampagnenprognose, sodass Sie Klarheit haben.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Funktioniert das auch in meiner Region?</summary>
+                         <div class="faq-content">
+                            <p>Ja, unsere Methode ist so konzipiert, dass sie sich sowohl in ländlichen Regionen mit relativ geringem Bewerberaufkommen als auch in städtischen Ballungsgebieten mit hoher Konkurrenzsituation einsetzen lässt.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Was unterscheidet euch von klassischen HR-Agenturen?</summary>
+                         <div class="faq-content">
+                            <p>Vor allem haben wir verstanden, dass der Aufbau einer attraktiven Arbeitgebermarke entscheidend ist, um nachhaltig qualifizierte Mitarbeiter zu gewinnen. Der Ansatz anderer Agenturen konzentriert sich nur auf Social Media als Allheilmittel und kann daher isoliert nicht funktionieren. Als einer der führenden Experten verfügen wir über einzigartiges Fachwissen und wissen genau, was funktioniert und was nicht.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Wie viel Zeit muss ich investieren?</summary>
+                         <div class="faq-content">
+                            <p>Durch die hohe Systematisierung und Digitalisierung unserer Prozesse haben Sie während der Zusammenarbeit einen sehr geringen Zeitaufwand. Ihre Aufmerksamkeit und Mitarbeit wird nur in der Anfangsphase und bei regelmäßigen Rückmeldungen in Anspruch genommen.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Benötige ich eine eigene Social-Media-Präsenz?</summary>
+                         <div class="faq-content">
+                            <p>Ein Unternehmensprofil auf den jeweiligen sozialen Netzwerken, die wir aufgrund unserer Vorab-Analysen adressieren, wäre vor Beginn der Zusammenarbeit von Vorteil, ist aber nicht nötig. Andernfalls erstellen wir die jeweiligen Profile für Sie im Rahmen der Zusammenarbeit.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Fungiert Kanzlei Brands als Headhunter oder Personalvermittler?</summary>
+                         <div class="faq-content">
+                            <p>Nein, wir verzichten bewusst auf jegliche aktive Abwerbung aus anderen Kanzleien, da wir wissen, zu welchen Schwierigkeiten dies führen kann. Wir sind nicht auf eine schnelle Provision aus, sondern wollen Ihnen mit unserer Methode langfristig helfen.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-overlap-section" style="padding-bottom:0;">
+            <div class="container">
+                <div class="cta-box" style="margin-bottom:0;">
+                    <h2>Vereinbaren Sie jetzt<br>Ihr Strategiegespräch</h2>
+                    <div class="custom-ul">
+                        <ul>
+                            <li>15-minütige Datentransparenz und Analyse Ihrer aktuellen Situation</li>
+                            <li>In 90 Minuten entwickeln wir gemeinsam eine auf Ihre Kanzlei zugeschnittene Strategie</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn">Erstgespräch vereinbaren</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+            <div class="container">
+                <div class="footer-widgets">
+                    <div class="footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Über uns</a></li>
+                            <li><a href="#">Referenzen</a></li>
+                            <li><a href="#">Report</a></li>
+                            <li><a href="#">Presse</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Karriere</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h4>Rechtliches</h4>
+                        <ul>
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">Datenschutz</a></li>
+                            <li><a href="#">AGB</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h4>Kontakt</h4>
+                        <div class="footer-contact-item">
+                            <img src="https://placehold.co/20x20/e0e0e0/999999?text=" alt="Location Icon">
+                            <span>Mönckebergstraße 17, 20095 Hamburg</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <img src="https://placehold.co/20x20/e0e0e0/999999?text=" alt="Phone Icon">
+                            <span>040 238 359 780</span>
+                        </div>
+                         <div class="footer-contact-item">
+                            <img src="https://placehold.co/20x20/e0e0e0/999999?text=" alt="Email Icon">
+                            <span>info@kanzlei-brands.de</span>
+                        </div>
+                    </div>
+                     <div class="footer-widget">
+                        <h4>Plattformen</h4>
+                        <ul class="social-links">
+                            <li><a href="#">Youtube</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Facebook</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                     <a href="#" class="logo">
+                        <img src="https://placehold.co/200x90/1d2332/ffffff?text=Kanzlei+Brands" alt="Kanzlei Brands Logo">
+                    </a>
+                    <p>© Copyright 2024 Kanzlei Brands</p>
+                </div>
+            </div>
+        </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Alle relevanten Textelemente finden und editierbar machen
+            const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, a, span, .btn, summary');
+            let editableCounter = 0;
+
+            textElements.forEach(el => {
+                // Bestimmte Elemente ausschließen, z.B. das Status-Feedback oder Elemente mit speziellen Funktionen
+                if (el.id === 'status-message' || el.closest('.non-editable') || el.classList.contains('hamburger-menu')) {
+                    return;
+                }
+                
+                // Dem Element eine eindeutige ID geben, falls es keine hat
+                if (!el.id) {
+                    el.id = `editable-text-${editableCounter++}`;
+                }
+
+                // Das Element editierbar machen
+                el.setAttribute('contenteditable', 'true');
+            });
+
+            // 2. Gespeicherte Inhalte laden
+            fetch('content.json?t=' + new Date().getTime()) // Cache umgehen
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Keine content.json gefunden oder Fehler beim Laden.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Alle gespeicherten Inhalte durchgehen und den Elementen zuweisen
+                    for (const elementId in data) {
+                        const element = document.getElementById(elementId);
+                        if (element) {
+                            element.innerHTML = data[elementId];
+                        }
+                    }
+                })
+                .catch(error => console.warn('Hinweis: ' + error.message + ' Standardtexte werden verwendet.'));
+
+            // 3. Speicher-Button-Funktionalität
+            document.getElementById('save-button').addEventListener('click', () => {
+                const contentToSave = {};
+                const editableElements = document.querySelectorAll('[contenteditable="true"]');
+                
+                // Alle editierbaren Inhalte in einem Objekt sammeln
+                editableElements.forEach(el => {
+                    if (el.id) { // Nur Elemente mit ID speichern
+                        contentToSave[el.id] = el.innerHTML;
+                    }
+                });
+
+                const statusMsg = document.getElementById('status-message');
+                statusMsg.style.color = 'var(--color-white)';
+                statusMsg.innerText = 'Speichervorgang läuft...';
+
+                // Daten an das Server-Skript senden
+                fetch('save-content.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(contentToSave),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Server-Antwort war nicht ok.');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    statusMsg.innerText = data;
+                    statusMsg.style.color = 'lightgreen';
+                    setTimeout(() => { statusMsg.innerText = ''; }, 3000);
+                })
+                .catch(error => {
+                    console.error('Fehler beim Speichern:', error);
+                    statusMsg.innerText = 'Fehler beim Speichern! (PHP-Datei vorhanden?)';
+                    statusMsg.style.color = 'red';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
