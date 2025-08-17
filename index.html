@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefek Digital - Zeit & Kosten sparen für Hausverwaltungen & Makler</title>
+    
+    <!-- Preconnect to critical domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://res.cloudinary.com">
+
+    <!-- Load fonts asynchronously without blocking rendering -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+    
+    <style>
+        /* --- CSS RESET & GLOBAL STYLES --- */
+        :root {
+            /* Colors */
+            --color-premium-cta: #C5A465; /* Premium Gold for CTAs & Icons */
+            --color-silver: #BDBDBD; /* Replaces Gold */
+            --color-anthracite-dark: #2E2E2E; /* Replaces Dark Blue */
+            --color-anthracite-medium: #424242; /* Replaces Medium Blue */
+            --color-light-gray: #f8f8f8;
+            --color-white: #ffffff;
+            --color-text-dark: #3a3a3a;
+            --color-text-light-gray: #545454;
+            --color-text-light: #E0E0E0; /* Adjusted for better contrast on Anthracite */
+            --color-border: #E0E0E0; /* Adjusted border color */
+
+            /* Spacing Scale */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 48px;
+            --space-xl: 64px;
+            --space-xxl: 96px;
+
+            /* Other Variables */
+            --container-max-width: 1280px;
+            --border-radius: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-white);
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-anthracite-dark);
+        }
+
+        h1 { font-size: 32px; margin-bottom: var(--space-sm); }
+        h2 { font-size: 28px; margin-bottom: var(--space-sm); }
+        h3 { font-size: 22px; margin-bottom: var(--space-xs); }
+        h4 { font-size: 20px; margin-bottom: var(--space-xs); }
+        p { margin-bottom: var(--space-sm); }
+        a { color: var(--color-silver); text-decoration: none; }
+        img, svg { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+        
+        section {
+            padding: var(--space-xl) 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--color-premium-cta);
+            color: var(--color-anthracite-dark);
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-premium-cta);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--color-anthracite-dark);
+            border-color: var(--color-anthracite-dark);
+            color: var(--color-white);
+        }
+        
+        .btn::after {
+            content: '→';
+            margin-left: 0.5em;
+            transition: margin-left 0.3s ease;
+        }
+
+        .btn:hover::after {
+            margin-left: 1em;
+        }
+        
+        .text-heading {
+            color: var(--color-silver);
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto var(--space-lg) auto;
+        }
+        
+        .custom-ul ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .custom-ul ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-premium-cta);
+            font-weight: bold;
+        }
+
+        /* --- ANIMATION STYLES --- */
+        @keyframes subtle-glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 2px rgba(197, 164, 101, 0.4));
+            }
+            50% {
+                filter: drop-shadow(0 0 6px rgba(197, 164, 101, 0.7));
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Staggered animation delays */
+        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+        .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+        .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+
+
+        /* --- HEADER & NAVIGATION --- */
+        .main-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: var(--space-sm) 0;
+        }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .main-header .logo img { max-height: 55px; filter: brightness(0) invert(1); }
+        .main-nav { display: none; } /* Hidden by default, shown on desktop */
+        .main-nav ul { display: flex; align-items: center; gap: 32px; }
+        .main-nav ul li a { color: var(--color-white); font-size: 16px; padding-bottom: var(--space-xs); position: relative; }
+        .main-nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--color-premium-cta); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+        .main-nav ul li a:hover::after, .main-nav ul li.current-menu-item a::after { transform: scaleX(1); }
+        .main-nav .btn { padding: 10px 20px; }
+        .hamburger-menu { display: block; font-size: 30px; color: var(--color-premium-cta); cursor: pointer; }
+
+        /* --- MOBILE NAVIGATION --- */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-anthracite-dark);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav.is-open {
+            transform: translateX(0);
+        }
+        .mobile-nav ul {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            text-align: center;
+        }
+        .mobile-nav ul li a {
+            color: var(--color-white);
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .mobile-nav .btn { margin-top: var(--space-lg); }
+        .mobile-nav-close {
+            position: absolute;
+            top: 30px;
+            right: 5%;
+            font-size: 40px;
+            color: var(--color-premium-cta);
+            cursor: pointer;
+        }
+        
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: var(--color-anthracite-dark);
+            padding: 140px 0 80px 0;
+            color: var(--color-white);
+            text-align: center;
+        }
+        .hero .container { display: flex; flex-direction: column; align-items: center; gap: var(--space-lg); }
+        .hero-content .pre-headline {
+            color: var(--color-silver);
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: var(--space-sm);
+        }
+        .hero-content h1 { color: var(--color-white); }
+        .hero-content p { font-size: 18px; margin-bottom: var(--space-lg); max-width: 650px; margin-left: auto; margin-right: auto;}
+        .hero .btn { display: block; width: 100%; max-width: 300px; margin: 0 auto;}
+        .hero-image { overflow: hidden; border-radius: var(--border-radius); }
+        .hero-image img { transition: transform 0.4s ease; }
+        .hero-image:hover img { transform: scale(1.05); }
+
+        /* --- FEATURES SECTION --- */
+        .features-section { background: var(--color-anthracite-dark); padding: 0 0 var(--space-xl) 0; }
+        .features-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-md); margin-top: -80px; position: relative; }
+        .feature-card { background: var(--color-white); padding: var(--space-md); box-shadow: 0px 3px 32px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0px 10px 40px 12px rgba(0,0,0,0.08); }
+        .feature-card svg { width: 55px; height: 55px; margin-bottom: var(--space-md); color: var(--color-premium-cta); animation: subtle-glow 3s ease-in-out infinite; }
+        .feature-card h3 { font-size: 20px; font-weight: 600; margin-bottom: var(--space-sm); }
+        
+        /* --- PROBLEM (STICKY) SECTION --- */
+        .problem-container { display: flex; flex-direction: column; gap: var(--space-lg); }
+        .problem-card { display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); border: 2px solid var(--color-border); margin-bottom: var(--space-md); border-radius: var(--border-radius); text-align: left; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .problem-card:hover { transform: translateY(-5px); border-color: var(--color-premium-cta); }
+        .problem-card svg { width: 60px; height: 60px; flex-shrink: 0; color: var(--color-premium-cta); animation: subtle-glow 3s ease-in-out infinite;}
+        .problem-card h3 { margin-bottom: 0.5em; }
+
+        /* --- CONCEPT METHOD SECTION --- */
+        .concept-section { background-color: var(--color-light-gray); }
+        .concept-step {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+        .concept-step:last-child { margin-bottom: 0; }
+        .concept-step-block {
+            flex: 1;
+            width: 100%;
+            min-height: 250px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .concept-step-block:hover { 
+             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        .concept-step-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease-out;
+        }
+        .concept-step-block:hover img {
+            transform: scale(1.05);
+        }
+        .concept-step-text { flex: 1; }
+        .concept-step-text .text-heading { margin-bottom: var(--space-xs); font-size: 14px; }
+
+        /* --- WHY US SECTION --- */
+        .why-us-section {
+            background-color: var(--color-light-gray);
+        }
+        .why-us-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xl);
+        }
+        .why-us-text { text-align: center; }
+        .why-us-text h2 { margin-bottom: var(--space-md); }
+        .why-us-text p { margin-bottom: var(--space-md); }
+        .why-us-checklist { margin-top: var(--space-lg); }
+        .why-us-checklist ul {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            text-align: left;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        .process-bubbles-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            justify-content: center;
+            align-items: center;
+            max-width: 500px;
+        }
+        .process-bubble {
+            width: 140px;
+            height: 140px;
+            background-color: var(--color-anthracite-dark);
+            border-radius: var(--border-radius);
+            color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .process-bubble:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .process-bubble svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-premium-cta);
+            margin-bottom: var(--space-xs);
+            animation: subtle-glow 3s ease-in-out infinite;
+        }
+        .process-bubble .step-number { 
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-white);
+            opacity: 0.2;
+            line-height: 1;
+        }
+        .process-bubble h4 { 
+            font-size: 15px; 
+            font-weight: 600;
+            color: var(--color-white); 
+            margin: 0; 
+            line-height: 1.3;
+        }
+
+        /* --- RESULTS SECTION --- */
+        .results-section { background-color: var(--color-light-gray); }
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+        }
+        .result-card {
+            text-align: center;
+            padding: var(--space-md);
+            border-radius: var(--border-radius);
+            background-color: var(--color-white);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+        .result-card svg {
+            width: 48px;
+            height: 48px;
+            color: var(--color-premium-cta);
+            margin: 0 auto var(--space-sm) auto;
+            animation: subtle-glow 3s ease-in-out infinite;
+        }
+        .result-card h3 {
+            font-size: 18px;
+            margin-bottom: var(--space-xs);
+        }
+        
+        /* --- STRATEGY CALL SECTION --- */
+        .strategy-section { background-color: var(--color-anthracite-dark); color: var(--color-white); }
+        .strategy-intro { display: flex; flex-direction: column; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg); text-align: center; }
+        .strategy-intro h2, .strategy-intro p { color: var(--color-white); }
+        .strategy-steps { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .strategy-step-card { background-color: var(--color-anthracite-medium); border-radius: var(--border-radius); overflow: hidden; transition: transform 0.3s ease; }
+        .strategy-step-card:hover { transform: translateY(-5px); }
+        .strategy-step-card .card-content { padding: var(--space-md); }
+        .strategy-step-card h3 { color: var(--color-white); font-size: 24px; margin-bottom: 0.5em; }
+
+        /* --- ABOUT SECTION --- */
+        .about-content { display: flex; flex-direction: column; align-items: center; gap: var(--space-xl); }
+        .about-image { overflow: hidden; border-radius: var(--border-radius); }
+        .about-image img { transition: transform 0.4s ease; }
+        .about-image:hover img { transform: scale(1.05); }
+
+        /* --- FAQ SECTION --- */
+        .faq-intro { text-align: center; max-width: 550px; margin: 0 auto var(--space-lg); }
+        .faq-accordion { max-width: 780px; margin: 0 auto; }
+        .faq-accordion details { border-bottom: 1px solid var(--color-premium-cta); padding: var(--space-sm) 0; }
+        .faq-accordion summary { font-weight: 700; font-size: 18px; color: var(--color-anthracite-dark); cursor: pointer; list-style: none; position: relative; padding-right: 30px; }
+        .faq-accordion summary::-webkit-details-marker { display: none; }
+        .faq-accordion summary::after { content: '+'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); color: var(--color-premium-cta); font-size: 24px; transition: transform 0.3s ease; }
+        .faq-accordion details[open] summary::after { content: '−'; transform: translateY(-50%) rotate(180deg); }
+        .faq-accordion .faq-content { padding-top: var(--space-sm); }
+
+        /* --- CTA OVERLAP SECTION --- */
+        .cta-overlap-section { padding-bottom: 0; }
+        .cta-box {
+            background-image: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%), url('https://res.cloudinary.com/dbhmigaes/image/upload/v1754253101/mario_stefek_nmimno.avif');
+            background-position: center;
+            background-size: cover;
+            padding: var(--space-lg);
+            box-shadow: 0px -3px 50px 0px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        .cta-box h2 { font-size: 26px; }
+        .cta-box .custom-ul { margin: var(--space-md) 0; }
+        .cta-box .btn { display: block; width: 100%; max-width: 300px; margin: 0 auto; }
+        .cta-image-wrapper { display: none; }
+        .cta-image-wrapper img { transition: transform 0.4s ease; }
+        .cta-image-wrapper:hover img { transform: scale(1.05); }
+
+
+        /* --- FOOTER --- */
+        .main-footer { background: var(--color-anthracite-dark); color: var(--color-white); padding-top: var(--space-xl); margin-top: var(--space-xl); }
+        .footer-widgets { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); padding-bottom: var(--space-lg); text-align: center; }
+        .footer-widget h4 { font-size: 18px; font-weight: 700; margin-bottom: 1em; }
+        .footer-widget a { color: var(--color-text-light); }
+        .footer-widget a:hover { color: var(--color-premium-cta); }
+        .footer-contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: var(--space-sm); justify-content: center; }
+        .footer-contact-item svg { color: var(--color-premium-cta); animation: subtle-glow 3s ease-in-out infinite; }
+        .social-links a { justify-content: center; }
+        
+        .footer-disclaimer-wrapper {
+            padding: var(--space-lg) 0;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .footer-disclaimer-wrapper h4 {
+            color: var(--color-white);
+            font-size: 16px;
+            margin-bottom: var(--space-sm);
+        }
+        .footer-disclaimer-wrapper p {
+            font-size: 13px;
+            margin-bottom: var(--space-sm);
+            line-height: 1.5;
+            color: var(--color-text-light);
+            opacity: 0.8;
+        }
+
+        .footer-bottom { display: flex; flex-direction: column; gap: 20px; text-align: center; padding: var(--space-md) 0; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-bottom .logo img { max-width: 172px; filter: brightness(0) invert(1); }
+        .footer-bottom p { font-size: 14px; color: var(--color-text-light); margin: 0; }
+
+        /* --- POPUP MODAL --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); padding-top: 20px; }
+        .modal-content { background-color: var(--color-white); margin: 5% auto; padding: var(--space-md); border: 1px solid var(--color-border); width: 90%; max-width: 500px; border-radius: var(--border-radius); position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; position: absolute; top: 10px; right: 20px; cursor: pointer; }
+        .modal-content h3 { margin-bottom: var(--space-md); font-size: 24px; }
+        .modal-content form input, .modal-content form textarea { padding: 12px; margin-bottom: var(--space-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); font-family: 'Open Sans', sans-serif; font-size: 16px; width: 100%; }
+        .modal-content form button { width: 100%; margin-top: var(--space-sm); }
+        
+        /* --- TABLET STYLES --- */
+        @media (min-width: 768px) {
+            h1 { font-size: 38px; } h2 { font-size: 34px; }
+            .hero .btn, .cta-box .btn { display: inline-block; width: auto; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .problem-card svg { width: 80px; height: 80px; }
+
+            .why-us-checklist ul { grid-template-columns: 1fr 1fr; }
+
+            .results-grid { grid-template-columns: repeat(2, 1fr); } 
+            .strategy-steps { grid-template-columns: repeat(3, 1fr); }
+            .cta-box h2 { font-size: 32px; }
+            .footer-widgets { grid-template-columns: repeat(2, 1fr); text-align: left; }
+            .footer-contact-item, .social-links a { justify-content: flex-start; }
+        }
+
+        /* --- DESKTOP STYLES --- */
+        @media (min-width: 1024px) {
+            h1 { font-size: 44px; } h2 { font-size: 42px; }
+            section { padding: var(--space-xxl) 0; }
+            .main-header .logo img { max-height: 70px; }
+            .main-nav { display: block; }
+            .hamburger-menu { display: none; }
+            
+            .hero { padding: 200px 0 140px 0; text-align: left; }
+            .hero .container { flex-direction: row; }
+            .hero-content .pre-headline { font-size: 18px; }
+            .hero-content p { margin-left: 0; }
+
+            .features-section { padding: 0 0 var(--space-xxl) 0; }
+            .features-grid { grid-template-columns: repeat(4, 1fr); margin-top: -96px; }
+            
+            .problem-container { flex-direction: row; }
+            .problem-sticky-col { position: sticky; top: 120px; height: fit-content; }
+
+            .concept-step { flex-direction: row; gap: var(--space-xxl); }
+            .concept-step:nth-child(even) .concept-step-block { order: 2; }
+            .concept-step:nth-child(even) .concept-step-text { order: 1; }
+            .concept-step-block { flex: 1 1 45%; }
+            .concept-step-text { flex: 1 1 55%; }
+            
+            .why-us-content { flex-direction: row; align-items: center; gap: var(--space-xxl); }
+            .why-us-text { text-align: left; flex: 1; }
+            .why-us-checklist ul { margin-left: 0; }
+            .process-bubbles-container { flex: 1; max-width: none; }
+            
+            .results-grid { grid-template-columns: repeat(4, 1fr); }
+            
+            .strategy-intro { flex-direction: row; text-align: left; align-items: center; }
+
+            .about-content { flex-direction: row; }
+            .about-image { order: 1; } .about-text { order: 2; }
+            
+            .cta-overlap-section { padding-bottom: 96px; }
+            .cta-box {
+                display: flex; align-items: center; gap: var(--space-lg); text-align: left;
+                background-image: none; background-color: var(--color-white); padding: var(--space-xl);
+            }
+            .cta-box h2 { font-size: 38px; }
+            .cta-text-content { flex: 1 1 65%; }
+            .cta-image-wrapper { display: block; flex: 1 1 35%; max-width: 300px; }
+
+            .main-footer { margin-top: 0; }
+            .footer-widgets { grid-template-columns: repeat(4, 1fr); }
+            .footer-disclaimer-wrapper { text-align: left; }
+            .footer-bottom { flex-direction: row; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754386401/stefek_gyabch.png" alt="Stefek Digital Logo" width="200" height="70">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li class="current-menu-item"><a href="#" id="editable-text-0"></a></li>
+                    <li><a href="#problem" id="editable-text-1"></a></li>
+                    <li><a href="#features" id="editable-text-2"></a></li>
+                    <li><a href="#strategy" id="editable-text-3"></a></li>
+                    <li><a href="#about" id="editable-text-5"></a></li>
+                    <li><a href="#" class="btn open-modal-btn" id="editable-text-7"></a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" id="hamburger-menu">☰</div>
+        </div>
+    </header>
+
+    <div id="mobile-nav" class="mobile-nav">
+        <div class="mobile-nav-close" id="mobile-nav-close">&times;</div>
+        <ul>
+             <li><a href="#" id="editable-text-0-mobile"></a></li>
+             <li><a href="#problem" id="editable-text-1-mobile"></a></li>
+             <li><a href="#features" id="editable-text-2-mobile"></a></li>
+             <li><a href="#strategy" id="editable-text-3-mobile"></a></li>
+             <li><a href="#about" id="editable-text-5-mobile"></a></li>
+             <li><a href="#" class="btn open-modal-btn" id="editable-text-7-mobile"></a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content animate-on-scroll">
+                    <p class="pre-headline" id="pre-headline-text"></p>
+                    <h1 id="main-headline"></h1>
+                    <p id="intro-text"></p>
+                    <a href="#" class="btn open-modal-btn" id="editable-text-8"></a>
+                </div>
+                <div class="hero-image animate-on-scroll">
+                    <img src="https://res.cloudinary.com/dbhmigaes/image/upload/f_auto,q_auto/v1755348465/Mario-Stefek-Web-109_1_j5iw3v.jpg" alt="Mario Stefek, Inhaber von Stefek Digital" width="600" height="600">
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section" id="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                        <h3 id="editable-text-11"></h3>
+                        <p id="editable-text-12"></p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        <h3 id="editable-text-13"></h3>
+                        <p id="editable-text-14"></p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        <h3 id="editable-text-15"></h3>
+                        <p id="editable-text-16"></p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        <h3 id="editable-text-17"></h3>
+                        <p id="editable-text-18"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="problem-section" id="problem">
+            <div class="container problem-container">
+                <div class="problem-sticky-col animate-on-scroll">
+                    <div class="text-heading">
+                        <h2 id="editable-text-19"></h2>
+                    </div>
+                    <p id="editable-text-20"></p>
+                    <p id="editable-text-21"></p>
+                </div>
+                <div class="problem-scroll-col">
+                    <div class="problem-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <div>
+                            <h3 id="editable-text-22"></h3>
+                            <p id="editable-text-23"></p>
+                        </div>
+                    </div>
+                    <div class="problem-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <div>
+                            <h3 id="editable-text-24"></h3>
+                            <p id="editable-text-25"></p>
+                        </div>
+                    </div>
+                     <div class="problem-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        <div>
+                            <h3 id="editable-text-26"></h3>
+                            <p id="editable-text-27"></p>
+                        </div>
+                    </div>
+                     <div class="problem-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                        <div>
+                            <h3 id="editable-text-28"></h3>
+                            <p id="editable-text-29"></p>
+                        </div>
+                    </div>
+                    <div class="problem-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <div>
+                            <h3 id="editable-text-30"></h3>
+                            <p id="editable-text-31"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="concept-section">
+            <div class="container">
+                <div class="section-intro animate-on-scroll">
+                    <p class="text-heading" id="concept-pre-headline"></p>
+                    <h2 id="concept-headline"></h2>
+                    <p id="concept-intro-text"></p>
+                </div>
+                
+                <div class="concept-steps-wrapper">
+                    <div class="concept-step animate-on-scroll">
+                        <div class="concept-step-block">
+                            <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755448038/assets_2Ftask_01k2wdjf7tepvawrzewht6tnjv_2F1755447993_img_0_u3gegj.webp" alt="Analyse & Audit" loading="lazy">
+                        </div>
+                        <div class="concept-step-text">
+                            <p class="text-heading" id="concept-step1-tag"></p>
+                            <h3 id="concept-step1-title"></h3>
+                            <p id="concept-step1-desc"></p>
+                        </div>
+                    </div>
+                    <div class="concept-step animate-on-scroll">
+                        <div class="concept-step-block">
+                            <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755448024/assets_2Ftask_01k2wdj8ctezw9150t7c5dhasn_2F1755447977_img_0_ylazyt.webp" alt="System-Implementierung" loading="lazy">
+                        </div>
+                        <div class="concept-step-text">
+                            <p class="text-heading" id="concept-step2-tag"></p>
+                            <h3 id="concept-step2-title"></h3>
+                            <p id="concept-step2-desc"></p>
+                        </div>
+                    </div>
+                    <div class="concept-step animate-on-scroll">
+                        <div class="concept-step-block">
+                            <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755448220/assets_2Ftask_01k2wdnqbyf59afraq3hd6037r_2F1755448093_img_1_sskobi.webp" alt="Prozess-Automatisierung" loading="lazy">
+                        </div>
+                        <div class="concept-step-text">
+                            <p class="text-heading" id="concept-step3-tag"></p>
+                            <h3 id="concept-step3-title"></h3>
+                            <p id="concept-step3-desc"></p>
+                        </div>
+                    </div>
+                    <div class="concept-step animate-on-scroll">
+                         <div class="concept-step-block">
+                            <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755448221/assets_2Ftask_01k2wdpq39fnx8q22023x9w07y_2F1755448199_img_1_xornfw.webp" alt="Skalierung & Reporting" loading="lazy">
+                         </div>
+                        <div class="concept-step-text">
+                            <p class="text-heading" id="concept-step4-tag"></p>
+                            <h3 id="concept-step4-title"></h3>
+                            <p id="concept-step4-desc"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-us-section">
+            <div class="container">
+                <div class="why-us-content">
+                    <div class="why-us-text animate-on-scroll">
+                        <p class="text-heading" id="why-us-pre-headline"></p>
+                        <h2 id="why-us-headline"></h2>
+                        <p id="why-us-desc"></p>
+                        <div class="custom-ul why-us-checklist">
+                            <ul>
+                                <li id="why-us-check1"></li>
+                                <li id="why-us-check2"></li>
+                                <li id="why-us-check3"></li>
+                                <li id="why-us-check4"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="process-bubbles-container animate-on-scroll">
+                        <div class="process-bubble">
+                            <span class="step-number">01</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            <h4 id="circle-step1-title"></h4>
+                        </div>
+                        <div class="process-bubble">
+                            <span class="step-number">02</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            <h4 id="circle-step2-title"></h4>
+                        </div>
+                        <div class="process-bubble">
+                            <span class="step-number">03</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                            <h4 id="circle-step3-title"></h4>
+                        </div>
+                        <div class="process-bubble">
+                            <span class="step-number">04</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <h4 id="circle-step4-title"></h4>
+                        </div>
+                        <div class="process-bubble">
+                            <span class="step-number">05</span>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                            <h4 id="circle-step5-title"></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="container">
+                 <div class="section-intro animate-on-scroll">
+                    <p class="text-heading" id="results-pre-headline"></p>
+                    <h2 id="results-headline"></h2>
+                </div>
+                <div class="results-grid">
+                    <div class="result-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg>
+                        <h3 id="result1-title"></h3>
+                        <p id="result1-desc"></p>
+                    </div>
+                     <div class="result-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        <h3 id="result2-title"></h3>
+                        <p id="result2-desc"></p>
+                    </div>
+                     <div class="result-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smile"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                        <h3 id="result3-title"></h3>
+                        <p id="result3-desc"></p>
+                    </div>
+                     <div class="result-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <h3 id="result4-title"></h3>
+                        <p id="result4-desc"></p>
+                    </div>
+                     <div class="result-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <h3 id="result5-title"></h3>
+                        <p id="result5-desc"></p>
+                    </div>
+                     <div class="result-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                        <h3 id="result6-title"></h3>
+                        <p id="result6-desc"></p>
+                    </div>
+                     <div class="result-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        <h3 id="result7-title"></h3>
+                        <p id="result7-desc"></p>
+                    </div>
+                     <div class="result-card animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        <h3 id="result8-title"></h3>
+                        <p id="result8-desc"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="strategy-section" id="strategy">
+            <div class="container">
+                <div class="strategy-intro animate-on-scroll">
+                    <div>
+                        <p class="text-heading" id="editable-text-32"></p>
+                        <h2 id="editable-text-33"></h2>
+                    </div>
+                    <div>
+                        <p id="editable-text-34"></p>
+                    </div>
+                </div>
+                <div class="strategy-steps">
+                    <div class="strategy-step-card animate-on-scroll">
+                        <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755447634/stefek_meeting_jh7cab.webp" alt="Team meeting" width="550" height="342" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="editable-text-35"></h3>
+                            <p id="editable-text-36"></p>
+                        </div>
+                    </div>
+                    <div class="strategy-step-card animate-on-scroll">
+                        <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755447632/stefek_planung_cquwvd.webp" alt="Hands on a document" width="550" height="341" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="editable-text-37"></h3>
+                            <p id="editable-text-38"></p>
+                        </div>
+                    </div>
+                    <div class="strategy-step-card animate-on-scroll">
+                        <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755447896/assets_2Ftask_01k2wdeby9fdhszsth186at6y2_2F1755447853_img_0_cgjjq4.webp" alt="Two people talking" width="550" height="342" loading="lazy">
+                        <div class="card-content">
+                            <h3 id="editable-text-39"></h3>
+                            <p id="editable-text-40"></p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: var(--space-lg);" class="animate-on-scroll">
+                    <a href="#" class="btn open-modal-btn" id="editable-text-41"></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image animate-on-scroll">
+                        <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755447633/stefek_team_oaapfq.jpg" alt="Das Team von Stefek Digital" width="600" height="500" loading="lazy">
+                    </div>
+                    <div class="about-text animate-on-scroll">
+                        <p class="text-heading" id="editable-text-42"></p>
+                        <h2 id="editable-text-43"></h2>
+                        <p id="editable-text-44"></p>
+                        <p id="editable-text-45"></p>
+                        <p id="editable-text-46"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="faq-section">
+            <div class="container">
+                <div class="faq-intro animate-on-scroll">
+                     <p class="text-heading" id="editable-text-75"></p>
+                     <h2 id="editable-text-76"></h2>
+                     <p id="editable-text-77"></p>
+                </div>
+                <div class="faq-accordion">
+                    <details class="animate-on-scroll">
+                        <summary id="editable-text-78"></summary>
+                        <div class="faq-content">
+                            <p id="editable-text-79"></p>
+                        </div>
+                    </details>
+                    <details class="animate-on-scroll">
+                        <summary id="editable-text-80"></summary>
+                         <div class="faq-content">
+                            <p id="editable-text-81"></p>
+                        </div>
+                    </details>
+                    <details class="animate-on-scroll">
+                        <summary id="editable-text-82"></summary>
+                         <div class="faq-content">
+                            <p id="editable-text-83"></p>
+                        </div>
+                    </details>
+                    <details class="animate-on-scroll">
+                        <summary id="editable-text-84"></summary>
+                         <div class="faq-content">
+                            <p id="editable-text-85"></p>
+                        </div>
+                    </details>
+                    <details class="animate-on-scroll">
+                        <summary id="editable-text-86"></summary>
+                         <div class="faq-content">
+                            <p id="editable-text-87"></p>
+                        </div>
+                    </details>
+                    <details class="animate-on-scroll">
+                        <summary id="editable-text-88"></summary>
+                         <div class="faq-content">
+                            <p id="editable-text-89"></p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-overlap-section">
+            <div class="container">
+                <div class="cta-box animate-on-scroll">
+                    <div class="cta-text-content">
+                        <h2 id="editable-text-90"></h2>
+                        <div class="custom-ul">
+                            <ul>
+                                <li id="editable-text-91"></li>
+                                <li id="editable-text-92"></li>
+                            </ul>
+                        </div>
+                        <a href="#" class="btn open-modal-btn" id="editable-text-93"></a>
+                    </div>
+                     <div class="cta-image-wrapper">
+                        <img src="https://res.cloudinary.com/dbhmigaes/image/upload/f_auto,q_auto/v1754253101/mario_stefek_nmimno.avif" alt="Mario Stefek" width="300" height="400" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+            <div class="container">
+                <div class="footer-widgets">
+                    <div class="footer-widget">
+                        <h4 id="editable-text-94"></h4>
+                        <ul>
+                            <li><a href="#" id="editable-text-95"></a></li>
+                            <li><a href="#problem" id="editable-text-96"></a></li>
+                            <li><a href="#features" id="editable-text-97"></a></li>
+                            <li><a href="#strategy" id="editable-text-98"></a></li>
+                            <li><a href="#about" id="editable-text-101"></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h4 id="editable-text-102"></h4>
+                        <ul>
+                            <li><a href="https://www.stefek-digital.com/impressum" target="_blank" id="editable-text-103"></a></li>
+                            <li><a href="https://www.stefek-digital.com/datenschutz" target="_blank" id="editable-text-104"></a></li>
+                            <li><a href="#" id="editable-text-105"></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h4 id="editable-text-106"></h4>
+                        <div class="footer-contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span id="editable-text-107"></span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span id="editable-text-108"></span>
+                        </div>
+                         <div class="footer-contact-item">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span id="editable-text-109"></span>
+                        </div>
+                    </div>
+                     <div class="footer-widget">
+                        <h4 id="editable-text-110"></h4>
+                        <ul class="social-links">
+                            <li><a href="#" id="editable-text-111"></a></li>
+                            <li><a href="#" id="editable-text-112"></a></li>
+                            <li><a href="#" id="editable-text-113"></a></li>
+                            <li><a href="#" id="editable-text-114"></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-disclaimer-wrapper">
+                    <h4>Disclaimer</h4>
+                    <p>Die Inhalte dieser Website dienen ausschließlich allgemeinen Informationszwecken und stellen keine Beratung dar. Trotz sorgfältiger Prüfung übernehmen wir keine Haftung für Richtigkeit, Vollständigkeit oder Aktualität.</p>
+                    <p>Ein bestimmter Erfolg oder konkrete Einsparungen können nicht garantiert werden. Haftungsansprüche sind ausgeschlossen, soweit kein vorsätzliches oder grob fahrlässiges Verschulden vorliegt.</p>
+                    <p>Für Inhalte externer Links sind ausschließlich deren Betreiber verantwortlich.</p>
+                </div>
+                
+                <div class="footer-bottom">
+                     <a href="#" class="logo">
+                        <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1754386401/stefek_gyabch.png" alt="Stefek Digital Logo" width="172" height="55">
+                    </a>
+                    <p id="editable-text-115"></p>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Popup Modal -->
+    <div id="popup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Termin vereinbaren</h3>
+            <p>Füllen Sie das Formular aus und wir melden uns bei Ihnen, um einen kostenlosen Beratungstermin zu vereinbaren.</p>
+            <form action="https://formspree.io/f/xvgqkvbl" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Ihr Name" required>
+                
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" placeholder="ihre@email.com" required>
+                
+                <label for="phone">Telefonnummer (optional):</label>
+                <input type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer">
+                
+                <label for="message">Ihre Nachricht:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Worum geht es bei Ihrer Anfrage?" required></textarea>
+                
+                <button type="submit" class="btn">Anfrage senden</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Content Loading ---
+            fetch('content.json?t=' + new Date().getTime()) // Cache-busting
+                .then(response => {
+                    if (!response.ok) throw new Error('content.json wurde nicht gefunden.');
+                    return response.json();
+                })
+                .then(data => {
+                    for (const elementId in data) {
+                        const content = data[elementId];
+                        // Populate main element
+                        const mainElement = document.getElementById(elementId);
+                        if (mainElement) mainElement.innerHTML = content;
+
+                        // Populate corresponding mobile element if it exists
+                        const mobileElement = document.getElementById(`${elementId}-mobile`);
+                        if (mobileElement) mobileElement.innerHTML = content;
+                    }
+                })
+                .catch(error => {
+                    console.error('Fehler beim Laden der Inhalte:', error);
+                    document.body.innerHTML = '<h1 style="text-align:center; padding: 50px;">Fehler: Inhalte konnten nicht geladen werden.</h1>';
+                });
+
+            // --- Mobile Navigation Logic ---
+            const hamburger = document.getElementById('hamburger-menu');
+            const mobileNav = document.getElementById('mobile-nav');
+            const closeNavBtn = document.getElementById('mobile-nav-close');
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+
+            function openMobileNav() { mobileNav.classList.add('is-open'); }
+            function closeMobileNav() { mobileNav.classList.remove('is-open'); }
+
+            hamburger.addEventListener('click', openMobileNav);
+            closeNavBtn.addEventListener('click', closeMobileNav);
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (link.getAttribute('href').startsWith('#') || !link.classList.contains('open-modal-btn')) {
+                        closeMobileNav();
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
+                    closeMobileNav();
+                }
+            });
+
+            // --- Popup Modal Logic ---
+            const modal = document.getElementById('popup-modal');
+            const closeBtn = document.querySelector('.close-btn');
+            const openModalBtns = document.querySelectorAll('.open-modal-btn');
+
+            function openModal(e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            window.addEventListener('click', event => {
+                if (event.target == modal) closeModal();
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeModal();
+                }
+            });
+
+            // --- On-Scroll Animation Logic ---
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
