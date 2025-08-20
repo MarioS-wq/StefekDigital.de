@@ -435,60 +435,45 @@
         .about-image img { transition: transform 0.4s ease; }
         .about-image:hover img { transform: scale(1.05); }
 
-        /* --- CAROUSEL STYLES --- */
-        .carousel-section {
+        /* --- MINI CAROUSEL STYLES --- */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .mini-carousel-section {
             padding-top: var(--space-lg);
         }
-        .carousel-container {
-            position: relative;
-        }
-        .carousel-wrapper {
+        .mini-carousel-wrapper {
+            max-width: 100%;
             overflow: hidden;
+            padding: var(--space-md) 0;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
         }
-        .carousel-track {
+        .mini-carousel-track {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            width: fit-content;
+            animation: scroll 45s linear infinite;
         }
-        .carousel-slide {
-            flex: 0 0 100%;
+        .mini-carousel-wrapper:hover .mini-carousel-track {
+            animation-play-state: paused;
+        }
+        .mini-carousel-slide {
+            height: 90px;
+            width: 135px;
             padding: 0 var(--space-xs);
         }
-        .carousel-slide img {
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .mini-carousel-slide img {
+            height: 100%;
             width: 100%;
-            height: auto;
             object-fit: cover;
+            border-radius: var(--border-radius);
+            filter: grayscale(1);
+            transition: filter 0.3s ease;
         }
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-sm);
-            margin-top: var(--space-md);
-        }
-        .carousel-nav button {
-            background-color: var(--color-white);
-            border: 1px solid var(--color-border);
-            color: var(--color-anthracite-dark);
-            cursor: pointer;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .carousel-nav button:hover {
-            background-color: var(--color-premium-cta);
-            border-color: var(--color-premium-cta);
-            color: var(--color-anthracite-dark);
-        }
-        .carousel-nav button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            background-color: var(--color-light-gray);
+        .mini-carousel-slide:hover img {
+            filter: grayscale(0);
         }
 
         /* --- FAQ SECTION --- */
@@ -595,7 +580,6 @@
             .hero .btn, .cta-box .btn { display: inline-block; width: auto; }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
             .problem-card svg { width: 80px; height: 80px; }
-            .carousel-slide { flex: 0 0 50%; }
             .why-us-checklist ul { grid-template-columns: 1fr 1fr; }
 
             .results-grid { grid-template-columns: repeat(2, 1fr); } 
@@ -641,7 +625,6 @@
 
             .about-content { flex-direction: row; }
             .about-image { order: 1; } .about-text { order: 2; }
-            .carousel-slide { flex: 0 0 33.333%; }
             
             .cta-overlap-section { padding-bottom: 96px; }
             .cta-box {
@@ -1137,34 +1120,27 @@
                     </div>
                 </div>
 
-                <div class="carousel-section animate-on-scroll">
-                    <div class="section-intro">
-                        <h3>Mario Stefek - Einblicke in die Praxis</h3>
-                        <p>Lernen Sie den Gründer und Digitalisierungsexperten Mario Stefek in verschiedenen beruflichen Situationen kennen.</p>
+                <div class="mini-carousel-section animate-on-scroll">
+                     <div class="section-intro">
+                        <h3>Galerie: Mario Stefek</h3>
                     </div>
-                    <div class="carousel-container">
-                        <div class="carousel-wrapper">
-                            <div class="carousel-track">
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495550/Mario-Stefek-Web-62_2_qfuqv4.jpg" alt="Professionelles Porträtfoto von Mario Stefek, Gründer von Stefek Digital." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495556/Mario-Stefek-Web-63_y1ri3h.jpg" alt="Mario Stefek in seinem Büro, fokussiert bei der Arbeit an digitalen Strategien." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495559/Mario-Stefek-Web-51_pr3xrn.jpg" alt="Mario Stefek in einem Beratungsgespräch zur Prozessoptimierung." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495560/Mario-Stefek-Web-40_witywu.jpg" alt="Business-Porträt von Digitalisierungsexperte Mario Stefek." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495561/Mario-Stefek-Print-113_eabxx5.jpg" alt="Ein freundliches Porträt von Mario Stefek." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495561/Mario-Stefek-Print-75_x6kwhz.jpg" alt="Professioneller Headshot von Unternehmer Mario Stefek." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495562/Mario-Stefek-Print-17_kqx1xb.jpg" alt="Profilfoto von Mario Stefek für Business-Netzwerke." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495562/Mario-Stefek-Web-61_1_ictngk.jpg" alt="Einblick in den Arbeitsalltag von Mario Stefek." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495565/Mario-Stefek-Web-32_acsbty.jpg" alt="Mario Stefek erklärt digitale Konzepte während einer Präsentation." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495570/Mario-Stefek-Print-26_1_aiyth5.jpg" alt="Detailporträt von Mario Stefek." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495570/Mario-Stefek-Print-115_kjulna.jpg" alt="Dynamisches Foto von Mario Stefek." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495571/Mario-Stefek-Print-21_fyssyt.jpg" alt="Künstlerisches Schwarz-Weiß-Foto von Mario Stefek." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495572/Mario-Stefek-Print-131_gr8lvf.jpg" alt="Hochwertige Fotografie des Unternehmers Mario Stefek." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495573/Mario-Stefek-Web-102_xpgnuz.jpg" alt="Mario Stefek in einem modernen, urbanen Setting." loading="lazy"></div>
-                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495574/Mario-Stefek-Print-119.jpg_2_qeytrf.jpg" alt="Ein authentisches Foto, das Mario Stefek bei seiner Tätigkeit zeigt." loading="lazy"></div>
-                            </div>
-                        </div>
-                        <div class="carousel-nav">
-                            <button class="carousel-prev" aria-label="Vorheriges Bild">←</button>
-                            <button class="carousel-next" aria-label="Nächstes Bild">→</button>
+                    <div class="mini-carousel-wrapper">
+                        <div class="mini-carousel-track">
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495550/Mario-Stefek-Web-62_2_qfuqv4.jpg" alt="Professionelles Porträtfoto von Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495556/Mario-Stefek-Web-63_y1ri3h.jpg" alt="Mario Stefek, fokussiert bei der Arbeit." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495559/Mario-Stefek-Web-51_pr3xrn.jpg" alt="Mario Stefek im Beratungsgespräch." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495560/Mario-Stefek-Web-40_witywu.jpg" alt="Business-Porträt von Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495561/Mario-Stefek-Print-113_eabxx5.jpg" alt="Ein freundliches Porträt von Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495561/Mario-Stefek-Print-75_x6kwhz.jpg" alt="Professioneller Headshot: Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495562/Mario-Stefek-Print-17_kqx1xb.jpg" alt="Profilfoto von Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495562/Mario-Stefek-Web-61_1_ictngk.jpg" alt="Einblick in den Arbeitsalltag von Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495565/Mario-Stefek-Web-32_acsbty.jpg" alt="Mario Stefek bei einer Präsentation." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495570/Mario-Stefek-Print-26_1_aiyth5.jpg" alt="Detailporträt von Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495570/Mario-Stefek-Print-115_kjulna.jpg" alt="Dynamisches Foto von Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495571/Mario-Stefek-Print-21_fyssyt.jpg" alt="Künstlerisches Schwarz-Weiß-Foto von Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495572/Mario-Stefek-Print-131_gr8lvf.jpg" alt="Hochwertige Fotografie von Mario Stefek." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495573/Mario-Stefek-Web-102_xpgnuz.jpg" alt="Mario Stefek in einem modernen, urbanen Setting." loading="lazy"></div>
+                            <div class="mini-carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495574/Mario-Stefek-Print-119.jpg_2_qeytrf.jpg" alt="Ein authentisches Foto von Mario Stefek." loading="lazy"></div>
                         </div>
                     </div>
                 </div>
@@ -1421,70 +1397,15 @@
                 observer.observe(element);
             });
 
-            // --- Carousel Logic ---
-            const track = document.querySelector('.carousel-track');
+            // --- Mini Carousel Logic for Infinite Loop ---
+            const track = document.querySelector('.mini-carousel-track');
             if (track) {
                 const slides = Array.from(track.children);
-                const nextButton = document.querySelector('.carousel-next');
-                const prevButton = document.querySelector('.carousel-prev');
-                
-                let slideWidth = slides[0].getBoundingClientRect().width;
-                let currentIndex = 0;
-
-                const setSlidePosition = (slide, index) => {
-                    slide.style.left = slideWidth * index + 'px';
-                };
-                
-                const moveToSlide = (newIndex) => {
-                    track.style.transform = 'translateX(-' + slideWidth * newIndex + 'px)';
-                    currentIndex = newIndex;
-                    updateNavButtons();
-                };
-
-                const updateNavButtons = () => {
-                    if (currentIndex === 0) {
-                        prevButton.disabled = true;
-                    } else {
-                        prevButton.disabled = false;
-                    }
-
-                    if (currentIndex >= slides.length - getVisibleSlides()) {
-                         nextButton.disabled = true;
-                    } else {
-                         nextButton.disabled = false;
-                    }
-                };
-
-                const getVisibleSlides = () => {
-                    if (window.innerWidth >= 1024) return 3;
-                    if (window.innerWidth >= 768) return 2;
-                    return 1;
-                };
-
-                const handleResize = () => {
-                    slideWidth = slides[0].getBoundingClientRect().width;
-                    moveToSlide(currentIndex);
-                };
-                
-                nextButton.addEventListener('click', e => {
-                    const newIndex = currentIndex + 1;
-                    if (newIndex < slides.length) {
-                        moveToSlide(newIndex);
-                    }
+                // Clone slides for seamless looping
+                slides.forEach(slide => {
+                    const clone = slide.cloneNode(true);
+                    track.appendChild(clone);
                 });
-
-                prevButton.addEventListener('click', e => {
-                    const newIndex = currentIndex - 1;
-                     if (newIndex >= 0) {
-                        moveToSlide(newIndex);
-                    }
-                });
-                
-                window.addEventListener('resize', handleResize);
-
-                // Initial setup
-                handleResize();
-                updateNavButtons();
             }
         });
     </script>
