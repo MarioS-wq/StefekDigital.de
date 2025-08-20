@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stefek Digital - Zeit & Kosten sparen für Hausverwaltungen & Makler</title>
     
-    <!-- Preconnect to critical domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://res.cloudinary.com">
 
-    <!-- Load fonts asynchronously without blocking rendering -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
     
@@ -437,6 +435,62 @@
         .about-image img { transition: transform 0.4s ease; }
         .about-image:hover img { transform: scale(1.05); }
 
+        /* --- CAROUSEL STYLES --- */
+        .carousel-section {
+            padding-top: var(--space-lg);
+        }
+        .carousel-container {
+            position: relative;
+        }
+        .carousel-wrapper {
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-slide {
+            flex: 0 0 100%;
+            padding: 0 var(--space-xs);
+        }
+        .carousel-slide img {
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+        .carousel-nav button {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-border);
+            color: var(--color-anthracite-dark);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .carousel-nav button:hover {
+            background-color: var(--color-premium-cta);
+            border-color: var(--color-premium-cta);
+            color: var(--color-anthracite-dark);
+        }
+        .carousel-nav button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: var(--color-light-gray);
+        }
+
         /* --- FAQ SECTION --- */
         .faq-intro { text-align: center; max-width: 550px; margin: 0 auto var(--space-lg); }
         .faq-accordion { max-width: 780px; margin: 0 auto; }
@@ -541,7 +595,7 @@
             .hero .btn, .cta-box .btn { display: inline-block; width: auto; }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
             .problem-card svg { width: 80px; height: 80px; }
-
+            .carousel-slide { flex: 0 0 50%; }
             .why-us-checklist ul { grid-template-columns: 1fr 1fr; }
 
             .results-grid { grid-template-columns: repeat(2, 1fr); } 
@@ -587,6 +641,7 @@
 
             .about-content { flex-direction: row; }
             .about-image { order: 1; } .about-text { order: 2; }
+            .carousel-slide { flex: 0 0 33.333%; }
             
             .cta-overlap-section { padding-bottom: 96px; }
             .cta-box {
@@ -838,7 +893,7 @@
                 </div>
                 <div class="problem-scroll-col">
                     <div class="problem-card animate-on-scroll">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <svg xmlns="http="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                         <div>
                             <h3 id="editable-text-22"></h3>
                             <p id="editable-text-23"></p>
@@ -1081,7 +1136,39 @@
                         <p id="editable-text-46"></p>
                     </div>
                 </div>
-            </div>
+
+                <div class="carousel-section animate-on-scroll">
+                    <div class="section-intro">
+                        <h3>Mario Stefek - Einblicke in die Praxis</h3>
+                        <p>Lernen Sie den Gründer und Digitalisierungsexperten Mario Stefek in verschiedenen beruflichen Situationen kennen.</p>
+                    </div>
+                    <div class="carousel-container">
+                        <div class="carousel-wrapper">
+                            <div class="carousel-track">
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495550/Mario-Stefek-Web-62_2_qfuqv4.jpg" alt="Professionelles Porträtfoto von Mario Stefek, Gründer von Stefek Digital." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495556/Mario-Stefek-Web-63_y1ri3h.jpg" alt="Mario Stefek in seinem Büro, fokussiert bei der Arbeit an digitalen Strategien." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495559/Mario-Stefek-Web-51_pr3xrn.jpg" alt="Mario Stefek in einem Beratungsgespräch zur Prozessoptimierung." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495560/Mario-Stefek-Web-40_witywu.jpg" alt="Business-Porträt von Digitalisierungsexperte Mario Stefek." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495561/Mario-Stefek-Print-113_eabxx5.jpg" alt="Ein freundliches Porträt von Mario Stefek." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495561/Mario-Stefek-Print-75_x6kwhz.jpg" alt="Professioneller Headshot von Unternehmer Mario Stefek." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495562/Mario-Stefek-Print-17_kqx1xb.jpg" alt="Profilfoto von Mario Stefek für Business-Netzwerke." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495562/Mario-Stefek-Web-61_1_ictngk.jpg" alt="Einblick in den Arbeitsalltag von Mario Stefek." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495565/Mario-Stefek-Web-32_acsbty.jpg" alt="Mario Stefek erklärt digitale Konzepte während einer Präsentation." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495570/Mario-Stefek-Print-26_1_aiyth5.jpg" alt="Detailporträt von Mario Stefek." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495570/Mario-Stefek-Print-115_kjulna.jpg" alt="Dynamisches Foto von Mario Stefek." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495571/Mario-Stefek-Print-21_fyssyt.jpg" alt="Künstlerisches Schwarz-Weiß-Foto von Mario Stefek." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495572/Mario-Stefek-Print-131_gr8lvf.jpg" alt="Hochwertige Fotografie des Unternehmers Mario Stefek." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495573/Mario-Stefek-Web-102_xpgnuz.jpg" alt="Mario Stefek in einem modernen, urbanen Setting." loading="lazy"></div>
+                                <div class="carousel-slide"><img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1755495574/Mario-Stefek-Print-119.jpg_2_qeytrf.jpg" alt="Ein authentisches Foto, das Mario Stefek bei seiner Tätigkeit zeigt." loading="lazy"></div>
+                            </div>
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="carousel-prev" aria-label="Vorheriges Bild">←</button>
+                            <button class="carousel-next" aria-label="Nächstes Bild">→</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
         </section>
         
         <section class="faq-section">
@@ -1178,7 +1265,7 @@
                     <div class="footer-widget">
                         <h4 id="editable-text-106"></h4>
                         <div class="footer-contact-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <svg xmlns="http="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             <span id="editable-text-107"></span>
                         </div>
                         <div class="footer-contact-item">
@@ -1218,7 +1305,6 @@
             </div>
         </footer>
 
-    <!-- Popup Modal -->
     <div id="popup-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -1334,6 +1420,72 @@
             animatedElements.forEach(element => {
                 observer.observe(element);
             });
+
+            // --- Carousel Logic ---
+            const track = document.querySelector('.carousel-track');
+            if (track) {
+                const slides = Array.from(track.children);
+                const nextButton = document.querySelector('.carousel-next');
+                const prevButton = document.querySelector('.carousel-prev');
+                
+                let slideWidth = slides[0].getBoundingClientRect().width;
+                let currentIndex = 0;
+
+                const setSlidePosition = (slide, index) => {
+                    slide.style.left = slideWidth * index + 'px';
+                };
+                
+                const moveToSlide = (newIndex) => {
+                    track.style.transform = 'translateX(-' + slideWidth * newIndex + 'px)';
+                    currentIndex = newIndex;
+                    updateNavButtons();
+                };
+
+                const updateNavButtons = () => {
+                    if (currentIndex === 0) {
+                        prevButton.disabled = true;
+                    } else {
+                        prevButton.disabled = false;
+                    }
+
+                    if (currentIndex >= slides.length - getVisibleSlides()) {
+                         nextButton.disabled = true;
+                    } else {
+                         nextButton.disabled = false;
+                    }
+                };
+
+                const getVisibleSlides = () => {
+                    if (window.innerWidth >= 1024) return 3;
+                    if (window.innerWidth >= 768) return 2;
+                    return 1;
+                };
+
+                const handleResize = () => {
+                    slideWidth = slides[0].getBoundingClientRect().width;
+                    moveToSlide(currentIndex);
+                };
+                
+                nextButton.addEventListener('click', e => {
+                    const newIndex = currentIndex + 1;
+                    if (newIndex < slides.length) {
+                        moveToSlide(newIndex);
+                    }
+                });
+
+                prevButton.addEventListener('click', e => {
+                    const newIndex = currentIndex - 1;
+                     if (newIndex >= 0) {
+                        moveToSlide(newIndex);
+                    }
+                });
+                
+                window.addEventListener('resize', handleResize);
+
+                // Initial setup
+                handleResize();
+                updateNavButtons();
+            }
         });
     </script>
 
